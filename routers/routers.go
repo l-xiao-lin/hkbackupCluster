@@ -25,5 +25,7 @@ func SetupRouter() *gin.Engine {
 
 	v1.POST("/uploadFile", controller.UploadFileHandler)
 
+	v1.POST("/compareJar", controller.CompareJarHandler)
+
 	return r
 }
