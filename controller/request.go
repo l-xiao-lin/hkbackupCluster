@@ -31,3 +31,15 @@ type ParamUpload struct {
 	RemoteDir     string `json:"remote_dir"`
 	RemoteHost    string `json:"host"`
 }
+
+type ParamWeChat struct {
+	Message string `json:"message"`
+	CorpID  string `json:"corp_id"`
+	Secret  string `json:"secret"`
+	ToParty string `json:"toParty"`
+	AgentID int    `json:"agent_id"`
+}
+
+type ParamCheck struct {
+	EnvName string `json:"env_name" form:"env_name"`
+}

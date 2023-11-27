@@ -1,8 +1,9 @@
 package routers
 
 import (
-	"github.com/gin-gonic/gin"
 	"hkbackupCluster/controller"
+
+	"github.com/gin-gonic/gin"
 )
 
 func SetupRouter() *gin.Engine {
@@ -26,6 +27,10 @@ func SetupRouter() *gin.Engine {
 	v1.POST("/uploadFile", controller.UploadFileHandler)
 
 	v1.POST("/compareJar", controller.CompareJarHandler)
+
+	v1.POST("/sendWeChat", controller.SendWeChatHandler)
+
+	v1.GET("/checkSystem", controller.CheckSystemHandler)
 
 	return r
 }
