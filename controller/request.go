@@ -43,3 +43,9 @@ type ParamWeChat struct {
 type ParamCheck struct {
 	EnvName string `json:"env_name" form:"env_name"`
 }
+
+type ParamListing struct {
+	Website  string `json:"website" form:"website"`
+	Username string `json:"username" form:"username"`
+	Password string `json:"password" form:"password"`
+}

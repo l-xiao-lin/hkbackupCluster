@@ -1201,3 +1201,271 @@
 {"level":"INFO","time":"2023-11-27T13:09:49.324+0800","caller":"service/checkSystem.go:53","msg":"总共花费时间:14m38.4546957s"}
 {"level":"INFO","time":"2023-11-27T13:09:49.325+0800","caller":"controller/checkSystem.go:67","msg":"service.CheckSystem success"}
 {"level":"INFO","time":"2023-11-27T13:09:50.000+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-11-27T17:24:29.798+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-11-27T17:26:14.979+0800","caller":"service/checkSystem.go:262","msg":"页面正常，000007环境检测正常"}
+{"level":"INFO","time":"2023-11-27T17:26:23.898+0800","caller":"service/checkSystem.go:262","msg":"页面正常，001586环境检测正常"}
+{"level":"INFO","time":"2023-11-27T17:26:24.085+0800","caller":"service/checkSystem.go:26","msg":"需要重试的商户号Resp:map[]"}
+{"level":"INFO","time":"2023-11-27T17:26:24.085+0800","caller":"service/checkSystem.go:53","msg":"总共花费时间:18.9243205s"}
+{"level":"INFO","time":"2023-11-27T17:26:24.085+0800","caller":"controller/checkSystem.go:67","msg":"service.CheckSystem success"}
+{"level":"INFO","time":"2023-11-27T17:53:54.169+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T11:20:17.459+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T11:22:54.304+0800","caller":"service/listing.go:157","msg":"url地址为:https://listing.tongtool.com/product/info.htm?pid=2002F1474FE519E0444DBDC05680E5300F64"}
+{"level":"ERROR","time":"2023-12-21T11:22:58.549+0800","caller":"service/listing.go:244","msg":"页面正常，数据保存成功"}
+{"level":"INFO","time":"2023-12-21T11:35:31.009+0800","caller":"service/listing.go:157","msg":"url地址为:https://listing.tongtool.com/product/info.htm?pid=2002F1474FE519E0444DBDC05680E5300F64"}
+{"level":"ERROR","time":"2023-12-21T11:35:36.139+0800","caller":"service/listing.go:244","msg":"页面正常，数据保存成功"}
+{"level":"INFO","time":"2023-12-21T13:37:31.994+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T13:38:04.418+0800","caller":"service/listing.go:158","msg":"url地址为:https://listing.tongtool.com/product/info.htm?pid=3758abb620914603afd9a4a3a2a47f7a"}
+{"level":"INFO","time":"2023-12-21T13:38:08.477+0800","caller":"service/listing.go:247","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T13:55:14.049+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T13:55:34.666+0800","caller":"service/listing.go:189","msg":"url地址为:https://listing.tongtool.com/product/info.htm?pid=3758abb620914603afd9a4a3a2a47f7a"}
+{"level":"ERROR","time":"2023-12-21T13:55:34.780+0800","caller":"service/listing.go:199","msg":"不能点击edit按钮:stale element reference: stale element reference: stale element not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T13:55:35.027+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:stale element reference: stale element reference: stale element not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T13:58:11.542+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T13:58:45.468+0800","caller":"service/listing.go:278","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T13:59:00.237+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"ERROR","time":"2023-12-21T13:59:57.266+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T13:59:57.615+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T14:00:45.490+0800","caller":"service/listing.go:278","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T16:26:00.034+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T16:26:53.828+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"ERROR","time":"2023-12-21T16:27:27.622+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T16:27:27.977+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T16:27:53.662+0800","caller":"service/listing.go:278","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T16:27:54.700+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T16:59:25.218+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"ERROR","time":"2023-12-21T17:00:10.818+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:00:11.113+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:00:37.154+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:00:37.437+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第2次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:01:01.227+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:01:01.492+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第3次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:05:56.319+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"ERROR","time":"2023-12-21T17:06:43.080+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:06:43.438+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:07:06.691+0800","caller":"service/listing.go:245","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:07:06.962+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第2次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:08:19.844+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T17:09:17.057+0800","caller":"service/listing.go:237","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:09:17.082+0800","caller":"service/listing.go:246","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:09:17.340+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:09:55.557+0800","caller":"service/listing.go:237","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:09:55.581+0800","caller":"service/listing.go:246","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:09:55.861+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第2次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:10:33.097+0800","caller":"service/listing.go:237","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:10:33.148+0800","caller":"service/listing.go:246","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:10:33.491+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第3次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:11:02.576+0800","caller":"service/listing.go:237","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:11:02.597+0800","caller":"service/listing.go:246","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:11:02.855+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第4次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:17:43.113+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T17:18:09.670+0800","caller":"service/listing.go:243","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:18:09.692+0800","caller":"service/listing.go:252","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:18:09.951+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:18:33.064+0800","caller":"service/listing.go:243","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:18:33.082+0800","caller":"service/listing.go:252","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:18:33.271+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第2次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:22:46.414+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T17:23:35.281+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:23:35.300+0800","caller":"service/listing.go:249","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:23:35.602+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:23:59.025+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:23:59.046+0800","caller":"service/listing.go:249","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:23:59.315+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第2次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:27:50.788+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T17:28:34.526+0800","caller":"service/listing.go:242","msg":"找到closeButtonFlag元素"}
+{"level":"ERROR","time":"2023-12-21T17:28:34.552+0800","caller":"service/listing.go:251","msg":"无法点击关闭不再提示按钮:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"ERROR","time":"2023-12-21T17:28:34.824+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:element not interactable: element not interactable\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T17:30:43.169+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T17:31:17.436+0800","caller":"service/listing.go:242","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T17:31:28.815+0800","caller":"service/listing.go:287","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T17:31:29.931+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T17:37:15.092+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T17:38:10.994+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T17:38:11.530+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T17:38:14.522+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T17:38:15.565+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T17:39:46.629+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T17:39:47.160+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T17:39:49.534+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T17:39:50.561+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:09:30.803+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:09:52.273+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:09:52.342+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:10:09.692+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:10:10.227+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T18:10:13.101+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:10:14.094+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:11:01.250+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:11:01.251+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:11:01.763+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:11:02.274+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:11:02.786+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:11:03.300+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:11:03.808+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:13:18.389+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:13:18.408+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:13:18.932+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:13:19.454+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:13:19.991+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:13:20.503+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:13:21.006+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:13:36.138+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:13:36.662+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T18:13:38.854+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:13:39.842+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:14:59.962+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:14:59.982+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:00.502+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:01.026+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:01.536+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:02.050+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:02.553+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:15:17.596+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:15:18.134+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T18:15:20.237+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:15:21.268+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:15:54.899+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:15:54.919+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:55.438+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:55.952+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:56.462+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:56.996+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:15:57.504+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:20:01.780+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:20:45.461+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:21:03.341+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:21:06.562+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:21:08.037+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:21:09.927+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:21:11.731+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:21:17.920+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:24:04.911+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:24:23.781+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:24:51.997+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:25:09.403+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:25:09.417+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:25:09.926+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:25:10.436+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:25:10.974+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:25:11.509+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:25:12.011+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:27:39.311+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:27:50.414+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:27:50.431+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:27:50.958+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:27:51.506+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:27:52.056+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:27:52.576+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:27:53.090+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:28:08.654+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:28:09.199+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T18:28:11.449+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:28:12.433+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:28:27.550+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:28:27.572+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:28:28.084+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:28:28.603+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:28:29.128+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:28:29.650+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:28:30.162+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:28:45.904+0800","caller":"service/listing.go:240","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:28:46.432+0800","caller":"service/listing.go:253","msg":"无法点击关闭不再提示按钮,尝试第1次关闭"}
+{"level":"INFO","time":"2023-12-21T18:28:48.519+0800","caller":"service/listing.go:289","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:28:49.111+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:33:31.530+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:33:41.307+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:33:41.325+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:33:41.843+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:33:42.353+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:33:42.885+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:33:43.426+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:33:43.934+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:33:59.085+0800","caller":"service/listing.go:245","msg":"找到closeButtonFlag元素"}
+{"level":"INFO","time":"2023-12-21T18:34:01.823+0800","caller":"service/listing.go:294","msg":"保存成功"}
+{"level":"INFO","time":"2023-12-21T18:34:02.900+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:34:54.879+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:34:54.911+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:34:55.426+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:34:55.947+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:34:56.455+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:34:56.976+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:34:57.479+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:35:11.862+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err:<nil>"}
+{"level":"INFO","time":"2023-12-21T18:35:12.548+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:36:43.928+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:36:55.369+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:36:55.384+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:36:55.904+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:36:56.420+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:36:56.948+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:36:57.462+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:36:57.976+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:37:30.431+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err:<nil>"}
+{"level":"INFO","time":"2023-12-21T18:38:56.512+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:39:16.013+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:39:16.015+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:16.530+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:17.034+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:17.548+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:18.060+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such window: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:18.567+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"INFO","time":"2023-12-21T18:39:35.288+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:39:43.770+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:39:43.786+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:44.304+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:44.815+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:45.339+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:45.871+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:39:46.382+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:40:00.168+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err"}
+{"level":"ERROR","time":"2023-12-21T18:40:00.433+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:没有找到运维测试专用产品"}
+{"level":"INFO","time":"2023-12-21T18:40:07.085+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:40:07.103+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:07.615+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:08.138+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:08.650+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:09.165+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:09.670+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:40:24.452+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err"}
+{"level":"ERROR","time":"2023-12-21T18:40:24.638+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第2次检测,err:没有找到运维测试专用产品"}
+{"level":"INFO","time":"2023-12-21T18:40:29.192+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:40:29.251+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:29.771+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:30.282+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:30.798+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:31.329+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:31.831+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:40:45.999+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err"}
+{"level":"ERROR","time":"2023-12-21T18:40:46.171+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第3次检测,err:没有找到运维测试专用产品"}
+{"level":"INFO","time":"2023-12-21T18:40:52.561+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:40:52.581+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:53.098+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:53.614+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:54.123+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:54.643+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:40:55.153+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:41:09.112+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err"}
+{"level":"ERROR","time":"2023-12-21T18:41:09.298+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第4次检测,err:没有找到运维测试专用产品"}
+{"level":"INFO","time":"2023-12-21T18:41:15.680+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:41:15.698+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:41:16.213+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:41:16.731+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:41:17.249+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:41:17.772+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:41:18.282+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:41:33.558+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err"}
+{"level":"ERROR","time":"2023-12-21T18:41:33.835+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第5次检测,err:没有找到运维测试专用产品"}
+{"level":"INFO","time":"2023-12-21T18:41:34.489+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:43:13.319+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:43:34.306+0800","caller":"logger/logger.go:34","msg":"init logger success"}
+{"level":"INFO","time":"2023-12-21T18:43:43.125+0800","caller":"service/listing.go:106","msg":"没有外层公告框"}
+{"level":"INFO","time":"2023-12-21T18:43:43.144+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:43:43.660+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:43:44.174+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:43:44.691+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:43:45.213+0800","caller":"service/listing.go:124","msg":"没有找到内层对话框容器元素，继续下一次查找:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.panel.window[style*='display: block']\"}\n  (Session info: chrome=120.0.6099.110)"}
+{"level":"INFO","time":"2023-12-21T18:43:45.724+0800","caller":"service/listing.go:129","msg":"没有内层公告框"}
+{"level":"ERROR","time":"2023-12-21T18:44:00.666+0800","caller":"service/listing.go:211","msg":"没有找到运维测试专用产品,err"}
+{"level":"ERROR","time":"2023-12-21T18:44:00.884+0800","caller":"service/listing.go:17","msg":"autoCheckListing返回error,执行第1次检测,err:没有找到运维测试专用产品"}
+{"level":"INFO","time":"2023-12-21T18:44:01.480+0800","caller":"controller/sendWeChat.go:29","msg":"service.SendWeChatAlert success"}
+{"level":"INFO","time":"2023-12-21T18:44:37.690+0800","caller":"logger/logger.go:34","msg":"init logger success"}

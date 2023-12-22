@@ -32,5 +32,7 @@ func SetupRouter() *gin.Engine {
 
 	v1.GET("/checkSystem", controller.CheckSystemHandler)
 
+	v1.GET("/checkListing", controller.CheckListingHandler)
+
 	return r
 }
