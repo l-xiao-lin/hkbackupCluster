@@ -1,74 +1,76 @@
 package service
 
 import (
-	cs20151215 "github.com/alibabacloud-go/cs-20151215/v3/client"
+	"encoding/json"
+	"fmt"
+	"strings"
+
+	cs20151215 "github.com/alibabacloud-go/cs-20151215/v5/client"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
-	"hkbackupCluster/pkg/aliyunclient"
 )
 
-func CreateAskCluster(AccessKeyId, AccessKeySecret string) (ResponseData *cs20151215.CreateClusterResponse, _err error) {
+func CreateClient(AccessKeyId, AccessKeySecret string) (_result *cs20151215.Client, _err error) {
+	config := &openapi.Config{
+		AccessKeyId: &AccessKeyId,
 
-	client, _err := aliyunclient.CreateClient(tea.String(AccessKeyId), tea.String(AccessKeySecret))
+		AccessKeySecret: &AccessKeySecret,
+	}
+	// Endpoint 请参考 https://api.aliyun.com/product/CS
+	config.Endpoint = tea.String("cs.cn-hongkong.aliyuncs.com")
+	_result = &cs20151215.Client{}
+	_result, _err = cs20151215.NewClient(config)
+	return _result, _err
+}
+
+func CreateAskCluster(AccessKeyId, AccessKeySecret string) (respData *cs20151215.CreateClusterResponse, _err error) {
+	client, _err := CreateClient(AccessKeyId, AccessKeySecret)
 	if _err != nil {
 		return nil, _err
 	}
 
 	addon0 := &cs20151215.Addon{
-		Name: tea.String("nginx-ingress-controller"),
+		Name: tea.String("Flannel "),
+	}
+	addon1 := &cs20151215.Addon{
+		Name:   tea.String("nginx-ingress-controller"),
+		Config: tea.String("{\"IngressSlbNetworkType\":\"internet\"}"),
+	}
 
-		Config: tea.String("{\"IngressSlbNetworkType\":\"internet\",\"IngressSlbSpec\":\"slb.s2.small\"}"),
-	}
-	workerDataDisks0 := &cs20151215.CreateClusterRequestWorkerDataDisks{
-		Category: tea.String("cloud_essd"),
-		Size:     tea.String("120"),
-	}
 	createClusterRequest := &cs20151215.CreateClusterRequest{
-		Name:                      tea.String("hk-ASKtongtool"),
-		RegionId:                  tea.String("cn-hongkong"),
-		ClusterType:               tea.String("ManagedKubernetes"),
-		ClusterSpec:               tea.String("ack.pro.small"),
-		KubernetesVersion:         tea.String("1.26.3-aliyun.1"),
-		ServiceCidr:               tea.String("10.0.0.0/16"),
-		IsEnterpriseSecurityGroup: tea.Bool(true),
-		SnatEntry:                 tea.Bool(true),
-		EndpointPublicAccess:      tea.Bool(true),
-		Timezone:                  tea.String("Asia/Shanghai"),
-		LoginPassword:             tea.String("otPvhfv%@u92nDEP"),
-		MasterSystemDiskCategory:  tea.String("cloud_efficiency"),
-		MasterInstanceTypes:       []*string{tea.String("ecs.g8a.xlarge")},
-		MasterSystemDiskSize:      tea.Int64(120),
-		NumOfNodes:                tea.Int64(3),
-		WorkerInstanceTypes:       []*string{tea.String("ecs.g8a.xlarge")},
-		WorkerSystemDiskCategory:  tea.String("cloud_efficiency"),
-		WorkerSystemDiskSize:      tea.Int64(120),
-		WorkerDataDisks:           []*cs20151215.CreateClusterRequestWorkerDataDisks{workerDataDisks0},
-		KeyPair:                   tea.String("root_bastion2"),
-		WorkerVswitchIds:          []*string{tea.String("vsw-j6cvi1wl5m1n5j7w2tcqx")},
-		MasterVswitchIds:          []*string{tea.String("vsw-j6cvi1wl5m1n5j7w2tcqx")},
-		VswitchIds:                []*string{tea.String("vsw-j6cvi1wl5m1n5j7w2tcqx")},
-		Vpcid:                     tea.String("vpc-j6csek2yl05q1azrxamc2"),
-		ContainerCidr:             tea.String("172.20.0.0/16"),
-		Profile:                   tea.String("Serverless"),
-		Addons:                    []*cs20151215.Addon{addon0},
-		ServiceDiscoveryTypes:     []*string{tea.String("CoreDNS")},
-		LoadBalancerSpec:          tea.String("slb.s2.small"),
+		Name:                  tea.String("hk-ASKtongtool"),
+		RegionId:              tea.String("cn-hongkong"),
+		ClusterType:           tea.String("ManagedKubernetes"),
+		ClusterSpec:           tea.String("ack.pro.small"),
+		KubernetesVersion:     tea.String("1.30.1-aliyun.1"),
+		Vpcid:                 tea.String("vpc-j6csek2yl05q1azrxamc2"),
+		ContainerCidr:         tea.String("172.20.0.0/16"),
+		ServiceCidr:           tea.String("10.0.0.0/16"),
+		SnatEntry:             tea.Bool(true),
+		EndpointPublicAccess:  tea.Bool(true),
+		Timezone:              tea.String("Asia/Shanghai"),
+		Addons:                []*cs20151215.Addon{addon0, addon1},
+		KeyPair:               tea.String("root_bastion2"),
+		VswitchIds:            []*string{tea.String("vsw-j6cvi1wl5m1n5j7w2tcqx")},
+		Profile:               tea.String("Serverless"),
+		ServiceDiscoveryTypes: []*string{tea.String("CoreDNS")},
 	}
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	ResponseData, tryErr := func() (data *cs20151215.CreateClusterResponse, _e error) {
+	respData, tryErr := func() (_result *cs20151215.CreateClusterResponse, _e error) {
 		defer func() {
 			if r := tea.Recover(recover()); r != nil {
 				_e = r
 			}
 		}()
 		// 复制代码运行请自行打印 API 的返回值
-		result, _err := client.CreateClusterWithOptions(createClusterRequest, headers, runtime)
-
+		_result, _err = client.CreateClusterWithOptions(createClusterRequest, headers, runtime)
 		if _err != nil {
 			return nil, _err
 		}
-		return result, nil
+
+		return _result, nil
 	}()
 
 	if tryErr != nil {
@@ -78,11 +80,21 @@ func CreateAskCluster(AccessKeyId, AccessKeySecret string) (ResponseData *cs2015
 		} else {
 			error.Message = tea.String(tryErr.Error())
 		}
-		// 如有需要，请打印 error
+		// 此处仅做打印展示，请谨慎对待异常处理，在工程项目中切勿直接忽略异常。
+		// 错误 message
+		fmt.Println(tea.StringValue(error.Message))
+		// 诊断地址
+		var data interface{}
+		d := json.NewDecoder(strings.NewReader(tea.StringValue(error.Data)))
+		d.Decode(&data)
+		if m, ok := data.(map[string]interface{}); ok {
+			recommend, _ := m["Recommend"]
+			fmt.Println(recommend)
+		}
 		_, _err = util.AssertAsString(error.Message)
 		if _err != nil {
 			return nil, _err
 		}
 	}
-	return ResponseData, _err
+	return respData, _err
 }

@@ -1,15 +1,17 @@
 package service
 
 import (
+	"errors"
 	"fmt"
-	"github.com/tebeka/selenium"
 	"hkbackupCluster/logger"
 	"strings"
 	"time"
+
+	"github.com/tebeka/selenium"
 )
 
 func CheckListing(website, username, password string) (err error) {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 10; i++ {
 		err = autoCheckListing(website, username, password)
 		if err == nil {
 			break
@@ -28,7 +30,7 @@ func autoCheckListing(website, username, password string) (err error) {
 
 	service, err := selenium.NewChromeDriverService("C:\\Program Files\\Google\\Chrome\\Application\\chromedriver.exe", 9515, opts...)
 	if err != nil {
-		logger.SugarLog.Errorf("无法启动 WebDriver 服:%v", err)
+		logger.SugarLog.Errorf("无法启动 WebDriver 服务:%v", err)
 		return
 	}
 	defer service.Stop()
@@ -85,21 +87,43 @@ func autoCheckListing(website, username, password string) (err error) {
 		return
 	}
 
+	// 关闭系统提示框
+	var systemCloseButton selenium.WebElement
+	for i := 0; i < 5; i++ {
+		// 在容器元素上下文中定位关闭按钮
+		systemCloseButton, err = webDriver.FindElement(selenium.ByID, "messageWinBtn")
+		if err == nil && systemCloseButton != nil {
+			err1 := systemCloseButton.Click()
+			if err1 != nil {
+				logger.SugarLog.Errorf("无法点击系统提醒框关闭按钮:%v", err)
+				return err1
+			}
+			break
+		}
+
+		logger.SugarLog.Infof("没有找到系统提醒框，继续下一次查找:%v", err)
+		time.Sleep(500 * time.Millisecond)
+	}
+
+	logger.SugarLog.Infof("没有系统提示框")
+
 	var closeButton selenium.WebElement
 	waitTimeout := 10 * time.Second
 	maxWaitTime := time.Now().Add(waitTimeout)
 	for time.Now().Before(maxWaitTime) {
-		closeButton, err = webDriver.FindElement(selenium.ByCSSSelector, ".btn-w.msgBtn")
-		if err == nil && closeButton != nil {
-			// 点击关闭按钮
-			err = closeButton.Click()
-			if err != nil {
-				logger.SugarLog.Errorf("无法点击关闭按钮:%v", err)
-				return
+		outerDialogContainer, err := webDriver.FindElement(selenium.ByCSSSelector, "div.panel.window[style*='display: block']")
+		if err == nil {
+			closeButton, err = outerDialogContainer.FindElement(selenium.ByCSSSelector, ".btn-w.msgBtn")
+			if err == nil && closeButton != nil {
+				err1 := closeButton.Click()
+				if err1 != nil {
+					logger.SugarLog.Errorf("无法点击外层对话框按钮:%v", err)
+					return err1
+				}
+				break
 			}
-			break // 找到元素，退出循环
 		}
-
+		logger.SugarLog.Infof("没有找到外层对话框容器元素，继续下一次查找:%v", err)
 		time.Sleep(500 * time.Millisecond) // 等待一段时间后重试
 	}
 
@@ -120,9 +144,8 @@ func autoCheckListing(website, username, password string) (err error) {
 				}
 				break
 			}
-		} else {
-			logger.SugarLog.Infof("没有找到内层对话框容器元素，继续下一次查找:%v", err)
 		}
+		logger.SugarLog.Infof("没有找到内层对话框容器元素，继续下一次查找:%v", err)
 		time.Sleep(500 * time.Millisecond)
 	}
 
@@ -131,7 +154,7 @@ func autoCheckListing(website, username, password string) (err error) {
 	//找到左侧菜果的产品，并点击
 
 	productButton, err := webDriver.FindElement(selenium.ByCSSSelector, "[onclick='toggleLeftMenu(\\'#_product-ul\\')']")
-	if err == nil {
+	if err == nil && productButton != nil {
 		err = productButton.Click()
 		if err == nil {
 			// 成功点击 "产品" 按钮
@@ -144,6 +167,9 @@ func autoCheckListing(website, username, password string) (err error) {
 				}
 			}
 		}
+	} else {
+		logger.SugarLog.Errorf("not found productButton or exist err:%v", err)
+		return errors.New("not found productButton or exist err")
 	}
 
 	//查找sku
@@ -168,7 +194,7 @@ func autoCheckListing(website, username, password string) (err error) {
 	//查找 搜索并点击
 
 	searchButton, err := webDriver.FindElement(selenium.ByCSSSelector, "a.btn.ml10")
-	if err != nil {
+	if err != nil && searchButton != nil {
 		logger.SugarLog.Errorf("无法找到搜索元素:%v", err)
 		return
 	}
@@ -182,7 +208,7 @@ func autoCheckListing(website, username, password string) (err error) {
 	editWaitTimeout := 10 * time.Second
 	editMaxWaitTime := time.Now().Add(editWaitTimeout)
 	for time.Now().Before(editMaxWaitTime) {
-		editButton, err = webDriver.FindElement(selenium.ByCSSSelector, ".fa.fa-edit")
+		editButton, err = webDriver.FindElement(selenium.ByCSSSelector, ".iconfont.icon-bianji")
 		if err == nil {
 			href, err := editButton.GetAttribute("href")
 			if err == nil {

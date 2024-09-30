@@ -49,3 +49,16 @@ type ParamListing struct {
 	Username string `json:"username" form:"username"`
 	Password string `json:"password" form:"password"`
 }
+
+type ParamConf struct {
+	Namespace string `json:"namespace" form:"namespace"`
+	DataID    string `json:"dataID" form:"dataID"`
+	Group     string `json:"group" form:"group"`
+	Content   string `json:"content" form:"content"`
+}
+
+type ParamYms struct {
+	Website  string `json:"website" form:"website"`
+	Username string `json:"username" form:"username"`
+	Password string `json:"password" form:"password"`
+}

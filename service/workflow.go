@@ -48,8 +48,8 @@ func WorkFlow(p *model.WorkFlow) (err error) {
 
 	//4、获取集群负载均衡公网IP地址
 
-	PublicIP, err := GetClusterSlbPublicIp(p.AccessKeyId, p.AccessKeySecret, *clusterID)
-
+	//PublicIP, err := GetClusterSlbPublicIp(p.AccessKeyId, p.AccessKeySecret, *clusterID)
+	PublicIP, err := GetIngressPublicIP()
 	if err != nil {
 		return
 	}
