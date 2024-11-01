@@ -3,10 +3,11 @@ package service
 import (
 	"errors"
 	"fmt"
-	"github.com/tebeka/selenium"
 	"hkbackupCluster/logger"
 	"sync"
 	"time"
+
+	"github.com/tebeka/selenium"
 )
 
 var m sync.Mutex
@@ -196,7 +197,7 @@ func AutomateTesting(merchantID string) error {
 
 	var businessDocLink selenium.WebElement
 
-	waitTimeoutBusiness := 5 * time.Second
+	waitTimeoutBusiness := 15 * time.Second
 	maxWaitTimeBusiness := time.Now().Add(waitTimeoutBusiness)
 
 	for time.Now().Before(maxWaitTimeBusiness) {

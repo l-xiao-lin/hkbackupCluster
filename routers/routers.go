@@ -50,7 +50,11 @@ func SetupRouter() *gin.Engine {
 
 	v1.POST("/jenkinseasyseller", controller.JenkinsEasyBuildHandler)
 
-	v1.POST("/errorount", controller.ErpErrorCountHandler)
+	v1.POST("/errorCount", controller.ErpErrorCountHandler)
+
+	v1.GET("/erpRestart", controller.RestarAndChecktHandler)
+
+	v1.GET("/task/:task_id", controller.CheckTaskStatusHandler)
 
 	return r
 }

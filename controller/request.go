@@ -62,3 +62,11 @@ type ParamYms struct {
 	Username string `json:"username" form:"username"`
 	Password string `json:"password" form:"password"`
 }
+
+type ParamErrorCount struct {
+	Host string `json:"host" form:"host"`
+}
+
+type ParamRestartHost struct {
+	EnvName string `json:"envName" form:"envName"`
+}

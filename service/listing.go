@@ -90,23 +90,20 @@ func autoCheckListing(website, username, password string) (err error) {
 	// 关闭系统提示框
 	var systemCloseButton selenium.WebElement
 	for i := 0; i < 5; i++ {
-		// 在容器元素上下文中定位关闭按钮
 		systemCloseButton, err = webDriver.FindElement(selenium.ByID, "messageWinBtn")
 		if err == nil && systemCloseButton != nil {
-			err1 := systemCloseButton.Click()
-			if err1 != nil {
-				logger.SugarLog.Errorf("无法点击系统提醒框关闭按钮:%v", err)
-				return err1
+			err = systemCloseButton.Click()
+			if err != nil {
+				logger.SugarLog.Infof("无法点击系统提醒框关闭按钮:%v", err)
+				return err
 			}
 			break
 		}
-
 		logger.SugarLog.Infof("没有找到系统提醒框，继续下一次查找:%v", err)
 		time.Sleep(500 * time.Millisecond)
 	}
 
-	logger.SugarLog.Infof("没有系统提示框")
-
+	//关闭外层对话框
 	var closeButton selenium.WebElement
 	waitTimeout := 10 * time.Second
 	maxWaitTime := time.Now().Add(waitTimeout)
@@ -127,8 +124,6 @@ func autoCheckListing(website, username, password string) (err error) {
 		time.Sleep(500 * time.Millisecond) // 等待一段时间后重试
 	}
 
-	logger.SugarLog.Infof("没有外层公告框")
-
 	// 定位内层对话框的容器元素
 	var innerCloseButton selenium.WebElement
 	for i := 0; i < 5; i++ {
@@ -148,8 +143,6 @@ func autoCheckListing(website, username, password string) (err error) {
 		logger.SugarLog.Infof("没有找到内层对话框容器元素，继续下一次查找:%v", err)
 		time.Sleep(500 * time.Millisecond)
 	}
-
-	logger.SugarLog.Infof("没有内层公告框")
 
 	//找到左侧菜果的产品，并点击
 

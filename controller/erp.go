@@ -34,6 +34,15 @@ func readFile(file *multipart.FileHeader) (string, error) {
 }
 
 func ErpErrorCountHandler(c *gin.Context) {
+	//获取参数
+	p := new(ParamErrorCount)
+	if err := c.ShouldBind(p); err != nil {
+		c.JSON(200, gin.H{
+			"msg":  "invalid param",
+			"code": 1001,
+		})
+		return
+	}
 	//从请求中获取名为file的文件
 	file, err := c.FormFile("file")
 	if err != nil {
@@ -54,7 +63,7 @@ func ErpErrorCountHandler(c *gin.Context) {
 		return
 	}
 	//业务处理
-	if err = service.ErpErrorCount(content); err != nil {
+	if err = service.ErpErrorCount(content, p.Host); err != nil {
 		c.JSON(200, gin.H{
 			"msg":  "service.ErpErrorCount failed",
 			"code": 1004,
