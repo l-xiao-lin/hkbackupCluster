@@ -1,13 +1,17 @@
 package logger
 
 import (
+	"os"
+
 	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"os"
 )
 
-var SugarLog *zap.SugaredLogger
+var (
+	SugarLog *zap.SugaredLogger
+	LG       *zap.Logger
+)
 
 func Init(mode string) (err error) {
 	writeSyncer := getLogWriter()
@@ -29,9 +33,10 @@ func Init(mode string) (err error) {
 		core = zapcore.NewCore(encoder, writeSyncer, l)
 	}
 
-	lg := zap.New(core, zap.AddCaller())
-	SugarLog = lg.Sugar()
-	SugarLog.Infof("init logger success")
+	LG = zap.New(core, zap.AddCaller())
+	zap.ReplaceGlobals(LG)
+	SugarLog = LG.Sugar()
+	zap.L().Info("zap.L().info logger success")
 	return
 }
 

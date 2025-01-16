@@ -1,10 +1,20 @@
 package service
 
 import (
+	"crypto/rand"
+	"encoding/base64"
 	"fmt"
 	"hkbackupCluster/logger"
 	"strconv"
 	"strings"
+	"sync"
+	"time"
+)
+
+var (
+	tokenMutex          sync.Mutex
+	tokenExpiryDuration = 10 * time.Minute
+	TokenMap            = make(map[string]bool)
 )
 
 type WeChatMessageErp struct {
@@ -62,6 +72,16 @@ func GetAbnormalEnvName(content []string) (string, error) {
 	return strings.Join(envNames, ":"), nil
 }
 
+func generateToken() (string, error) {
+	b := make([]byte, 10)
+	_, err := rand.Reader.Read(b)
+	if err != nil {
+		return "", err
+	}
+	return base64.URLEncoding.EncodeToString(b), nil
+
+}
+
 func ErpErrorCount(content, host string) (err error) {
 	var message string
 	//处理错误数异常的环境
@@ -71,7 +91,25 @@ func ErpErrorCount(content, host string) (err error) {
 		if err != nil {
 			return err
 		}
-		restartUrl := fmt.Sprintf("http://autocheck.tongtool.com:8000/api/v1/erpRestart?envName=%s", envNameUrl)
+
+		//生成token
+		token, err := generateToken()
+		if err != nil {
+			return err
+		}
+
+		//存储token的有效期
+		tokenMutex.Lock()
+		TokenMap[token] = true
+		go func(token string) {
+			time.Sleep(tokenExpiryDuration)
+			tokenMutex.Lock()
+			delete(TokenMap, token)
+			tokenMutex.Unlock()
+		}(token)
+		tokenMutex.Unlock()
+
+		restartUrl := fmt.Sprintf("http://autocheck.tongtool.com:8000/api/v1/erpRestart?envName=%s&token=%s", envNameUrl, token)
 
 		message = fmt.Sprintf("本次发版主机为:%s,异常环境如下: \n%s是否需要重启机器 %s\n", host, strings.Join(resultMessage, ""), restartUrl)
 

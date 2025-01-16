@@ -3,9 +3,15 @@ package controller
 import (
 	"hkbackupCluster/logger"
 	"hkbackupCluster/service"
+	"net/http"
 	"strconv"
+	"sync"
 
 	"github.com/gin-gonic/gin"
+)
+
+var (
+	checkMutex sync.Mutex
 )
 
 func RestarAndChecktHandler(c *gin.Context) {
@@ -19,6 +25,21 @@ func RestarAndChecktHandler(c *gin.Context) {
 		})
 		return
 	}
+
+	//校验token是否正常
+	checkMutex.Lock()
+	defer checkMutex.Unlock()
+	valid, ok := service.TokenMap[p.Token]
+	if !ok || !valid {
+		c.JSON(http.StatusOK, gin.H{
+			"msg":  "invalid token",
+			"code": 1002,
+		})
+		return
+	}
+
+	//标记token已使用，并删除
+	delete(service.TokenMap, p.Token)
 
 	taskID, err := service.StartErpRestart(p.EnvName)
 	if err != nil {

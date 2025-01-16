@@ -2,12 +2,21 @@ package routers
 
 import (
 	"hkbackupCluster/controller"
+	"hkbackupCluster/logger"
+	"hkbackupCluster/pkg/cronjobs"
+	"time"
+
+	ginzap "github.com/gin-contrib/zap"
 
 	"github.com/gin-gonic/gin"
 )
 
 func SetupRouter() *gin.Engine {
-	r := gin.Default()
+	r := gin.New()
+	//使用第三方ginzap来接收gin框架的系统日志
+	r.Use(ginzap.Ginzap(logger.LG, time.RFC3339, true))
+	r.Use(ginzap.RecoveryWithZap(logger.LG, true))
+
 	v1 := r.Group("/api/v1")
 
 	v1.POST("/createAskCluster", controller.CreateAskClusterHandler)
@@ -55,6 +64,24 @@ func SetupRouter() *gin.Engine {
 	v1.GET("/erpRestart", controller.RestarAndChecktHandler)
 
 	v1.GET("/task/:task_id", controller.CheckTaskStatusHandler)
+
+	v1.POST("/incrementalPack", controller.IncrementalPackHandler)
+
+	v1.POST("/automateDeploy", controller.AutomateDeploymentHandler)
+
+	v1.POST("/update-status", controller.UpdateStatusHandler)
+
+	v1.GET("/getEnvName", controller.GetEnvNameHandler)
+
+	v1.GET("/getInventory", controller.GetInventoryHandler)
+
+	v1.GET("/demoPackage", cronjobs.DemoPackageHandler)
+
+	v1.GET("/demoRelease", cronjobs.DemoReleaseHandler)
+
+	v1.GET("/sendim", cronjobs.DemoNotifyMerchantHandler)
+
+	v1.POST("/testEnvPackage", controller.TestEnvPackageHandler)
 
 	return r
 }

@@ -3,10 +3,11 @@ package service
 import (
 	"errors"
 	"fmt"
-	"github.com/tebeka/selenium"
 	"hkbackupCluster/logger"
 	"strings"
 	"time"
+
+	"github.com/tebeka/selenium"
 )
 
 func CheckWwwYms(website, username, password string) (err error) {
@@ -64,7 +65,7 @@ func autoCheckWwwYms(website, username, password string) (err error) {
 
 	}
 
-	time.Sleep(2 * time.Second)
+	time.Sleep(15 * time.Second)
 	//查找登录元素
 
 	loginWaitTimeout := 5 * time.Second

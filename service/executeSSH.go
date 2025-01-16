@@ -5,7 +5,6 @@ import (
 	"hkbackupCluster/logger"
 	"hkbackupCluster/model"
 	"hkbackupCluster/pkg/sshNewClient"
-	"sync"
 	"time"
 )
 
@@ -19,15 +18,14 @@ const (
 )
 
 var (
-	wg            sync.WaitGroup
 	taskIDCounter int
-	tasks         = make(map[int]*TaskStatus)
+	tasks         = make(map[int]*taskStatus)
 )
 
-type TaskStatus struct {
-	ID       int   `json:"id"`
-	Complete bool  `json:"complete"`
-	Error    error `json:"error"`
+type taskStatus struct {
+	ID       int
+	Complete bool
+	Error    error
 }
 
 func executeCommand(command string) error {
@@ -59,7 +57,10 @@ func RestartAndCheck(host string) (err error) {
 	}
 
 	//3、等待4分钟后，再执行错误检测命令
-	time.Sleep(retryInterval * checkRetryCount)
+	for i := 0; i < checkRetryCount; i++ {
+		time.Sleep(retryInterval)
+		fmt.Printf("time sleep %d minute\n", i)
+	}
 
 	errCheckCommand := fmt.Sprintf("~/ansible/scripts/check_erp_log.sh %s 2", host)
 
@@ -70,29 +71,29 @@ func RestartAndCheck(host string) (err error) {
 }
 
 func StartErpRestart(host string) (int, error) {
-	//生成唯一的任务ID
+	//1、生成taskID
 	m.Lock()
 	taskIDCounter++
 	taskID := taskIDCounter
-	tasks[taskID] = &TaskStatus{
+	tasks[taskID] = &taskStatus{
 		ID: taskID,
 	}
 	m.Unlock()
 
-	//开始执行后台任务
-	wg.Add(1)
+	//2、执行后台重启及检测操作
 	go func(host string, taskID int) {
-		defer wg.Done()
 		err := RestartAndCheck(host)
 		m.Lock()
 		tasks[taskID].Complete = true
 		tasks[taskID].Error = err
 		m.Unlock()
 	}(host, taskID)
+
+	//3、返回给用户taskID信息
 	return taskID, nil
 }
 
-func CheckTaskStatus(taskID int) (*TaskStatus, error) {
+func CheckTaskStatus(taskID int) (*taskStatus, error) {
 	m.Lock()
 	defer m.Unlock()
 	status, ok := tasks[taskID]
@@ -101,4 +102,5 @@ func CheckTaskStatus(taskID int) (*TaskStatus, error) {
 		return nil, fmt.Errorf("task with ID %d not found", taskID)
 	}
 	return status, nil
+
 }

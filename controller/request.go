@@ -69,4 +69,14 @@ type ParamErrorCount struct {
 
 type ParamRestartHost struct {
 	EnvName string `json:"envName" form:"envName"`
+	Token   string `json:"token" form:"token"`
+}
+
+type ParamsIncrementalPack struct {
+	Host            string `json:"host" binding:"required"`
+	Common          string `json:"common"`
+	Diff            string `json:"diff"`
+	UpdateJbossConf bool   `json:"update_jbossconf"`
+	UpdateSdkConf   bool   `json:"update_sdkconf"`
+	UpdateSecurity  bool   `json:"update_security"`
 }
