@@ -3,10 +3,11 @@ package service
 import (
 	"errors"
 	"fmt"
-	"github.com/tebeka/selenium"
 	"hkbackupCluster/logger"
 	"strings"
 	"time"
+
+	"github.com/tebeka/selenium"
 )
 
 func CheckAdminYms(website, username, password string) (err error) {

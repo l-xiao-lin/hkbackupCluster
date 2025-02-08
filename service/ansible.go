@@ -5,7 +5,17 @@ import (
 	"strings"
 )
 
-var ansibleHost = "172.16.60.1"
+var (
+	ansibleHost  = "172.16.60.1"
+	ansibleGroup = []string{
+		"standalone:guanwang:guanwang-i2:sdk",
+		"monday",
+		"wednesday",
+		"standalone:guanwang:guanwang-i2:sdk:!monday",
+		"standalone:guanwang:guanwang-i2:sdk:!wednesday",
+		"sdk",
+	}
+)
 
 func GetEnvName(cmd string) (RespData []string, err error) {
 
@@ -31,10 +41,7 @@ func GetEnvName(cmd string) (RespData []string, err error) {
 		RespData = append(RespData, strings.TrimSpace(line))
 
 	}
-	RespData = append(RespData, "standalone:guanwang:guanwang-i2:sdk")
-	RespData = append(RespData, "monday", "wednesday")
-	RespData = append(RespData, "standalone:guanwang:guanwang-i2:sdk:!monday")
-	RespData = append(RespData, "standalone:guanwang:guanwang-i2:sdk:!wednesday")
+	RespData = append(RespData, ansibleGroup...)
 
 	return RespData, nil
 }

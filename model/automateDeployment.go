@@ -71,3 +71,11 @@ type ServiceStop struct {
 	KeepMonitorJboss   bool   `json:"keep_monitor_jboss"`
 	KeepMonitorSdk     bool   `json:"keep_monitor_sdk"`
 }
+
+type ParamReleaseXML struct {
+	TaskID  string  `json:"task_id" db:"task_id"  binding:"required"`
+	SrcPath string  `json:"src_path" db:"src_path" binding:"required"`
+	JobName string  `json:"job_name" db:"job_name"  binding:"required"`
+	Host    string  `json:"host"  db:"host" binding:"required"`
+	Common  *string `json:"common" db:"common"`
+}

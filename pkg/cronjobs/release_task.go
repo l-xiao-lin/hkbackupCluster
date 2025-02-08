@@ -19,7 +19,7 @@ import (
 var (
 	jobName             = "pipeline-ERP-主备机间隔部署"
 	standalonePattern   = regexp.MustCompile(`^standalone:[^:]+:[^:]+:sdk`)
-	allEnvHostsString   = "standalone:guanwang:guanwang-i2:!108ZhiYuan:!56MengNuo"
+	allEnvHostsString   = "standalone:guanwang:guanwang-i2:sdk:!108ZhiYuan:!56MengNuo"
 	changeServiceStatus = "修改jboss和SDK状态"
 )
 
@@ -114,7 +114,7 @@ func RunReleaseTask() (err error) {
 
 				//二、将status状态改成 已停服待执行sql脚本,以防止下次被匹配到
 				var status int8
-				if resp.BuildResult == "SUCCESS" {
+				if resp != nil && resp.BuildResult == "SUCCESS" {
 					status = 3
 				}
 
@@ -214,7 +214,7 @@ func RunReleaseTask() (err error) {
 				continue
 			}
 
-			if resp.BuildResult == "SUCCESS" {
+			if resp != nil && resp.BuildResult == "SUCCESS" {
 				logger.SugarLog.Infof("resume monitor success,taskID:%s,host:%s", record.TaskID, record.Host)
 			} else {
 				logger.SugarLog.Errorf("resume monitor failed,taskID:%s,host:%s", record.TaskID, record.Host)
@@ -259,7 +259,7 @@ func releaseUpdateAndNotify(param *mysql.ReleaseOperation, taskIDs []string) (er
 
 	var buildStatus string
 	var jenkinsAction string
-	if resp.BuildResult == "SUCCESS" && buildErr == nil {
+	if resp != nil && resp.BuildResult == "SUCCESS" && buildErr == nil {
 		buildStatus = "1" //发版成功
 	} else {
 		buildStatus = "0" //发版失败

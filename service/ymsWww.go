@@ -55,6 +55,8 @@ func autoCheckWwwYms(website, username, password string) (err error) {
 		return
 	}
 
+	time.Sleep(5 * time.Second)
+
 	scriptButton := `document.querySelector('div.ivu-modal:not([style*="display: none"]) .ivu-modal-footer button.ivu-btn.ivu-btn-primary span').click();`
 	_, err = webDriver.ExecuteScript(scriptButton, nil)
 	if err != nil {
@@ -65,7 +67,7 @@ func autoCheckWwwYms(website, username, password string) (err error) {
 
 	}
 
-	time.Sleep(15 * time.Second)
+	time.Sleep(5 * time.Second)
 	//查找登录元素
 
 	loginWaitTimeout := 5 * time.Second

@@ -133,6 +133,10 @@ func InsertPackage(tx *sql.Tx, p *model.ParamsIncrementalPack) (insertID int64, 
 		sqlStr = fmt.Sprintf(sqlStr + ",src_path=values(src_path)")
 	}
 
+	if p.JobName != "" {
+		sqlStr = fmt.Sprintf(sqlStr + ",job_name=values(job_name)")
+	}
+
 	fmt.Printf("sqlStr:%s\n", sqlStr)
 	ret, err := tx.Exec(sqlStr, p.TaskID, p.JobName, p.Host, status, p.SrcPath, p.Common, p.Diff, rm_rulepackage, p.PkgName, update_jbossconf, update_sdkconf, update_security, utcPackageTime, utcScheduledTime, is_sql_exec, is_package)
 	if err != nil {

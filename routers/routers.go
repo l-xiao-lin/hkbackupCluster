@@ -83,5 +83,9 @@ func SetupRouter() *gin.Engine {
 
 	v1.POST("/testEnvPackage", controller.TestEnvPackageHandler)
 
+	v1.POST("/releaseXML", controller.ReleaseXmlHandler)
+
+	v1.GET("/getXmlStatus", controller.GetXmlStatusHandler)
+
 	return r
 }

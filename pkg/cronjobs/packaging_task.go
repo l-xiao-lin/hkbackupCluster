@@ -9,6 +9,7 @@ import (
 	"hkbackupCluster/pkg/callThirdPartyAPI"
 	"hkbackupCluster/pkg/pack"
 	"hkbackupCluster/pkg/sshclient"
+	"hkbackupCluster/service"
 	"net/http"
 	"strings"
 	"time"
@@ -22,7 +23,21 @@ var (
 	GetConfigJobName    = "拉取-配置文件-到堡垒机"
 	ModifyConfigJobName = "新增或修改ERP2.0-部分环境配置"
 	ansibleHost         = "172.16.60.1"
+	ansibleGroups       = map[string]bool{
+		"standalone:guanwang:guanwang-i2:sdk": true,
+		"monday":                              true,
+		"wednesday":                           true,
+		"standalone:guanwang:guanwang-i2:sdk:!monday":   true,
+		"standalone:guanwang:guanwang-i2:sdk:wednesday": true,
+		"sdk": true,
+	}
 )
+
+type HostCheckResult struct {
+	Status      string
+	Description string
+	Error       error
+}
 
 func DemoPackageHandler(c *gin.Context) {
 
@@ -84,32 +99,109 @@ func updateStatusOnPackageResult(resp *pack.RespBuild, buildErr error, record *m
 	return nil
 }
 
-func isConfigExists(config model.Config) (bool, error) {
+func checkConfiguration(config model.Config) (map[string]HostCheckResult, error) {
 	client, err := sshclient.SshConnect(ansibleHost)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 	defer client.Close()
-	session, err := client.NewSession()
+
+	hostList, err := generationHosts(config.Host)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
-	defer session.Close()
-	var filePath = fmt.Sprintf("/home/tomcat/ansible/configfiles/jboss/%s-\\$TEMPLATE\\$.properties", config.Host)
-	if strings.Contains(config.ConfigContent, "sdk") {
-		filePath = fmt.Sprintf("/home/tomcat/ansible/configfiles/sdk/%s-ibiz_sdk.properties", config.Host)
-	}
-	cmd := fmt.Sprintf("grep -qF %s %s; echo $?", config.ConfigContent, filePath)
-	output, err := session.CombinedOutput(cmd)
-	if err == nil && len(output) > 0 {
-		exitStatus := strings.TrimSpace(string(output))
-		if exitStatus == "0" {
-			return true, nil
-		} else if exitStatus == "1" {
-			return false, nil
+
+	checkResult := make(map[string]HostCheckResult)
+	for _, host := range hostList {
+		var filePath = fmt.Sprintf("/home/tomcat/ansible/configfiles/jboss/%s-\\$TEMPLATE\\$.properties", host)
+		if strings.Contains(config.ConfigType, "sdk") {
+			filePath = fmt.Sprintf("/home/tomcat/ansible/configfiles/sdk/%s-ibiz_sdk.properties", host)
 		}
+
+		executeCommand := func(command string) (string, error) {
+			session, err := client.NewSession()
+			if err != nil {
+				logger.SugarLog.Errorf("failed to create new session for host %s:%v", host, err)
+				return "", err
+			}
+			defer session.Close()
+			output, err := session.CombinedOutput(command)
+			if err != nil {
+				logger.SugarLog.Errorf("failed to execute command on host %s:%v", host, err)
+				return "", err
+			}
+			return strings.TrimSpace(string(output)), nil
+		}
+
+		//检查文件是否存在
+		fileCheckCmd := fmt.Sprintf("test -f %s;echo $?", filePath)
+		output, err := executeCommand(fileCheckCmd)
+		if err != nil {
+			checkResult[host] = HostCheckResult{
+				Status:      "Error",
+				Description: "检查文件失败",
+				Error:       err,
+			}
+			continue //执行下一个主机
+		}
+		fileExists := output == "0"
+
+		var configExists bool
+		if fileExists {
+			cmd := fmt.Sprintf("grep -qF %s %s; echo $?", config.ConfigContent, filePath)
+			output, err := executeCommand(cmd)
+			if err != nil {
+				checkResult[host] = HostCheckResult{
+					Status:      "Error",
+					Description: "检查配置失败",
+					Error:       err,
+				}
+				continue
+			}
+			configExists = output == "0"
+		}
+
+		switch {
+		case !fileExists:
+			checkResult[host] = HostCheckResult{
+				Status:      "file_not_found",
+				Description: "文件不存在",
+			}
+		case configExists:
+			checkResult[host] = HostCheckResult{
+				Status:      "config_exist",
+				Description: "配置已存在",
+			}
+		default:
+			checkResult[host] = HostCheckResult{
+				Status:      "config_missing",
+				Description: "配置缺失",
+			}
+		}
+
 	}
-	return false, nil
+
+	return checkResult, nil
+
+}
+
+func generationHosts(paramHost string) ([]string, error) {
+
+	//如果传递进来的是ansible组名,则进行主机列表查询
+	if ansibleGroups[paramHost] {
+		cmd := fmt.Sprintf("ansible -i $Z_asbList_erp2 %s --list| grep -v hosts", paramHost)
+		respData, err := service.GetInventory(cmd)
+		if err != nil {
+			zap.L().Error("service.GetInventory failed", zap.String("cmd", cmd), zap.Error(err))
+			return nil, err
+		}
+		return respData, nil
+	}
+	//如果是以多个主机传递
+	if strings.Contains(paramHost, ":") {
+		return strings.Split(paramHost, ":"), nil
+	}
+	return []string{paramHost}, nil
 }
 
 func RunPackageTask() (err error) {
@@ -136,97 +228,184 @@ func RunPackageTask() (err error) {
 
 	//3、检测是否需要更新配置文件
 	processedHost := make(map[string]bool)
+	configurationUpdateResults := make(map[string]bool)
+
 	for _, record := range records {
+		configUpdateSuccess := true
 		if record.UpdateJbossConf || record.UpdateSdkConf {
 			configurations, err := mysql.GetConfigurations(record.TaskID)
-			if err != nil {
+			if err != nil && configurations == nil {
 				logger.SugarLog.Errorf("mysql.GetConfigurations failed,taskID:%s,err:%v", record.TaskID, err)
-				continue
-			}
+				configUpdateSuccess = false
 
-			//一、拉取配置文件仅当主机未被处理时才执行
-			if _, exists := processedHost[record.Host]; !exists {
-				resp, err := pack.JenkinsBuild(GetConfigJobName, map[string]string{"host": record.Host})
-				if err != nil || resp.BuildResult != "SUCCESS" {
-					logger.SugarLog.Errorf("pack.JenkinsBuild GetConfigJobName failed,host:%s,err:%v", record.Host, err)
-					continue
-				}
-				logger.SugarLog.Infof("pack.JenkinsBuild GetConfigJobName success,host:%s", record.Host)
-				processedHost[record.Host] = true
-
-			}
-
-			//二、循环修改配置文件
-
-			for _, configuration := range configurations {
-				//判断新增的配置文件是否已存在
-				isExist, err := isConfigExists(configuration)
+			} else {
+				//拉取配置文件仅当主机未被处理时才执行
+				hostList, err := generationHosts(record.Host)
 				if err != nil {
-					logger.SugarLog.Errorf("isConfigExists config:%v ,err:%v", configuration, err)
-					continue
-				}
-
-				if !isExist {
-					paramMap, err := pack.StructToMap(&configuration)
-					if err != nil {
-						logger.SugarLog.Errorf("pack.StructToMap failed,err:%v", err)
-						continue
+					logger.SugarLog.Errorf("generationHosts failed,taskID:%s host:%s", record.TaskID, record.Host)
+					configUpdateSuccess = false
+				} else {
+					var fetchConfigurationHosts []string
+					for _, host := range hostList {
+						if _, exists := processedHost[host]; !exists {
+							processedHost[host] = true
+							fetchConfigurationHosts = append(fetchConfigurationHosts, host)
+						}
 					}
-					resp, err := pack.JenkinsBuild(ModifyConfigJobName, paramMap)
-					if err != nil || resp.BuildResult != "SUCCESS" {
-						logger.SugarLog.Errorf("pack.JenkinsBuild ModifyConfigJobName failed,host:%s,err:%v", record.Host, err)
-						continue
+					if len(fetchConfigurationHosts) > 0 {
+						resp, err := pack.JenkinsBuild(GetConfigJobName, map[string]string{"host": strings.Join(fetchConfigurationHosts, ":")})
+						if err != nil || resp.BuildResult != "SUCCESS" {
+							logger.SugarLog.Errorf("pack.JenkinsBuild GetConfigJobName failed,host:%s,err:%v", strings.Join(fetchConfigurationHosts, ":"), err)
+							configUpdateSuccess = false
+						}
 					}
-					logger.SugarLog.Infof("pack.JenkinsBuild ModifyConfigJobName success.")
 				}
+				//循环修改配置文件
+				for _, configuration := range configurations {
+					if configUpdateSuccess {
+						//检查配置文件状态
+						checkResult, err := checkConfiguration(configuration)
+						if err != nil {
+							logger.SugarLog.Errorf("isConfigExists config:%v ,err:%v", configuration, err)
+							configUpdateSuccess = false
+							break
+						}
+						logger.SugarLog.Infof("checkConfiguration checkResult:%v", checkResult)
 
+						//过滤heckResult中的config_missing(需要更新的配置)及error
+						var configUpdateHosts []string
+						var configCheckFailedHost []string
+						for host, result := range checkResult {
+							if result.Status == "config_missing" {
+								configUpdateHosts = append(configUpdateHosts, host)
+							} else if result.Status == "Error" {
+								configCheckFailedHost = append(configCheckFailedHost, host)
+							}
+						}
+						if len(configCheckFailedHost) > 0 {
+							logger.SugarLog.Errorf("exists configCheckFailedHost:%s", configCheckFailedHost)
+							configUpdateSuccess = false
+							break
+						}
+
+						//存在需要更新配置的主机
+						if len(configUpdateHosts) > 0 {
+							//判断host是否为主机组,如果是则转换成host
+							host := strings.Join(configUpdateHosts, ":")
+							newConfiguration := &model.Config{
+								ConfigType:    configuration.ConfigType,
+								ConfigContent: configuration.ConfigContent,
+								ConfigAction:  configuration.ConfigAction,
+								Host:          host,
+							}
+
+							paramMap, err := pack.StructToMap(newConfiguration)
+							if err != nil {
+								logger.SugarLog.Errorf("pack.StructToMap failed,err:%v", err)
+								configUpdateSuccess = false
+								break
+							}
+							resp, err := pack.JenkinsBuild(ModifyConfigJobName, paramMap)
+							if err != nil || resp.BuildResult != "SUCCESS" {
+								logger.SugarLog.Errorf("pack.JenkinsBuild ModifyConfigJobName failed,host:%s,err:%v", record.Host, err)
+								configUpdateSuccess = false
+								break
+							}
+							logger.SugarLog.Infof("pack.JenkinsBuild ModifyConfigJobName success.")
+						}
+
+					} else {
+						break
+					}
+				}
 			}
+			configurationUpdateResults[record.TaskID] = configUpdateSuccess
+			if !configUpdateSuccess {
+				status = 2         //修改package_operations status为2(失败)
+				buildStatus := "0" //给第三方接口返回 退回
+				jenkinsAction := "更新配置失败"
 
+				updateErr := mysql.UpdatePackStatus(record.TaskID, status, nil)
+				if updateErr != nil {
+					zap.L().Error("mysql.UpdatePackStatus failed", zap.String("taskID", record.TaskID), zap.Int8("status", status))
+				}
+
+				callErr := callThirdPartyAPI.JenkinsBuildResultRsync(record.TaskID, buildStatus, nil, &jenkinsAction)
+				if callErr != nil {
+					logger.SugarLog.Errorf("JenkinsBuildResultRsync failed,taskID:%s,buildStatus:%s,jenkinsAction:%s", record.TaskID, buildStatus, jenkinsAction)
+				}
+			}
 		}
 	}
 
 	//4、循环遍历开始调用jenkins打包工程
 
-	var buildStatus string
 	for _, record := range records {
-		//判断是否有包，如果没有则无需打包
-		if record.IsPackage {
-			paramMap, err := pack.StructToMap(&record)
-			if err != nil {
-				logger.SugarLog.Errorf("pack.StructToMap failed,err:%v", err)
+		//有包有配置
+		if record.IsPackage && (record.UpdateJbossConf || record.UpdateSdkConf) {
+			if configUpdateSuccess, ok := configurationUpdateResults[record.TaskID]; !ok || !configUpdateSuccess {
+				zap.L().Error("Configuration update failed", zap.String("taskID", record.TaskID))
+				continue //无需再执行后续打包
+			}
+			if err := handlerPackage(record); err != nil {
+				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
 				continue
 			}
-			resp, buildErr := pack.JenkinsBuild(record.JobName, paramMap)
-
-			var jenkinsAction string
-			if resp.BuildResult == "SUCCESS" {
-				buildStatus = "2" //给第三方接口返回 已打包
-			} else {
-				buildStatus = "0" //给第三方接口返回 退回
-				jenkinsAction = "打包失败"
-			}
-
-			updateErr := updateStatusOnPackageResult(resp, buildErr, &record)
-
-			callErr := callThirdPartyAPI.JenkinsBuildResultRsync(record.TaskID, buildStatus, buildErr, &jenkinsAction)
-
-			if callErr != nil {
-				logger.SugarLog.Errorf("callThirdPartyAPI.JenkinsBuildResultRsync failed,err:%v", callErr)
-			}
-
-			if updateErr != nil {
-				logger.SugarLog.Errorf("updateStatusOnPackageResult failed,err:%v", updateErr)
+		} else if record.IsPackage { //只需要打包
+			if err := handlerPackage(record); err != nil {
+				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
 				continue
 			}
-		} else {
-			status = 1 //无需要打包，更新状态并写到release_operations表中
-			if err := mysql.HandleSuccessPackTransaction(record.TaskID, status, nil, &record); err != nil {
-				logger.SugarLog.Errorf("mysql.HandleSuccessPackTransaction taskID:%s err:%v", record.TaskID, err)
+			//无包有配置
+		} else if !record.IsPackage && (record.UpdateJbossConf || record.UpdateSdkConf) { //无包只有配置文件
+			if configUpdateSuccess, ok := configurationUpdateResults[record.TaskID]; !ok || !configUpdateSuccess {
+				logger.SugarLog.Errorf("Configuration update failed,taskID:%s,err:%v", record.TaskID, err)
+				continue
+			}
+
+			record.Common = nil //将bug号改成空
+			if err := handlerPackage(record); err != nil {
+				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
 				continue
 			}
 
 		}
+
 	}
 	return nil
 
+}
+
+func handlerPackage(record model.RespPackageData) error {
+
+	paramMap, err := pack.StructToMap(&record)
+	if err != nil {
+		logger.SugarLog.Errorf("pack.StructToMap failed,err:%v", err)
+		return err
+	}
+	resp, buildErr := pack.JenkinsBuild(record.JobName, paramMap)
+
+	var buildStatus string
+	var jenkinsAction string
+	if resp != nil && resp.BuildResult == "SUCCESS" {
+		buildStatus = "2" //给第三方接口返回 已打包
+		jenkinsAction = "打包成功"
+	} else {
+		buildStatus = "0" //给第三方接口返回 退回
+		jenkinsAction = "打包失败"
+
+	}
+
+	updateErr := updateStatusOnPackageResult(resp, buildErr, &record)
+
+	callErr := callThirdPartyAPI.JenkinsBuildResultRsync(record.TaskID, buildStatus, buildErr, &jenkinsAction)
+
+	if callErr != nil {
+		logger.SugarLog.Errorf("callThirdPartyAPI.JenkinsBuildResultRsync failed,err:%v", callErr)
+	}
+
+	if updateErr != nil {
+		logger.SugarLog.Errorf("updateStatusOnPackageResult failed,err:%v", updateErr)
+	}
+	return nil
 }

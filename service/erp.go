@@ -13,7 +13,7 @@ import (
 
 var (
 	tokenMutex          sync.Mutex
-	tokenExpiryDuration = 10 * time.Minute
+	tokenExpiryDuration = 20 * time.Minute
 	TokenMap            = make(map[string]bool)
 )
 

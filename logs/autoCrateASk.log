@@ -26,3 +26,613 @@
 {"level":"INFO","time":"2025-01-16T00:36:42.350+0800","caller":"cronjobs/packaging_task.go:117","msg":"Begin RunPackageTask ","time":"2025-01-16 00:36:42"}
 {"level":"INFO","time":"2025-01-16T00:36:42.352+0800","caller":"cronjobs/packaging_task.go:123","msg":"no release records"}
 {"level":"INFO","time":"2025-01-16T00:36:42.352+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0021857,"time":"2025-01-15T16:36:42Z"}
+{"level":"INFO","time":"2025-01-16T16:01:01.094+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T16:04:30.187+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T16:05:00.001+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-16 16:05:00"}
+{"level":"INFO","time":"2025-01-16T16:05:00.001+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-16 08:05:00.00163 +0000 UTC"}
+{"level":"INFO","time":"2025-01-16T16:05:00.002+0800","caller":"cronjobs/packaging_task.go:117","msg":"Begin RunPackageTask ","time":"2025-01-16 16:05:00"}
+{"level":"INFO","time":"2025-01-16T16:05:00.010+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-16T16:05:22.520+0800","caller":"cronjobs/packaging_task.go:154","msg":"pack.JenkinsBuild GetConfigJobName success,host:17Market"}
+{"level":"INFO","time":"2025-01-16T16:05:31.374+0800","caller":"cronjobs/packaging_task.go:180","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-16T16:05:41.328+0800","caller":"cronjobs/packaging_task.go:180","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-16T16:06:37.714+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T16:08:28.350+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T16:29:33.038+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T16:30:04.574+0800","caller":"service/ymsAdmin.go:140","msg":"未找到对话框元素，继续执行第1次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T16:30:07.399+0800","caller":"service/ymsAdmin.go:140","msg":"未找到对话框元素，继续执行第2次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T16:30:10.478+0800","caller":"service/ymsAdmin.go:136","msg":"成功关闭 知道了 对话框"}
+{"level":"INFO","time":"2025-01-16T16:30:11.112+0800","caller":"service/ymsAdmin.go:147","msg":"共查找3次,并且关闭知道了对话框"}
+{"level":"INFO","time":"2025-01-16T16:30:12.786+0800","caller":"service/ymsAdmin.go:162","msg":"登录成功，并且找到客户编号"}
+{"level":"INFO","time":"2025-01-16T16:30:18.101+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkAdminYms","status":200,"method":"GET","path":"/api/v1/checkAdminYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":40.9672665,"time":"2025-01-16T08:30:18Z"}
+{"level":"INFO","time":"2025-01-16T16:51:06.762+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T18:01:51.932+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:07:13.271+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:07:41.614+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:08:04.974+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:08:37.101+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第1次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:08:38.120+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第2次查找:no such element: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//button[contains(., '知道了')]\"}\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:08:39.558+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第3次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:08:40.636+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第4次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:08:41.707+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第5次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:08:42.764+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第6次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:08:43.898+0800","caller":"service/ymsAdmin.go:123","msg":"成功关闭 知道了 对话框"}
+{"level":"INFO","time":"2025-01-16T21:08:43.898+0800","caller":"service/ymsAdmin.go:134","msg":"共查找7次,并且关闭知道了对话框"}
+{"level":"INFO","time":"2025-01-16T21:08:43.939+0800","caller":"service/ymsAdmin.go:149","msg":"登录成功，并且找到客户编号"}
+{"level":"INFO","time":"2025-01-16T21:08:44.955+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkAdminYms","status":200,"method":"GET","path":"/api/v1/checkAdminYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":16.4172941,"time":"2025-01-16T13:08:44Z"}
+{"level":"ERROR","time":"2025-01-16T21:09:10.937+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:11.164+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第1次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:13.804+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:13.956+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第2次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:16.555+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:16.715+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第3次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:19.235+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:19.462+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第4次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:21.966+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:22.111+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第5次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:24.563+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:24.687+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第6次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:27.215+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:27.422+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第7次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:29.889+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:30.011+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第8次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:32.504+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:32.603+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第9次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:09:35.315+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:09:35.513+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第10次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:09:35.904+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkWwwYms","status":200,"method":"GET","path":"/api/v1/checkWwwYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":27.66153,"time":"2025-01-16T13:09:35Z"}
+{"level":"ERROR","time":"2025-01-16T21:11:02.800+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:11:02.882+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第1次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:11:07.650+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:11:07.790+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第2次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:11:12.558+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:11:13.358+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第3次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:11:18.415+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:11:19.232+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第4次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:12:31.479+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:12:43.430+0800","caller":"service/checkSupplier.go:106","msg":"找到供应商03用户信息"}
+{"level":"INFO","time":"2025-01-16T21:12:43.430+0800","caller":"service/checkSupplier.go:117","msg":"success登录并且获取到供应商03用户信息"}
+{"level":"INFO","time":"2025-01-16T21:12:44.361+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkSupplierYms","status":200,"method":"GET","path":"/api/v1/checkSupplierYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":10.2428621,"time":"2025-01-16T13:12:44Z"}
+{"level":"INFO","time":"2025-01-16T21:15:10.450+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:16:04.004+0800","caller":"service/ymsWww.go:64","msg":"成功关闭首页对话框"}
+{"level":"INFO","time":"2025-01-16T21:16:32.138+0800","caller":"service/ymsWww.go:86","msg":"未找到首页登录按钮元素,执行下一次查找:1"}
+{"level":"INFO","time":"2025-01-16T21:16:34.405+0800","caller":"service/ymsWww.go:86","msg":"未找到首页登录按钮元素,执行下一次查找:2"}
+{"level":"INFO","time":"2025-01-16T21:16:36.138+0800","caller":"service/ymsWww.go:91","msg":"未找到首页登录按钮元素,继续后面操作"}
+{"level":"ERROR","time":"2025-01-16T21:16:36.931+0800","caller":"service/ymsWww.go:96","msg":"无法找到用户名输入框:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"input.ivu-input.ivu-input-default.ivu-input-with-prefix[placeholder*='手机号码']\"}\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:16:38.189+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第1次检测,err:no such element: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"input.ivu-input.ivu-input-default.ivu-input-with-prefix[placeholder*='手机号码']\"}\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:16:44.731+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:16:45.038+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第2次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"ERROR","time":"2025-01-16T21:16:57.775+0800","caller":"service/ymsWww.go:61","msg":"无法执行javascript,无法关闭对话框"}
+{"level":"ERROR","time":"2025-01-16T21:16:58.002+0800","caller":"service/ymsWww.go:19","msg":"CheckWwwYmsHandler返回error,执行第3次检测,err:javascript error: javascript error: Cannot read properties of null (reading 'click')\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:17:32.677+0800","caller":"service/ymsWww.go:64","msg":"成功关闭首页对话框"}
+{"level":"INFO","time":"2025-01-16T21:17:58.877+0800","caller":"service/ymsWww.go:82","msg":"找到首页登录元素,并成功点击登录按钮"}
+{"level":"INFO","time":"2025-01-16T21:18:36.097+0800","caller":"service/ymsWww.go:139","msg":"找到页面内的对话框元素,并成功关闭对话框"}
+{"level":"INFO","time":"2025-01-16T21:19:51.249+0800","caller":"service/ymsWww.go:171","msg":"success 成功找到页面中的商户号"}
+{"level":"INFO","time":"2025-01-16T21:20:15.048+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkWwwYms","status":200,"method":"GET","path":"/api/v1/checkWwwYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":302.6677461,"time":"2025-01-16T13:20:15Z"}
+{"level":"INFO","time":"2025-01-16T21:36:48.347+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-16T21:37:01.300+0800","caller":"service/ymsWww.go:66","msg":"成功关闭首页对话框"}
+{"level":"INFO","time":"2025-01-16T21:37:06.931+0800","caller":"service/ymsWww.go:84","msg":"找到首页登录元素,并成功点击登录按钮"}
+{"level":"INFO","time":"2025-01-16T21:37:08.947+0800","caller":"service/ymsWww.go:141","msg":"找到页面内的对话框元素,并成功关闭对话框"}
+{"level":"INFO","time":"2025-01-16T21:37:09.272+0800","caller":"service/ymsWww.go:173","msg":"success 成功找到页面中的商户号"}
+{"level":"INFO","time":"2025-01-16T21:37:10.264+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkWwwYms","status":200,"method":"GET","path":"/api/v1/checkWwwYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":17.356805,"time":"2025-01-16T13:37:10Z"}
+{"level":"INFO","time":"2025-01-16T21:37:36.624+0800","caller":"service/ymsWww.go:66","msg":"成功关闭首页对话框"}
+{"level":"INFO","time":"2025-01-16T21:37:42.269+0800","caller":"service/ymsWww.go:84","msg":"找到首页登录元素,并成功点击登录按钮"}
+{"level":"INFO","time":"2025-01-16T21:37:43.832+0800","caller":"service/ymsWww.go:141","msg":"找到页面内的对话框元素,并成功关闭对话框"}
+{"level":"INFO","time":"2025-01-16T21:37:43.945+0800","caller":"service/ymsWww.go:173","msg":"success 成功找到页面中的商户号"}
+{"level":"INFO","time":"2025-01-16T21:37:45.235+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkWwwYms","status":200,"method":"GET","path":"/api/v1/checkWwwYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":15.7233161,"time":"2025-01-16T13:37:45Z"}
+{"level":"INFO","time":"2025-01-16T21:38:04.441+0800","caller":"service/ymsWww.go:66","msg":"成功关闭首页对话框"}
+{"level":"INFO","time":"2025-01-16T21:38:10.090+0800","caller":"service/ymsWww.go:84","msg":"找到首页登录元素,并成功点击登录按钮"}
+{"level":"INFO","time":"2025-01-16T21:38:12.289+0800","caller":"service/ymsWww.go:141","msg":"找到页面内的对话框元素,并成功关闭对话框"}
+{"level":"INFO","time":"2025-01-16T21:38:12.334+0800","caller":"service/ymsWww.go:173","msg":"success 成功找到页面中的商户号"}
+{"level":"INFO","time":"2025-01-16T21:38:13.109+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkWwwYms","status":200,"method":"GET","path":"/api/v1/checkWwwYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":16.7049346,"time":"2025-01-16T13:38:13Z"}
+{"level":"INFO","time":"2025-01-16T21:38:27.700+0800","caller":"service/checkSupplier.go:106","msg":"找到供应商03用户信息"}
+{"level":"INFO","time":"2025-01-16T21:38:27.700+0800","caller":"service/checkSupplier.go:117","msg":"success登录并且获取到供应商03用户信息"}
+{"level":"INFO","time":"2025-01-16T21:38:28.265+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkSupplierYms","status":200,"method":"GET","path":"/api/v1/checkSupplierYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":6.7854769,"time":"2025-01-16T13:38:28Z"}
+{"level":"INFO","time":"2025-01-16T21:38:37.570+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第1次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:38:38.620+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第2次查找:no such element: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//button[contains(., '知道了')]\"}\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:38:39.667+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第3次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:38:40.747+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第4次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:38:41.809+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第5次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:38:42.842+0800","caller":"service/ymsAdmin.go:127","msg":"未找到对话框元素，继续执行第6次查找:element not interactable: element not interactable\n  (Session info: chrome=132.0.6834.84)"}
+{"level":"INFO","time":"2025-01-16T21:38:44.029+0800","caller":"service/ymsAdmin.go:123","msg":"成功关闭 知道了 对话框"}
+{"level":"INFO","time":"2025-01-16T21:38:44.029+0800","caller":"service/ymsAdmin.go:134","msg":"共查找7次,并且关闭知道了对话框"}
+{"level":"INFO","time":"2025-01-16T21:38:44.065+0800","caller":"service/ymsAdmin.go:149","msg":"登录成功，并且找到客户编号"}
+{"level":"INFO","time":"2025-01-16T21:38:50.496+0800","caller":"zap/zap.go:117","msg":"/api/v1/checkAdminYms","status":200,"method":"GET","path":"/api/v1/checkAdminYms","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":18.6127723,"time":"2025-01-16T13:38:50Z"}
+{"level":"INFO","time":"2025-01-17T09:30:02.097+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T09:30:27.852+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:03:47.317+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:04:46.538+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:05:54.074+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:06:22.127+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:06:49.748+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:09:23.892+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:14:31.363+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:15:01.353+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T10:15:33.779+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T16:42:50.190+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T16:44:35.876+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T16:45:18.698+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T16:48:07.264+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 16:48:07"}
+{"level":"INFO","time":"2025-01-17T16:51:07.847+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:17Market"}
+{"level":"INFO","time":"2025-01-17T16:53:44.816+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T16:54:15.424+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T16:54:50.820+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T16:55:16.507+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-17T17:01:24.338+0800","caller":"mysql/automateDeployment.go:215","msg":"rollback"}
+{"level":"ERROR","time":"2025-01-17T17:01:28.436+0800","caller":"cronjobs/packaging_task.go:272","msg":"mysql.HandleSuccessPackTransaction taskID:100005 err:Error 1062 (23000): Duplicate entry '100005' for key 'idx_task_id'"}
+{"level":"INFO","time":"2025-01-17T17:01:41.688+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":817.464285,"time":"2025-01-17T09:01:41Z"}
+{"level":"INFO","time":"2025-01-17T17:06:55.183+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 17:06:55"}
+{"level":"INFO","time":"2025-01-17T17:08:50.491+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:17Market"}
+{"level":"INFO","time":"2025-01-17T17:10:05.323+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T17:10:36.569+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T17:11:51.599+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-17T17:13:46.581+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T17:13:51.807+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 17:13:51"}
+{"level":"INFO","time":"2025-01-17T17:14:54.453+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-17T17:18:42.328+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-17T17:19:35.081+0800","caller":"cronjobs/packaging_task.go:212","msg":"pack.JenkinsBuild ModifyConfigJobName failed,host:monday,err:<nil>"}
+{"level":"ERROR","time":"2025-01-17T17:26:51.171+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-17T17:27:04.660+0800","caller":"cronjobs/packaging_task.go:237","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed","taskID":"100006","buildStatus":"0","jenkinsAction":"更新配置失败"}
+{"level":"ERROR","time":"2025-01-17T17:27:58.802+0800","caller":"cronjobs/packaging_task.go:267","msg":"Configuration update failed,taskID:%!,(string=100006)err:<nil>"}
+{"level":"INFO","time":"2025-01-17T17:29:33.333+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":942.7742841,"time":"2025-01-17T09:29:33Z"}
+{"level":"INFO","time":"2025-01-17T17:44:51.256+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T17:46:30.650+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T17:46:36.721+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 17:46:36"}
+{"level":"INFO","time":"2025-01-17T17:48:09.184+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:86WoEnEr"}
+{"level":"INFO","time":"2025-01-17T17:49:21.924+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T17:50:48.785+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-17T17:55:26.582+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-17T17:55:26.582+0800","caller":"cronjobs/packaging_task.go:305","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-17T18:04:07.873+0800","caller":"mysql/automateDeployment.go:265","msg":"insert into release_operations row success,id:48"}
+{"level":"INFO","time":"2025-01-17T18:04:08.273+0800","caller":"mysql/automateDeployment.go:219","msg":"commit"}
+{"level":"INFO","time":"2025-01-17T18:04:10.606+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":1057.1974535,"time":"2025-01-17T10:04:10Z"}
+{"level":"INFO","time":"2025-01-17T18:13:41.934+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T18:13:46.612+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 18:13:46"}
+{"level":"INFO","time":"2025-01-17T18:19:32.821+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:86WoEnEr"}
+{"level":"INFO","time":"2025-01-17T18:25:18.364+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T18:25:23.436+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 18:25:23"}
+{"level":"INFO","time":"2025-01-17T18:29:56.835+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:86WoEnEr"}
+{"level":"INFO","time":"2025-01-17T18:32:07.864+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-17T18:34:27.596+0800","caller":"cronjobs/packaging_task.go:216","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-17T18:38:24.229+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-17T18:38:29.651+0800","caller":"cronjobs/packaging_task.go:305","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"ERROR","time":"2025-01-17T18:40:21.122+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-17T18:40:22.047+0800","caller":"cronjobs/packaging_task.go:305","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-17T18:40:33.488+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":911.753727,"time":"2025-01-17T10:40:33Z"}
+{"level":"INFO","time":"2025-01-17T18:43:10.807+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T18:43:13.837+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 18:43:13"}
+{"level":"ERROR","time":"2025-01-17T18:44:22.182+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-17T18:44:22.182+0800","caller":"cronjobs/packaging_task.go:305","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-17T18:44:24.388+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":71.7272047,"time":"2025-01-17T10:44:24Z"}
+{"level":"INFO","time":"2025-01-17T18:45:16.673+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 18:45:16"}
+{"level":"INFO","time":"2025-01-17T18:47:52.474+0800","caller":"cronjobs/packaging_task.go:174","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"ERROR","time":"2025-01-17T18:56:53.407+0800","caller":"cronjobs/packaging_task.go:212","msg":"pack.JenkinsBuild ModifyConfigJobName failed,host:monday,err:<nil>"}
+{"level":"ERROR","time":"2025-01-17T18:58:54.449+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-17T18:58:56.586+0800","caller":"cronjobs/packaging_task.go:237","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed","taskID":"100005","buildStatus":"0","jenkinsAction":"更新配置失败"}
+{"level":"ERROR","time":"2025-01-17T18:59:50.197+0800","caller":"cronjobs/packaging_task.go:252","msg":"Configuration update failed","taskID":"100005"}
+{"level":"INFO","time":"2025-01-17T18:59:57.372+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":903.0582497,"time":"2025-01-17T10:59:57Z"}
+{"level":"INFO","time":"2025-01-17T19:14:03.264+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T22:34:30.265+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T22:35:00.009+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-17 22:35:00"}
+{"level":"INFO","time":"2025-01-17T22:35:00.009+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-17 14:35:00.0091963 +0000 UTC"}
+{"level":"INFO","time":"2025-01-17T22:35:00.010+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 22:35:00"}
+{"level":"INFO","time":"2025-01-17T22:35:00.024+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-17T22:35:00.032+0800","caller":"cronjobs/packaging_task.go:140","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-17T22:35:00.032+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-17 22:35:00,err:no release records"}
+{"level":"INFO","time":"2025-01-17T22:35:11.909+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T22:35:45.854+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T22:36:08.889+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-17T22:40:00.013+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-17 22:40:00"}
+{"level":"INFO","time":"2025-01-17T22:40:00.014+0800","caller":"cronjobs/packaging_task.go:134","msg":"Begin RunPackageTask ","time":"2025-01-17 22:40:00"}
+{"level":"INFO","time":"2025-01-17T22:40:00.014+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-17 14:40:00.0142109 +0000 UTC"}
+{"level":"INFO","time":"2025-01-17T22:40:00.028+0800","caller":"cronjobs/packaging_task.go:140","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-17T22:40:00.030+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-17 22:40:00,err:no release records"}
+{"level":"INFO","time":"2025-01-17T22:40:00.040+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T00:14:10.923+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T00:15:00.005+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 00:15:00"}
+{"level":"INFO","time":"2025-01-18T00:15:00.006+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-17 16:15:00.0062707 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T00:15:00.007+0800","caller":"cronjobs/packaging_task.go:175","msg":"Begin RunPackageTask ","time":"2025-01-18 00:15:00"}
+{"level":"INFO","time":"2025-01-18T00:16:01.608+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T00:16:07.852+0800","caller":"cronjobs/packaging_task.go:175","msg":"Begin RunPackageTask ","time":"2025-01-18 00:16:07"}
+{"level":"INFO","time":"2025-01-18T00:18:32.137+0800","caller":"cronjobs/packaging_task.go:215","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T00:20:25.534+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 00:20:25"}
+{"level":"INFO","time":"2025-01-18T00:20:25.534+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-17 16:20:25.5342516 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T00:20:25.535+0800","caller":"cronjobs/packaging_task.go:175","msg":"Begin RunPackageTask ","time":"2025-01-18 00:20:25"}
+{"level":"INFO","time":"2025-01-18T00:20:25.561+0800","caller":"cronjobs/packaging_task.go:181","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T00:20:25.561+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 00:20:25,err:no release records"}
+{"level":"INFO","time":"2025-01-18T00:20:25.568+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T00:21:58.891+0800","caller":"cronjobs/packaging_task.go:122","msg":"failed to check file existence for host ussdk-2:ssh: Stdout already set"}
+{"level":"ERROR","time":"2025-01-18T00:22:03.255+0800","caller":"cronjobs/packaging_task.go:225","msg":"isConfigExists config:{add_jboss demousername=jboss1001 Add monday} ,err:ssh: Stdout already set"}
+{"level":"INFO","time":"2025-01-18T00:24:01.580+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T00:24:21.098+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T00:24:25.532+0800","caller":"cronjobs/packaging_task.go:175","msg":"Begin RunPackageTask ","time":"2025-01-18 00:24:25"}
+{"level":"INFO","time":"2025-01-18T00:24:47.676+0800","caller":"cronjobs/packaging_task.go:215","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T00:25:01.348+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 00:25:01"}
+{"level":"INFO","time":"2025-01-18T00:25:01.353+0800","caller":"cronjobs/packaging_task.go:175","msg":"Begin RunPackageTask ","time":"2025-01-18 00:25:01"}
+{"level":"INFO","time":"2025-01-18T00:25:01.355+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-17 16:25:01.3543071 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T00:25:01.361+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T00:25:01.363+0800","caller":"cronjobs/packaging_task.go:181","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T00:25:01.363+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 00:25:01,err:no release records"}
+{"level":"ERROR","time":"2025-01-18T00:25:33.072+0800","caller":"cronjobs/packaging_task.go:122","msg":"failed to check file existence for host ussdk-2:ssh: Stdout already set"}
+{"level":"INFO","time":"2025-01-18T08:47:16.959+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T08:47:21.139+0800","caller":"cronjobs/packaging_task.go:177","msg":"Begin RunPackageTask ","time":"2025-01-18 08:47:21"}
+{"level":"INFO","time":"2025-01-18T08:47:39.996+0800","caller":"cronjobs/packaging_task.go:217","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T08:50:22.388+0800","caller":"cronjobs/packaging_task.go:177","msg":"Begin RunPackageTask ","time":"2025-01-18 08:50:22"}
+{"level":"INFO","time":"2025-01-18T08:50:22.387+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 08:50:22"}
+{"level":"INFO","time":"2025-01-18T08:50:29.853+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 00:50:29.8532977 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T08:50:29.855+0800","caller":"cronjobs/packaging_task.go:183","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T08:50:29.855+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 08:50:29,err:no release records"}
+{"level":"INFO","time":"2025-01-18T08:51:18.941+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T09:52:49.184+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T09:53:06.135+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 09:53:06"}
+{"level":"INFO","time":"2025-01-18T09:53:24.561+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T09:55:02.543+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 09:55:02"}
+{"level":"INFO","time":"2025-01-18T09:55:02.543+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 09:55:01"}
+{"level":"INFO","time":"2025-01-18T09:55:32.840+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 01:55:32.8402675 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T09:55:32.843+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T09:55:32.843+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 09:55:32,err:no release records"}
+{"level":"INFO","time":"2025-01-18T09:55:32.851+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T19:34:55.443+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T19:35:00.010+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 19:35:00"}
+{"level":"INFO","time":"2025-01-18T19:35:00.010+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 11:35:00.0106995 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T19:35:00.010+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 19:35:00"}
+{"level":"INFO","time":"2025-01-18T19:35:00.020+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T19:35:03.054+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 19:35:03"}
+{"level":"INFO","time":"2025-01-18T19:35:03.057+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T19:35:03.058+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0035711,"time":"2025-01-18T11:35:03Z"}
+{"level":"INFO","time":"2025-01-18T19:35:27.346+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T20:08:15.264+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T20:08:30.916+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:08:30"}
+{"level":"INFO","time":"2025-01-18T20:08:53.045+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T20:10:01.993+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:10:01"}
+{"level":"INFO","time":"2025-01-18T20:10:01.993+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:10:01"}
+{"level":"INFO","time":"2025-01-18T20:10:01.993+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:10:01.9937353 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:10:01.996+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:10:01.997+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:10:01,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:10:02.006+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:11:19.760+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T20:17:28.266+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T20:18:06.990+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:18:06"}
+{"level":"INFO","time":"2025-01-18T20:18:06.992+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:18:06.9924859 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:18:06.992+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:18:06"}
+{"level":"INFO","time":"2025-01-18T20:18:06.995+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:18:06.998+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:18:06.999+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:18:06,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:18:33.192+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{config_missing 配置缺失 <nil>} ussdk-2:{config_missing 配置缺失 <nil>} ussdk-3:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T20:19:20.142+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T20:22:49.674+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:22:49"}
+{"level":"INFO","time":"2025-01-18T20:22:49.674+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:22:49.6747548 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:22:49.674+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:22:49"}
+{"level":"INFO","time":"2025-01-18T20:22:49.679+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:22:49.679+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:22:49.680+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:22:49,err:no release records"}
+{"level":"ERROR","time":"2025-01-18T20:24:45.876+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T20:24:55.549+0800","caller":"cronjobs/packaging_task.go:389","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-18T20:25:12.209+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":1001.2993099,"time":"2025-01-18T12:25:12Z"}
+{"level":"INFO","time":"2025-01-18T20:25:39.413+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:25:39"}
+{"level":"INFO","time":"2025-01-18T20:25:39.413+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:25:39"}
+{"level":"INFO","time":"2025-01-18T20:25:39.413+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:25:39.4134229 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:25:39.416+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:25:39.417+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:25:39.417+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:25:39,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:29:08.658+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:29:08"}
+{"level":"INFO","time":"2025-01-18T20:29:22.033+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:86WoEnEr:17Market"}
+{"level":"INFO","time":"2025-01-18T20:30:17.122+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:30:17"}
+{"level":"INFO","time":"2025-01-18T20:30:17.122+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:30:17"}
+{"level":"INFO","time":"2025-01-18T20:30:17.123+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:30:17.123249 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:30:17.127+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:30:17.128+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:30:17.129+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:30:17,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:32:49.931+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T20:33:19.724+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T20:33:25.569+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T20:34:01.217+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-18T20:34:38.033+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T20:34:38.033+0800","caller":"cronjobs/packaging_task.go:389","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-18T20:35:13.254+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:35:13"}
+{"level":"INFO","time":"2025-01-18T20:35:13.254+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:35:13"}
+{"level":"INFO","time":"2025-01-18T20:35:13.255+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:35:13.2551971 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:35:13.255+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":364.5989898,"time":"2025-01-18T12:35:13Z"}
+{"level":"INFO","time":"2025-01-18T20:35:13.257+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:35:13.257+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:35:13.258+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:35:13,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:40:03.229+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:40:03"}
+{"level":"INFO","time":"2025-01-18T20:40:03.229+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:40:03"}
+{"level":"INFO","time":"2025-01-18T20:40:03.229+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:40:03.2297333 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:40:03.231+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:40:23.035+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T20:52:09.760+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:52:09"}
+{"level":"INFO","time":"2025-01-18T20:52:09.760+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:52:09.7600884 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:52:09.768+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:52:09"}
+{"level":"INFO","time":"2025-01-18T20:52:09.772+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:52:09.780+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:52:09.783+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:52:09,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:53:43.948+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T20:54:19.819+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T20:54:45.531+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T20:54:47.219+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:54:47"}
+{"level":"INFO","time":"2025-01-18T20:55:00.014+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 20:55:00"}
+{"level":"INFO","time":"2025-01-18T20:55:00.015+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 12:55:00.015493 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T20:55:00.015+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 20:55:00"}
+{"level":"INFO","time":"2025-01-18T20:55:00.025+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T20:55:00.032+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T20:55:00.032+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 20:55:00,err:no release records"}
+{"level":"INFO","time":"2025-01-18T20:55:18.744+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T20:58:54.343+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_exist 配置已存在 <nil>} 86WoEnEr:{config_exist 配置已存在 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T20:59:53.092+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T21:00:00.196+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 21:00:00"}
+{"level":"INFO","time":"2025-01-18T21:00:00.198+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 21:00:00"}
+{"level":"INFO","time":"2025-01-18T21:00:00.198+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 13:00:00.1989456 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T21:00:00.203+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T21:00:00.209+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T21:00:00.213+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 21:00:00,err:no release records"}
+{"level":"INFO","time":"2025-01-18T21:00:33.388+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{config_missing 配置缺失 <nil>} ussdk-2:{config_missing 配置缺失 <nil>} ussdk-3:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T21:01:44.046+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T21:12:19.651+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T21:12:33.973+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 21:12:33"}
+{"level":"INFO","time":"2025-01-18T21:13:12.039+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T21:15:00.002+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 21:15:00"}
+{"level":"INFO","time":"2025-01-18T21:15:00.002+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 13:15:00.0023823 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T21:15:00.002+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 21:15:00"}
+{"level":"INFO","time":"2025-01-18T21:15:03.520+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T21:17:30.762+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:monday"}
+{"level":"INFO","time":"2025-01-18T21:18:35.654+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T21:19:15.351+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T21:19:44.043+0800","caller":"cronjobs/packaging_task.go:248","msg":"pack.JenkinsBuild GetConfigJobName success,host:86WoEnEr:17Market"}
+{"level":"INFO","time":"2025-01-18T21:21:14.113+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 21:21:14"}
+{"level":"INFO","time":"2025-01-18T21:21:14.113+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 13:21:14.1132091 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T21:21:14.119+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 21:21:14"}
+{"level":"INFO","time":"2025-01-18T21:21:14.122+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T21:21:14.126+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T21:21:14.128+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 21:21:14,err:no release records"}
+{"level":"INFO","time":"2025-01-18T21:21:16.247+0800","caller":"cronjobs/packaging_task.go:262","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T21:22:11.152+0800","caller":"cronjobs/packaging_task.go:303","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T22:16:09.727+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:16:12.517+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:16:12"}
+{"level":"INFO","time":"2025-01-18T22:22:03.050+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:22:03"}
+{"level":"INFO","time":"2025-01-18T22:22:07.945+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 22:22:03"}
+{"level":"INFO","time":"2025-01-18T22:22:07.945+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 14:22:07.9453398 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T22:22:11.821+0800","caller":"cronjobs/packaging_task.go:214","msg":"no release records"}
+{"level":"ERROR","time":"2025-01-18T22:22:12.431+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-01-18 22:22:12,err:no release records"}
+{"level":"INFO","time":"2025-01-18T22:22:16.478+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-01-18T22:22:40.703+0800","caller":"cronjobs/packaging_task.go:271","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:22:52.667+0800","caller":"cronjobs/packaging_task.go:312","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-18T22:23:02.575+0800","caller":"cronjobs/packaging_task.go:256","msg":"pack.JenkinsBuild GetConfigJobName failed,host:,err:<nil>"}
+{"level":"ERROR","time":"2025-01-18T22:23:02.870+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:23:02.870+0800","caller":"cronjobs/packaging_task.go:333","msg":"JenkinsBuildResultRsync failed,taskID:100006,buildStatus:0,jenkinsAction:更新配置失败"}
+{"level":"ERROR","time":"2025-01-18T22:23:22.935+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:23:22.935+0800","caller":"cronjobs/packaging_task.go:398","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"ERROR","time":"2025-01-18T22:23:22.935+0800","caller":"cronjobs/packaging_task.go:345","msg":"Configuration update failed","taskID":"100006"}
+{"level":"INFO","time":"2025-01-18T22:23:22.935+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":430.4208617,"time":"2025-01-18T14:23:22Z"}
+{"level":"INFO","time":"2025-01-18T22:25:00.007+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-01-18 22:25:00"}
+{"level":"INFO","time":"2025-01-18T22:25:00.007+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-01-18 14:25:00.0073303 +0000 UTC"}
+{"level":"INFO","time":"2025-01-18T22:25:00.008+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:25:00"}
+{"level":"INFO","time":"2025-01-18T22:25:24.936+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:27:40.993+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:28:16.361+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:28:16"}
+{"level":"INFO","time":"2025-01-18T22:34:49.881+0800","caller":"cronjobs/packaging_task.go:271","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:35:24.548+0800","caller":"cronjobs/packaging_task.go:312","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T22:38:19.616+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:38:53.971+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:39:10.472+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:39:13.740+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:39:13"}
+{"level":"INFO","time":"2025-01-18T22:40:05.261+0800","caller":"cronjobs/packaging_task.go:272","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:40:11.969+0800","caller":"cronjobs/packaging_task.go:313","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T22:40:12.564+0800","caller":"cronjobs/packaging_task.go:272","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:40:21.848+0800","caller":"cronjobs/packaging_task.go:313","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-18T22:40:43.397+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:40:43.397+0800","caller":"cronjobs/packaging_task.go:399","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"ERROR","time":"2025-01-18T22:41:03.926+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:41:03.926+0800","caller":"cronjobs/packaging_task.go:399","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-18T22:41:03.926+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":110.1865745,"time":"2025-01-18T14:41:03Z"}
+{"level":"INFO","time":"2025-01-18T22:43:34.338+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:43:36.723+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:43:36"}
+{"level":"INFO","time":"2025-01-18T22:45:46.110+0800","caller":"cronjobs/packaging_task.go:272","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:46:52.599+0800","caller":"cronjobs/packaging_task.go:313","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T22:47:51.879+0800","caller":"cronjobs/packaging_task.go:272","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:48:15.374+0800","caller":"cronjobs/packaging_task.go:313","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-01-18T22:48:49.218+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:48:49.218+0800","caller":"cronjobs/packaging_task.go:399","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"ERROR","time":"2025-01-18T22:50:38.429+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:50:38.429+0800","caller":"cronjobs/packaging_task.go:399","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-18T22:51:33.438+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":476.7179403,"time":"2025-01-18T14:51:33Z"}
+{"level":"INFO","time":"2025-01-18T22:55:04.316+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-01-18T22:55:12.227+0800","caller":"cronjobs/packaging_task.go:208","msg":"Begin RunPackageTask ","time":"2025-01-18 22:55:12"}
+{"level":"INFO","time":"2025-01-18T22:56:26.940+0800","caller":"cronjobs/packaging_task.go:272","msg":"checkConfiguration checkResult:map[102FeiYan:{config_missing 配置缺失 <nil>} 17Market:{config_missing 配置缺失 <nil>} 86WoEnEr:{config_missing 配置缺失 <nil>} 99ShengWei:{config_missing 配置缺失 <nil>} ERP115:{config_missing 配置缺失 <nil>} ERP115-i2:{config_missing 配置缺失 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"INFO","time":"2025-01-18T22:56:53.725+0800","caller":"cronjobs/packaging_task.go:313","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-01-18T22:58:34.647+0800","caller":"cronjobs/packaging_task.go:272","msg":"checkConfiguration checkResult:map[102FeiYan:{config_exist 配置已存在 <nil>} 17Market:{config_exist 配置已存在 <nil>} 86WoEnEr:{config_exist 配置已存在 <nil>} 99ShengWei:{config_exist 配置已存在 <nil>} ERP115:{config_exist 配置已存在 <nil>} ERP115-i2:{config_exist 配置已存在 <nil>} ussdk-1:{file_not_found 文件不存在 <nil>} ussdk-2:{file_not_found 文件不存在 <nil>} ussdk-3:{file_not_found 文件不存在 <nil>}]"}
+{"level":"ERROR","time":"2025-01-18T22:59:43.885+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:59:43.885+0800","caller":"cronjobs/packaging_task.go:399","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"ERROR","time":"2025-01-18T22:59:58.791+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-01-18T22:59:58.791+0800","caller":"cronjobs/packaging_task.go:399","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-01-18T22:59:58.793+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":286.5673263,"time":"2025-01-18T14:59:58Z"}
+{"level":"INFO","time":"2025-02-06T14:18:32.058+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T17:43:21.188+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T17:45:00.004+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-06 17:45:00"}
+{"level":"INFO","time":"2025-02-06T17:45:00.003+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-06 17:45:00"}
+{"level":"INFO","time":"2025-02-06T17:45:00.005+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-06 09:45:00.0050989 +0000 UTC"}
+{"level":"INFO","time":"2025-02-06T17:45:00.021+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-06T17:45:00.022+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-06 17:45:00,err:no release records"}
+{"level":"INFO","time":"2025-02-06T17:45:00.040+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-02-06T17:50:00.010+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-06 17:50:00"}
+{"level":"INFO","time":"2025-02-06T17:50:00.011+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-06 09:50:00.0114719 +0000 UTC"}
+{"level":"INFO","time":"2025-02-06T17:50:00.011+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-06 17:50:00"}
+{"level":"INFO","time":"2025-02-06T17:50:00.028+0800","caller":"cronjobs/release_task.go:76","msg":"no release records"}
+{"level":"INFO","time":"2025-02-06T17:50:00.029+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-06T17:50:00.029+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-06 17:50:00,err:no release records"}
+{"level":"INFO","time":"2025-02-06T17:55:30.415+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T17:56:27.393+0800","caller":"mysql/automateDeployment.go:147","msg":"insert success,the ID is 171"}
+{"level":"INFO","time":"2025-02-06T17:56:27.407+0800","caller":"mysql/automateDeployment.go:30","msg":"AutomateDeployment commit"}
+{"level":"INFO","time":"2025-02-06T17:56:27.407+0800","caller":"zap/zap.go:117","msg":"/api/v1/automateDeploy","status":200,"method":"POST","path":"/api/v1/automateDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0196045,"time":"2025-02-06T09:56:27Z"}
+{"level":"INFO","time":"2025-02-06T17:57:31.386+0800","caller":"mysql/automateDeployment.go:147","msg":"insert success,the ID is 172"}
+{"level":"INFO","time":"2025-02-06T17:57:31.401+0800","caller":"mysql/automateDeployment.go:30","msg":"AutomateDeployment commit"}
+{"level":"INFO","time":"2025-02-06T17:57:31.401+0800","caller":"zap/zap.go:117","msg":"/api/v1/automateDeploy","status":200,"method":"POST","path":"/api/v1/automateDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0176186,"time":"2025-02-06T09:57:31Z"}
+{"level":"INFO","time":"2025-02-06T17:59:30.890+0800","caller":"mysql/automateDeployment.go:147","msg":"insert success,the ID is 173"}
+{"level":"INFO","time":"2025-02-06T17:59:30.898+0800","caller":"mysql/automateDeployment.go:30","msg":"AutomateDeployment commit"}
+{"level":"INFO","time":"2025-02-06T17:59:30.899+0800","caller":"zap/zap.go:117","msg":"/api/v1/automateDeploy","status":200,"method":"POST","path":"/api/v1/automateDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0115933,"time":"2025-02-06T09:59:30Z"}
+{"level":"INFO","time":"2025-02-06T18:00:00.011+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-06 18:00:00"}
+{"level":"INFO","time":"2025-02-06T18:00:00.011+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-06 10:00:00.0115804 +0000 UTC"}
+{"level":"INFO","time":"2025-02-06T18:01:15.544+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T18:01:28.764+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-06 18:01:28"}
+{"level":"INFO","time":"2025-02-06T18:02:14.097+0800","caller":"cronjobs/packaging_task.go:273","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-02-06T18:03:07.404+0800","caller":"cronjobs/packaging_task.go:314","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"ERROR","time":"2025-02-06T18:04:39.879+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-06T18:04:39.879+0800","caller":"cronjobs/packaging_task.go:402","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-02-06T18:05:08.581+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T18:05:18.987+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-06 18:05:18"}
+{"level":"INFO","time":"2025-02-06T18:05:19.823+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"INFO","time":"2025-02-06T18:05:38.630+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T18:06:05.152+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T18:06:15.556+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-06 18:06:15"}
+{"level":"INFO","time":"2025-02-06T18:06:53.906+0800","caller":"cronjobs/packaging_task.go:273","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-02-06T18:07:32.590+0800","caller":"cronjobs/packaging_task.go:314","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-02-06T18:12:08.640+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-06T18:12:18.431+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-06 18:12:18"}
+{"level":"INFO","time":"2025-02-06T18:12:45.797+0800","caller":"cronjobs/packaging_task.go:273","msg":"checkConfiguration checkResult:map[17Market:{config_missing 配置缺失 <nil>}]"}
+{"level":"INFO","time":"2025-02-06T18:12:54.079+0800","caller":"cronjobs/packaging_task.go:314","msg":"pack.JenkinsBuild ModifyConfigJobName success."}
+{"level":"INFO","time":"2025-02-06T18:14:09.395+0800","caller":"mysql/automateDeployment.go:265","msg":"insert into release_operations row success,id:1"}
+{"level":"INFO","time":"2025-02-06T18:14:09.399+0800","caller":"mysql/automateDeployment.go:219","msg":"commit"}
+{"level":"ERROR","time":"2025-02-06T18:14:10.031+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-06T18:14:11.336+0800","caller":"cronjobs/packaging_task.go:402","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-02-07T13:56:36.614+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-07T13:58:44.315+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-07 13:58:44"}
+{"level":"INFO","time":"2025-02-07T14:01:21.254+0800","caller":"mysql/automateDeployment.go:265","msg":"insert into release_operations row success,id:250"}
+{"level":"INFO","time":"2025-02-07T14:01:21.259+0800","caller":"mysql/automateDeployment.go:219","msg":"commit"}
+{"level":"INFO","time":"2025-02-07T14:01:22.632+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:84","msg":"Successfully synced result for TaskID 1027283256334352390"}
+{"level":"INFO","time":"2025-02-07T14:01:26.956+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoPackage","status":200,"method":"GET","path":"/api/v1/demoPackage","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":164.444546,"time":"2025-02-07T06:01:26Z"}
+{"level":"INFO","time":"2025-02-07T15:51:06.358+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"ERROR","time":"2025-02-07T15:51:47.214+0800","caller":"sshclient/sshclient.go:36","msg":"Failed to dial,err:ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain\n"}
+{"level":"ERROR","time":"2025-02-07T15:52:09.685+0800","caller":"service/releaseXML.go:63","msg":"getXMLPathByBugNumber failed,err:ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain"}
+{"level":"INFO","time":"2025-02-07T15:52:12.581+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":64.0197741,"time":"2025-02-07T07:52:12Z"}
+{"level":"INFO","time":"2025-02-07T15:53:59.640+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"ERROR","time":"2025-02-07T15:54:49.333+0800","caller":"sshclient/sshclient.go:36","msg":"Failed to dial,err:ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain\n"}
+{"level":"INFO","time":"2025-02-07T15:55:26.324+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-07T15:56:23.006+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"ERROR","time":"2025-02-07T15:56:40.575+0800","caller":"sshclient/sshclient.go:36","msg":"Failed to dial,err:ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain\n"}
+{"level":"INFO","time":"2025-02-07T16:20:54.332+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-07T16:21:13.913+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-07T16:27:37.956+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-07T16:30:00.010+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-07 16:30:00"}
+{"level":"INFO","time":"2025-02-07T16:30:00.010+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-07 08:30:00.0103482 +0000 UTC"}
+{"level":"INFO","time":"2025-02-07T16:30:00.038+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-07 16:30:00"}
+{"level":"INFO","time":"2025-02-07T16:30:00.040+0800","caller":"cronjobs/release_task.go:108","msg":"Begin stop Service,taskID:100007"}
+{"level":"INFO","time":"2025-02-07T16:30:00.044+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-07T16:30:00.044+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-07 16:30:00,err:no release records"}
+{"level":"ERROR","time":"2025-02-07T16:31:15.676+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-07T16:31:15.676+0800","caller":"cronjobs/release_task.go:133","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-02-07T16:32:00.705+0800","caller":"mysql/xmlDeploy.go:21","msg":"insertID:1"}
+{"level":"ERROR","time":"2025-02-07T16:32:24.150+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-07T16:32:24.940+0800","caller":"service/releaseXML.go:106","msg":"JenkinsBuildResultRsync failed,taskID:100001,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-07T16:32:30.138+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":290.2349325,"time":"2025-02-07T08:32:30Z"}
+{"level":"INFO","time":"2025-02-08T10:37:42.434+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:40:43.944+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:40:57.145+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":10.6630022,"time":"2025-02-08T02:40:57Z"}
+{"level":"INFO","time":"2025-02-08T10:42:29.073+0800","caller":"mysql/xmlDeploy.go:21","msg":"insertID:2"}
+{"level":"ERROR","time":"2025-02-08T10:42:29.375+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-08T10:42:29.375+0800","caller":"service/releaseXML.go:152","msg":"JenkinsBuildResultRsync failed,taskID:100002,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-08T10:43:07.825+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0000203,"time":"2025-02-08T02:43:07Z"}
+{"level":"INFO","time":"2025-02-08T10:43:11.185+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:11Z"}
+{"level":"INFO","time":"2025-02-08T10:43:12.447+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:12Z"}
+{"level":"INFO","time":"2025-02-08T10:43:15.550+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:15Z"}
+{"level":"INFO","time":"2025-02-08T10:43:16.985+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:16Z"}
+{"level":"INFO","time":"2025-02-08T10:43:23.895+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:23Z"}
+{"level":"INFO","time":"2025-02-08T10:43:34.749+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:34Z"}
+{"level":"INFO","time":"2025-02-08T10:43:36.750+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:36Z"}
+{"level":"INFO","time":"2025-02-08T10:43:37.785+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:37Z"}
+{"level":"INFO","time":"2025-02-08T10:43:39.131+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:39Z"}
+{"level":"INFO","time":"2025-02-08T10:43:40.181+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:40Z"}
+{"level":"INFO","time":"2025-02-08T10:43:47.415+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:47Z"}
+{"level":"INFO","time":"2025-02-08T10:43:48.467+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:48Z"}
+{"level":"INFO","time":"2025-02-08T10:43:49.468+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:43:49Z"}
+{"level":"INFO","time":"2025-02-08T10:44:30.575+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:44:56.570+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:45:00.003+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-08 10:45:00"}
+{"level":"INFO","time":"2025-02-08T10:45:00.004+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-08 02:45:00.0044075 +0000 UTC"}
+{"level":"INFO","time":"2025-02-08T10:45:00.005+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-08 10:45:00"}
+{"level":"INFO","time":"2025-02-08T10:45:00.022+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-08T10:45:00.022+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-08 10:45:00,err:no release records"}
+{"level":"INFO","time":"2025-02-08T10:45:32.610+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:47:37.790+0800","caller":"mysql/xmlDeploy.go:21","msg":"insertID:3"}
+{"level":"ERROR","time":"2025-02-08T10:47:38.685+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-08T10:47:40.299+0800","caller":"service/releaseXML.go:152","msg":"JenkinsBuildResultRsync failed,taskID:100003,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-08T10:48:13.057+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":154.9693686,"time":"2025-02-08T02:48:13Z"}
+{"level":"INFO","time":"2025-02-08T10:48:36.674+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:48:36Z"}
+{"level":"INFO","time":"2025-02-08T10:48:38.124+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:48:38Z"}
+{"level":"INFO","time":"2025-02-08T10:48:51.668+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:48:55.565+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:48:55Z"}
+{"level":"INFO","time":"2025-02-08T10:50:00.014+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-08 10:50:00"}
+{"level":"INFO","time":"2025-02-08T10:50:00.014+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-08 10:50:00"}
+{"level":"INFO","time":"2025-02-08T10:50:00.014+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-08 02:50:00.0147864 +0000 UTC"}
+{"level":"INFO","time":"2025-02-08T10:50:00.020+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-08T10:50:00.020+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-08 10:50:00,err:no release records"}
+{"level":"ERROR","time":"2025-02-08T10:50:48.856+0800","caller":"mysql/xmlDeploy.go:13","msg":"insert task_id 100003 failed,err:Error 1062 (23000): Duplicate entry '100003' for key 'idx_task_id'"}
+{"level":"ERROR","time":"2025-02-08T10:50:48.856+0800","caller":"service/releaseXML.go:148","msg":"mysql.InsertXml failed,task_id:100003,err:Error 1062 (23000): Duplicate entry '100003' for key 'idx_task_id'"}
+{"level":"ERROR","time":"2025-02-08T10:50:48.973+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-08T10:50:48.973+0800","caller":"service/releaseXML.go:152","msg":"JenkinsBuildResultRsync failed,taskID:100003,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-08T10:50:48.973+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":78.1828102,"time":"2025-02-08T02:50:48Z"}
+{"level":"INFO","time":"2025-02-08T10:51:22.253+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0005053,"time":"2025-02-08T02:51:22Z"}
+{"level":"INFO","time":"2025-02-08T10:51:23.830+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:51:23Z"}
+{"level":"INFO","time":"2025-02-08T10:51:25.112+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:51:25Z"}
+{"level":"INFO","time":"2025-02-08T10:51:56.851+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:51:56Z"}
+{"level":"INFO","time":"2025-02-08T10:54:07.514+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:54:54.829+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:54:54Z"}
+{"level":"INFO","time":"2025-02-08T10:55:00.006+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-08 10:55:00"}
+{"level":"INFO","time":"2025-02-08T10:55:00.007+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-08 02:55:00.0073246 +0000 UTC"}
+{"level":"INFO","time":"2025-02-08T10:55:00.007+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-08 10:55:00"}
+{"level":"INFO","time":"2025-02-08T10:55:00.020+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-08T10:55:00.020+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-08 10:55:00,err:no release records"}
+{"level":"INFO","time":"2025-02-08T10:56:13.986+0800","caller":"mysql/xmlDeploy.go:21","msg":"insertID:5"}
+{"level":"ERROR","time":"2025-02-08T10:56:14.110+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-08T10:56:14.110+0800","caller":"service/releaseXML.go:153","msg":"JenkinsBuildResultRsync failed,taskID:100005,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-08T10:56:14.110+0800","caller":"service/releaseXML.go:49","msg":"xmlTaskStatusMap:map[100005:{success }]"}
+{"level":"INFO","time":"2025-02-08T10:56:14.110+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":72.0299667,"time":"2025-02-08T02:56:14Z"}
+{"level":"INFO","time":"2025-02-08T10:57:26.457+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:57:26Z"}
+{"level":"INFO","time":"2025-02-08T10:59:39.720+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T10:59:46.608+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0005198,"time":"2025-02-08T02:59:46Z"}
+{"level":"INFO","time":"2025-02-08T10:59:58.689+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T02:59:58Z"}
+{"level":"INFO","time":"2025-02-08T11:00:00.011+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-08 11:00:00"}
+{"level":"INFO","time":"2025-02-08T11:00:00.011+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-08 03:00:00.0114984 +0000 UTC"}
+{"level":"INFO","time":"2025-02-08T11:00:00.012+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-08 11:00:00"}
+{"level":"INFO","time":"2025-02-08T11:00:00.017+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-08T11:00:00.017+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-08 11:00:00,err:no release records"}
+{"level":"INFO","time":"2025-02-08T11:00:00.667+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0029929,"time":"2025-02-08T03:00:00Z"}
+{"level":"INFO","time":"2025-02-08T11:01:09.332+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T11:01:40.857+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T11:02:14.713+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project 拷贝-当天增量-到堡垒机 build number 2162 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:02:29.020+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1848 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:02:39.233+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1849 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:02:53.209+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1850 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:03:07.125+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1851 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:03:07.130+0800","caller":"mysql/xmlDeploy.go:21","msg":"insertID:6"}
+{"level":"ERROR","time":"2025-02-08T11:03:07.209+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-08T11:03:07.209+0800","caller":"service/releaseXML.go:154","msg":"JenkinsBuildResultRsync failed,taskID:100006,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-08T11:03:07.209+0800","caller":"service/releaseXML.go:49","msg":"xmlTaskStatusMap:map[100006:{success }]"}
+{"level":"INFO","time":"2025-02-08T11:03:07.209+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":74.8651143,"time":"2025-02-08T03:03:07Z"}
+{"level":"INFO","time":"2025-02-08T11:03:42.255+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T03:03:42Z"}
+{"level":"INFO","time":"2025-02-08T11:03:56.878+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0001734,"time":"2025-02-08T03:03:56Z"}
+{"level":"INFO","time":"2025-02-08T11:03:58.472+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0001275,"time":"2025-02-08T03:03:58Z"}
+{"level":"INFO","time":"2025-02-08T11:04:54.564+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100006","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T03:04:54Z"}
+{"level":"INFO","time":"2025-02-08T11:05:00.012+0800","caller":"cronjobs/release_task.go:70","msg":"begin RunReleaseTask func at 2025-02-08 11:05:00"}
+{"level":"INFO","time":"2025-02-08T11:05:00.012+0800","caller":"mysql/release.go:21","msg":"nowUTC:2025-02-08 03:05:00.0125519 +0000 UTC"}
+{"level":"INFO","time":"2025-02-08T11:05:00.012+0800","caller":"cronjobs/packaging_task.go:209","msg":"Begin RunPackageTask ","time":"2025-02-08 11:05:00"}
+{"level":"INFO","time":"2025-02-08T11:05:00.029+0800","caller":"cronjobs/packaging_task.go:215","msg":"no release records"}
+{"level":"ERROR","time":"2025-02-08T11:05:00.029+0800","caller":"cronjobs/task_runner.go:21","msg":"RunPackageTask failed at 2025-02-08 11:05:00,err:no release records"}
+{"level":"INFO","time":"2025-02-08T11:05:50.725+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T11:06:08.266+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-02-08T11:06:15.388+0800","caller":"zap/zap.go:117","msg":"/api/v1/releaseXML","status":200,"method":"POST","path":"/api/v1/releaseXML","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T03:06:15Z"}
+{"level":"INFO","time":"2025-02-08T11:06:34.421+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project 拷贝-当天增量-到堡垒机 build number 2163 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:06:42.079+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0006126,"time":"2025-02-08T03:06:42Z"}
+{"level":"INFO","time":"2025-02-08T11:06:43.509+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0006778,"time":"2025-02-08T03:06:43Z"}
+{"level":"INFO","time":"2025-02-08T11:06:44.823+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0002027,"time":"2025-02-08T03:06:44Z"}
+{"level":"INFO","time":"2025-02-08T11:06:45.905+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0,"time":"2025-02-08T03:06:45Z"}
+{"level":"INFO","time":"2025-02-08T11:06:46.986+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0001703,"time":"2025-02-08T03:06:46Z"}
+{"level":"INFO","time":"2025-02-08T11:06:48.045+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0007236,"time":"2025-02-08T03:06:48Z"}
+{"level":"INFO","time":"2025-02-08T11:06:48.466+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1852 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:06:53.538+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.0007031,"time":"2025-02-08T03:06:53Z"}
+{"level":"INFO","time":"2025-02-08T11:07:03.652+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1853 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:07:18.855+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1854 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:07:34.270+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project iBizXML-通过源文件自动获取目标路径 build number 1855 with result:SUCCESS\n"}
+{"level":"INFO","time":"2025-02-08T11:07:34.273+0800","caller":"mysql/xmlDeploy.go:21","msg":"insertID:7"}
+{"level":"ERROR","time":"2025-02-08T11:07:34.342+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前版本发布任务不存在"}
+{"level":"ERROR","time":"2025-02-08T11:07:34.342+0800","caller":"service/releaseXML.go:154","msg":"JenkinsBuildResultRsync failed,taskID:100007,buildStatus:1,jenkinsAction:更新xml成功"}
+{"level":"INFO","time":"2025-02-08T11:07:34.342+0800","caller":"service/releaseXML.go:49","msg":"xmlTaskStatusMap:map[100007:{success }]"}
+{"level":"INFO","time":"2025-02-08T11:07:49.479+0800","caller":"zap/zap.go:117","msg":"/api/v1/getXmlStatus","status":200,"method":"GET","path":"/api/v1/getXmlStatus","query":"task_id=100007","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.000877,"time":"2025-02-08T03:07:49Z"}

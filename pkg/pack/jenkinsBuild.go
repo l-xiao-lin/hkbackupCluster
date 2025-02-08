@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"hkbackupCluster/logger"
 	"reflect"
 	"strconv"
 	"time"
@@ -45,7 +46,7 @@ func JenkinsBuild(jobName string, param map[string]string) (respBuild *RespBuild
 		time.Sleep(5000 * time.Millisecond)
 		build.Poll(ctx)
 	}
-	fmt.Printf("build number %d with result:%v\n", build.GetBuildNumber(), build.GetResult())
+	logger.SugarLog.Infof(" Jenkins project %s build number %d with result:%v\n", jobName, build.GetBuildNumber(), build.GetResult())
 	respBuild = &RespBuild{
 		BuildNumber: build.GetBuildNumber(),
 		BuildResult: build.GetResult(),
