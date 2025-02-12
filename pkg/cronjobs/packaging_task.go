@@ -148,7 +148,8 @@ func checkConfiguration(config model.Config) (map[string]HostCheckResult, error)
 
 		var configExists bool
 		if fileExists {
-			cmd := fmt.Sprintf("grep -qF %s %s; echo $?", config.ConfigContent, filePath)
+			cmd := fmt.Sprintf("grep -qE '^%s$' %s; echo $?", config.ConfigContent, filePath)
+			logger.SugarLog.Infof("cmd:%s", cmd)
 			output, err := executeCommand(cmd)
 			if err != nil {
 				checkResult[host] = HostCheckResult{
@@ -213,7 +214,7 @@ func RunPackageTask() (err error) {
 	}
 	if len(records) == 0 {
 		logger.SugarLog.Infof("no release records")
-		return fmt.Errorf("no release records")
+		return nil
 	}
 
 	//2、将packaging_time status 改成-1

@@ -1,6 +1,8 @@
 package cronjobs
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"hkbackupCluster/dao/mysql"
@@ -17,11 +19,23 @@ import (
 )
 
 var (
-	jobName             = "pipeline-ERP-主备机间隔部署"
-	standalonePattern   = regexp.MustCompile(`^standalone:[^:]+:[^:]+:sdk`)
-	allEnvHostsString   = "standalone:guanwang:guanwang-i2:sdk:!108ZhiYuan:!56MengNuo"
-	changeServiceStatus = "修改jboss和SDK状态"
+	jobName               = "pipeline-ERP-主备机间隔部署"
+	standalonePattern     = regexp.MustCompile(`^standalone:[^:]+:[^:]+:sdk`)
+	allEnvHostsString     = "standalone:guanwang:guanwang-i2:sdk:!108ZhiYuan:!56MengNuo"
+	excludeZhiYuanAllHost = "standalone:guanwang:guanwang-i2:sdk:!56MengNuo"
+	changeServiceStatus   = "修改jboss和SDK状态"
+	canaryJenkinsJobName  = "erp2.0美西SDK_通过主机列表_灰度调度"
 )
+
+type Text struct {
+	Content             string   `json:"content"`
+	MentionedMobileList []string `json:"mentioned_mobile_list"`
+}
+
+type WeChatBot struct {
+	MsgType string `json:"msgtype"`
+	Text    Text   `json:"text"`
+}
 
 func updateStatusBasedOnResult(taskID string, resp *pack.RespBuild, buildErr error) error {
 	var status int8
@@ -65,6 +79,25 @@ func DemoReleaseHandler(c *gin.Context) {
 
 }
 
+func SentWeChatBot(param WeChatBot) (err error) {
+	payload, err := json.Marshal(param)
+	if err != nil {
+		logger.SugarLog.Errorf("json.Marshal failed,err:%v", err)
+		return
+	}
+	apiURL := fmt.Sprintf("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=6f39b7e2-96cb-4068-bf7e-85a573bdef38")
+	resp, err := http.Post(apiURL, "application/json", bytes.NewBuffer(payload))
+	if err != nil {
+		logger.SugarLog.Errorf("http.Post failed,err:%v", err)
+		return
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return
+	}
+	return nil
+}
+
 func RunReleaseTask() (err error) {
 	//1、查询package_operations中待发布的任务
 	logger.SugarLog.Infof("begin RunReleaseTask func at %s", time.Now().Format("2006-01-02 15:04:05"))
@@ -79,6 +112,7 @@ func RunReleaseTask() (err error) {
 
 	//2、检测是否需要停服执行sql
 	var shouldReturn bool
+	var notifiedDBColleague bool
 	for _, record := range records {
 		//停服处理
 		switch record.Status {
@@ -88,8 +122,9 @@ func RunReleaseTask() (err error) {
 				var host string
 				if standalonePattern.MatchString(record.Host) {
 					host = record.Host + "!108ZhiYuan:!56MengNuo"
+				} else {
+					host = record.Host
 				}
-				host = record.Host
 
 				param := &model.ServiceStop{
 					Host:               host,
@@ -132,6 +167,32 @@ func RunReleaseTask() (err error) {
 				if callErr != nil {
 					logger.SugarLog.Errorf("callThirdPartyAPI.JenkinsBuildResultRsync failed,err:%v", callErr)
 				}
+
+				//四、微信通知DB同事(仅通知一次)
+				if !notifiedDBColleague {
+					p := WeChatBot{
+						MsgType: "text",
+						Text: Text{
+							Content:             fmt.Sprintf("有sql语句需要执行"),
+							MentionedMobileList: []string{"all"},
+						},
+					}
+					//发送企业微信机器人
+					if err := SentWeChatBot(p); err != nil {
+						logger.SugarLog.Errorf("SentWeChatBot failed,err:%v", err)
+					} else {
+						logger.SugarLog.Infof("SentWeChatBot success,the taskID:%s", record.TaskID)
+					}
+					notifiedDBColleague = true
+				}
+
+				//五、调用第三方接口触发执行SQL语句
+				if err := callThirdPartyAPI.TriggerSQLExecution(record.TaskID); err != nil {
+					logger.SugarLog.Errorf("TriggerSQLExecution failed,taskID:%s,err:%v", record.TaskID, err)
+					continue
+				}
+				logger.SugarLog.Infof("TriggerSQLExecution success.")
+
 			}
 		case 3:
 			//已停服待执行sql
@@ -196,7 +257,7 @@ func RunReleaseTask() (err error) {
 		}
 	}
 
-	//5、针对已执行停服的主机恢复监控配置
+	//5、针对已执行停服的主机恢复监控配置及灰度处理
 
 	for _, record := range records {
 		if record.IsSqlExec {
@@ -221,8 +282,38 @@ func RunReleaseTask() (err error) {
 			}
 
 		}
-	}
+		//灰度处理
+		paramMap := make(map[string]string)
+		if record.CanaryStatus != nil {
+			switch *record.CanaryStatus {
+			case 1:
+				paramMap = map[string]string{
+					"Action":       "canary",
+					"canary_hosts": record.Host,
+				}
+			case 2:
+				paramMap = map[string]string{
+					"Action": "nocanary",
+				}
+			default:
+				logger.SugarLog.Infof("Unknown CanaryStatus value %d for taskID %s, skipping...", *record.CanaryStatus, record.TaskID)
+				continue
+			}
 
+			resp, buildErr := pack.JenkinsBuild(canaryJenkinsJobName, paramMap)
+
+			if buildErr != nil {
+				logger.SugarLog.Errorf("Jenkins project %s build failed for taskID %s,host %s,err:%v", canaryJenkinsJobName, record.TaskID, record.Host, buildErr)
+				continue
+			}
+
+			if resp != nil && resp.BuildResult == "SUCCESS" {
+				logger.SugarLog.Infof("Jenkins project %s build success,param:%v", canaryJenkinsJobName, paramMap)
+			} else {
+				logger.SugarLog.Errorf("Jenkins project %s build failed,taskID:%s,err:%v", canaryJenkinsJobName, record.TaskID, buildErr)
+			}
+		}
+	}
 	return
 }
 
@@ -231,7 +322,12 @@ func deDuplicateHosts(hosts []string) string {
 	var allParts []string
 	for _, host := range hosts {
 		if standalonePattern.MatchString(host) {
-			return allEnvHostsString
+			now := time.Now()
+			if now.Hour() == 12 && now.Minute() >= 0 && now.Minute() < 60 {
+				return excludeZhiYuanAllHost
+			} else {
+				return allEnvHostsString
+			}
 		}
 		parts := strings.Split(host, ":")
 		allParts = append(allParts, parts...)

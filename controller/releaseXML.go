@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"hkbackupCluster/logger"
 	"hkbackupCluster/model"
 	"hkbackupCluster/service"
@@ -20,37 +19,18 @@ func ReleaseXmlHandler(c *gin.Context) {
 		return
 	}
 
-	// 启动一个新的 goroutine 处理耗时任务
-	go func(param *model.ParamReleaseXML) {
-		if err := service.ReleaseXml(p); err != nil {
-			c.JSON(200, gin.H{
-				"msg":  fmt.Sprintf("service.ReleaseXml failed,err:%v", err),
-				"code": 1002,
-			})
-			return
-		}
-	}(p)
+	if err := service.ReleaseXml(p); err != nil {
+		logger.SugarLog.Errorf("service.ReleaseXml failed,taskID:%s,common:%s,err:%v", p.TaskID, *p.Common, err)
+		c.JSON(200, gin.H{
+			"msg":  err.Error(),
+			"code": 1002,
+		})
+		return
+	}
 
 	c.JSON(200, gin.H{
 		"msg":  "success",
 		"code": 1000,
 	})
 
-}
-
-func GetXmlStatusHandler(c *gin.Context) {
-	taskID := c.Query("task_id")
-	status, exists := service.GetXmlTaskStatus(taskID)
-	if !exists {
-		c.JSON(200, gin.H{
-			"msg":  "Task not found",
-			"code": 1005,
-		})
-		return
-	}
-	c.JSON(200, gin.H{
-		"code":   1000,
-		"status": status.Status,
-		"error":  status.Error,
-	})
 }

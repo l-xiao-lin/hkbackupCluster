@@ -12,6 +12,7 @@ type ReleaseOperation struct {
 	Status        int8    `db:"status" json:"status"`
 	RmRulePackage bool    `db:"rm_rulepackage" json:"rm_rulepackage"`
 	PkgName       *string `db:"pkg_name" json:"pkg_name"`
+	CanaryStatus  *int    `json:"canary_status" db:"canary_status"`
 	IsSqlExec     bool    `db:"is_sql_exec" json:"is_sql_exec"`
 }
 
@@ -20,7 +21,7 @@ func GetUnreleasedRecords() (data []ReleaseOperation, err error) {
 
 	logger.SugarLog.Infof("nowUTC:%v", nowUTC)
 
-	sqlStr := "select task_id,host,rm_rulepackage,pkg_name,is_sql_exec,status from release_operations " +
+	sqlStr := "select task_id,host,rm_rulepackage,pkg_name,is_sql_exec,status,canary_status from release_operations " +
 		"where (status = ? or status= ?  or status= ?)and scheduled_time<= ?"
 	fmt.Printf("sqlstr: %s\n", sqlStr)
 	err = db.Select(&data, sqlStr, 0, 4, 3, nowUTC)

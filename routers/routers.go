@@ -85,7 +85,7 @@ func SetupRouter() *gin.Engine {
 
 	v1.POST("/releaseXML", controller.ReleaseXmlHandler)
 
-	v1.GET("/getXmlStatus", controller.GetXmlStatusHandler)
+	v1.GET("/domoReleaseXML", cronjobs.DemoReleaseXmlHandler)
 
 	return r
 }

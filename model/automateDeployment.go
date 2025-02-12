@@ -22,6 +22,7 @@ type ParamsIncrementalPack struct {
 	UpdateSecurity  bool     `json:"update_security" db:"update_security"`
 	IsSqlExec       bool     `json:"is_sql_exec" db:"is_sql_exec"`
 	IsPackage       bool     `json:"is_package" db:"is_package"`
+	CanaryStatus    *int     `json:"canary_status" db:"canary_status"` //1:需要灰度;2:取消灰度
 	ScheduledTime   string   `json:"scheduled_time" db:"scheduled_time"`
 	PackageTime     string   `json:"package_time" db:"package_time"`
 }
@@ -36,6 +37,7 @@ type Config struct {
 type ParamTestPack struct {
 	JobName       string `json:"job_name" binding:"required"`
 	SrcPath       string `json:"src_path"`
+	SrcHost       string `json:"src_host"`
 	Host          string `json:"host"`
 	Common        string `json:"common"`
 	VersionOption string `json:"version_option"`
@@ -56,6 +58,7 @@ type RespPackageData struct {
 	UpdateSecurity  bool    `json:"update_security" db:"update_security"`
 	IsSqlExec       bool    `json:"is_sql_exec" db:"is_sql_exec"`
 	IsPackage       bool    `json:"is_package" db:"is_package"`
+	CanaryStatus    *int    `json:"canary_status" db:"canary_status"`
 	ScheduledTime   string  `json:"scheduled_time" db:"scheduled_time"`
 	PackageTime     string  `json:"package_time" db:"package_time"`
 }
@@ -73,9 +76,10 @@ type ServiceStop struct {
 }
 
 type ParamReleaseXML struct {
-	TaskID  string  `json:"task_id" db:"task_id"  binding:"required"`
-	SrcPath string  `json:"src_path" db:"src_path" binding:"required"`
-	JobName string  `json:"job_name" db:"job_name"  binding:"required"`
-	Host    string  `json:"host"  db:"host" binding:"required"`
-	Common  *string `json:"common" db:"common"`
+	TaskID        string  `json:"task_id" db:"task_id"  binding:"required"`
+	SrcPath       string  `json:"src_path" db:"src_path" binding:"required"`
+	JobName       string  `json:"job_name" db:"job_name"  binding:"required"`
+	Host          string  `json:"host"  db:"host" binding:"required"`
+	Common        *string `json:"common" db:"common"`
+	ScheduledTime string  `json:"scheduled_time" db:"scheduled_time"`
 }

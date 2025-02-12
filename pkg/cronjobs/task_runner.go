@@ -27,6 +27,12 @@ func (tr *TaskRunner) Start() {
 		}
 	})
 
+	tr.cron.AddFunc("*/5 * * * * ", func() {
+		if err := ReleaseXmlHandler(); err != nil {
+			logger.SugarLog.Errorf("ReleaseXmlHandler failed at %s,err;%v", time.Now().Format("2006-01-02 15:04:05"), err)
+		}
+	})
+
 	tr.cron.Start()
 }
 
