@@ -79,7 +79,7 @@ func SetupRouter() *gin.Engine {
 
 	v1.GET("/demoRelease", cronjobs.DemoReleaseHandler)
 
-	v1.GET("/sendim", cronjobs.DemoNotifyMerchantHandler)
+	v1.GET("/sendImMessage", cronjobs.DemoNotifyMerchantHandler)
 
 	v1.POST("/testEnvPackage", controller.TestEnvPackageHandler)
 

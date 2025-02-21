@@ -10,6 +10,7 @@ import (
 	"hkbackupCluster/model"
 	"hkbackupCluster/pkg/callThirdPartyAPI"
 	"hkbackupCluster/pkg/pack"
+	"hkbackupCluster/pkg/sendEmail"
 	"net/http"
 	"regexp"
 	"strings"
@@ -168,7 +169,7 @@ func RunReleaseTask() (err error) {
 					logger.SugarLog.Errorf("callThirdPartyAPI.JenkinsBuildResultRsync failed,err:%v", callErr)
 				}
 
-				//四、微信通知DB同事(仅通知一次)
+				//四、微信及邮件通知DB同事(仅通知一次)
 				if !notifiedDBColleague {
 					p := WeChatBot{
 						MsgType: "text",
@@ -182,6 +183,11 @@ func RunReleaseTask() (err error) {
 						logger.SugarLog.Errorf("SentWeChatBot failed,err:%v", err)
 					} else {
 						logger.SugarLog.Infof("SentWeChatBot success,the taskID:%s", record.TaskID)
+					}
+
+					//邮件通知
+					if err := sendEmail.SendEmail(); err != nil {
+						logger.SugarLog.Errorf("SendEmail failed,err:%v", err)
 					}
 					notifiedDBColleague = true
 				}

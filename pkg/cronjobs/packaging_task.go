@@ -148,7 +148,8 @@ func checkConfiguration(config model.Config) (map[string]HostCheckResult, error)
 
 		var configExists bool
 		if fileExists {
-			cmd := fmt.Sprintf("grep -qE '^%s$' %s; echo $?", config.ConfigContent, filePath)
+			content := strings.TrimSpace(config.ConfigContent)
+			cmd := fmt.Sprintf("grep -qxF '%s' %s; echo $?", content, filePath)
 			logger.SugarLog.Infof("cmd:%s", cmd)
 			output, err := executeCommand(cmd)
 			if err != nil {
@@ -271,7 +272,7 @@ func RunPackageTask() (err error) {
 							configUpdateSuccess = false
 							break
 						}
-						logger.SugarLog.Infof("checkConfiguration checkResult:%v", checkResult)
+						logger.SugarLog.Infof("checkConfiguration checkResult:%#v", checkResult)
 
 						//过滤heckResult中的config_missing(需要更新的配置)及error
 						var configUpdateHosts []string
@@ -370,6 +371,13 @@ func RunPackageTask() (err error) {
 				continue
 			}
 
+			//只需要停机跑sql,不需要打包也没有配置文件
+		} else if record.IsSqlExec {
+			status = 1 //将状态改成1 成功
+			if err := mysql.HandleSuccessPackTransaction(record.TaskID, status, nil, &record); err != nil {
+				logger.SugarLog.Errorf("HandleSuccessPackTransaction failed,taskID:%s,err:%v", record.TaskID, err)
+				continue
+			}
 		}
 
 	}

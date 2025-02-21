@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-
 	if err := logger.Init("dev"); err != nil {
 		fmt.Printf("init logger failed,err:%v\n", err)
 		return

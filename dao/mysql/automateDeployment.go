@@ -76,8 +76,8 @@ func insertConfigurations(tx *sql.Tx, p *model.ParamsIncrementalPack) (err error
 }
 
 func InsertPackage(tx *sql.Tx, p *model.ParamsIncrementalPack) (insertID int64, err error) {
-	sqlStr := "insert into package_operations(task_id,job_name,host,status,src_path,common,diff,rm_rulepackage, pkg_name,update_jbossconf,update_sdkconf,update_security,package_time,scheduled_time,is_sql_exec,is_package,canary_status) " +
-		"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
+	sqlStr := "insert into package_operations(task_id,job_name,host,status,src_path,common,diff,rm_rulepackage, pkg_name,update_jbossconf,update_sdkconf,update_security,package_time,scheduled_time,is_sql_exec,is_package,canary_status,should_send) " +
+		"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) " +
 		"ON DUPLICATE KEY UPDATE " +
 		"update_time=now()" +
 		",status=values(status)"
@@ -141,8 +141,14 @@ func InsertPackage(tx *sql.Tx, p *model.ParamsIncrementalPack) (insertID int64, 
 		sqlStr = fmt.Sprintf(sqlStr + ",canary_status=values(canary_status)")
 	}
 
+	should_send := false
+	if p.ShouldSend {
+		should_send = true
+		sqlStr = fmt.Sprintf(sqlStr + ",should_send=values(should_send)")
+	}
+
 	fmt.Printf("sqlStr:%s\n", sqlStr)
-	ret, err := tx.Exec(sqlStr, p.TaskID, p.JobName, p.Host, status, p.SrcPath, p.Common, p.Diff, rm_rulepackage, p.PkgName, update_jbossconf, update_sdkconf, update_security, utcPackageTime, utcScheduledTime, is_sql_exec, is_package, p.CanaryStatus)
+	ret, err := tx.Exec(sqlStr, p.TaskID, p.JobName, p.Host, status, p.SrcPath, p.Common, p.Diff, rm_rulepackage, p.PkgName, update_jbossconf, update_sdkconf, update_security, utcPackageTime, utcScheduledTime, is_sql_exec, is_package, p.CanaryStatus, should_send)
 	if err != nil {
 		logger.SugarLog.Errorf("insert failed,err:%v", err)
 		return
@@ -159,7 +165,7 @@ func InsertPackage(tx *sql.Tx, p *model.ParamsIncrementalPack) (insertID int64, 
 
 func GetUnPackageRecords() (data []model.RespPackageData, err error) {
 	nowUTC := time.Now().UTC()
-	sqlStr := "select task_id,job_name,host,common,diff,rm_rulepackage,src_path,pkg_name,update_jbossconf,update_sdkconf,update_security,package_time,scheduled_time,is_sql_exec,is_package,canary_status from package_operations " +
+	sqlStr := "select task_id,job_name,host,common,diff,rm_rulepackage,src_path,pkg_name,update_jbossconf,update_sdkconf,update_security,package_time,scheduled_time,is_sql_exec,is_package,canary_status,should_send from package_operations " +
 		"where status=? and package_time<=? order by create_time ASC"
 	err = db.Select(&data, sqlStr, 0, nowUTC)
 	if err != nil {
@@ -259,10 +265,15 @@ func HandleSuccessPackTransaction(Id string, status int8, buildNumber *int64, p 
 		is_sql_exec = 1
 	}
 
+	should_send := 0
+	if p.ShouldSend {
+		should_send = 1
+	}
+
 	scheduledTime, _ := time.Parse(time.RFC3339, p.ScheduledTime)
 	utcScheduledTime := scheduledTime.UTC()
-	sqlStr2 := "insert into release_operations(task_id,host,rm_rulepackage,pkg_name,scheduled_time,is_sql_exec,canary_status) values (?,?,?,?,?,?,?)"
-	ret2, err := tx.Exec(sqlStr2, p.TaskID, p.Host, rm_rulePackage, p.PkgName, utcScheduledTime, is_sql_exec, p.CanaryStatus)
+	sqlStr2 := "insert into release_operations(task_id,host,rm_rulepackage,pkg_name,scheduled_time,is_sql_exec,canary_status,should_send) values (?,?,?,?,?,?,?,?)"
+	ret2, err := tx.Exec(sqlStr2, p.TaskID, p.Host, rm_rulePackage, p.PkgName, utcScheduledTime, is_sql_exec, p.CanaryStatus, should_send)
 	if err != nil {
 		return
 	}

@@ -25,6 +25,7 @@ type ParamsIncrementalPack struct {
 	CanaryStatus    *int     `json:"canary_status" db:"canary_status"` //1:需要灰度;2:取消灰度
 	ScheduledTime   string   `json:"scheduled_time" db:"scheduled_time"`
 	PackageTime     string   `json:"package_time" db:"package_time"`
+	ShouldSend      bool     `json:"should_send" db:"should_send"`
 }
 
 type Config struct {
@@ -61,6 +62,7 @@ type RespPackageData struct {
 	CanaryStatus    *int    `json:"canary_status" db:"canary_status"`
 	ScheduledTime   string  `json:"scheduled_time" db:"scheduled_time"`
 	PackageTime     string  `json:"package_time" db:"package_time"`
+	ShouldSend      bool    `json:"should_send" db:"should_send"`
 }
 
 type ServiceStop struct {

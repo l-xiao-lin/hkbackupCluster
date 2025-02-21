@@ -17,6 +17,7 @@ require (
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/goccy/go-json v0.10.3
 	github.com/jmoiron/sqlx v1.4.0
+	github.com/jordan-wright/email v4.0.1-0.20210109023952-943e75fe5223+incompatible
 	github.com/nacos-group/nacos-sdk-go/v2 v2.2.5
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/pkg/sftp v1.13.5

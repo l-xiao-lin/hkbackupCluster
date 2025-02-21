@@ -10,20 +10,13 @@ import (
 	"time"
 )
 
-type RespData struct {
-	Code    int      `json:"code"`
-	Message string   `json:"message"`
-	Success bool     `json:"success"`
-	Datas   []string `json:"datas"`
+type EnvHosts struct {
+	EnvironmentCodeList []string `json:"environmentCodeList"`
 }
 
-type param struct {
-	ReleaseTaskID string `json:"releaseTaskId"`
-}
-
-func TriggerSQLExecution(taskID string) (err error) {
-	apiUrl := "https://automated.pvt.tongtool.com/tool-service/releaseTask/api/noticeExecuteSql"
-	data := param{ReleaseTaskID: taskID}
+func GetMerchantsByEnvHost(envHosts []string) (merchants []string, err error) {
+	apiUrl := "https://automated.pvt.tongtool.com/tool-service/environment/api/getMerchantByEnvCodes"
+	data := EnvHosts{EnvironmentCodeList: envHosts}
 	jsonData, err := json.Marshal(data)
 	if err != nil {
 		logger.SugarLog.Errorf("json.Marshal failed,err:%v", err)
@@ -43,21 +36,19 @@ func TriggerSQLExecution(taskID string) (err error) {
 		return
 	}
 	defer respAPI.Body.Close()
-
 	body, err := io.ReadAll(respAPI.Body)
 	if err != nil {
 		return
 	}
 	var respData RespData
-
 	if err := json.Unmarshal(body, &respData); err != nil {
-		return err
+		return nil, err
 	}
-	if respData.Code != 0 {
-		logger.SugarLog.Errorf("call callThirdPartyAPI failed,err:%v", respData.Message)
-		return fmt.Errorf("TriggerSQLExecution failed,taskID:%s", taskID)
-	}
-	logger.SugarLog.Infof("TriggerSQLExecution taskID:%s success.", taskID)
-	return nil
 
+	if respData.Code == 0 && respData.Datas != nil {
+		logger.SugarLog.Infof("GetMerchantsByEnvHost success.")
+		return respData.Datas, nil
+	}
+	logger.SugarLog.Errorf("call GetMerchantsByEnvHost failed,err:%v", respData.Message)
+	return nil, fmt.Errorf("GetMerchantsByEnvHost failed,taskID:%s", envHosts)
 }
