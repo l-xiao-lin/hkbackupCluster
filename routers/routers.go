@@ -13,6 +13,7 @@ import (
 
 func SetupRouter() *gin.Engine {
 	r := gin.New()
+	r.LoadHTMLGlob("templates/*")
 	//使用第三方ginzap来接收gin框架的系统日志
 	r.Use(ginzap.Ginzap(logger.LG, time.RFC3339, true))
 	r.Use(ginzap.RecoveryWithZap(logger.LG, true))
@@ -86,6 +87,10 @@ func SetupRouter() *gin.Engine {
 	v1.POST("/releaseXML", controller.ReleaseXmlHandler)
 
 	v1.GET("/domoReleaseXML", cronjobs.DemoReleaseXmlHandler)
+
+	v1.GET("/report", controller.ReportHandler)
+
+	v1.POST("/sendReport", controller.SendReportHandler)
 
 	return r
 }
