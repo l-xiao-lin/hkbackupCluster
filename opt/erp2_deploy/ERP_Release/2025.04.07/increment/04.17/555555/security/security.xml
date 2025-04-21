@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="filterChainProxy" class="org.springframework.security.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				PATTERN_TYPE_APACHE_ANT
+				/f5_check.htm=httpSessionContextIntegrationFilter
+				/login.htm=httpSessionContextIntegrationFilter
+				/My97DatePicker.htm=httpSessionContextIntegrationFilter
+				/keepalive.htm=httpSessionContextIntegrationFilter
+				/process/resume/usercenter/payment/alipayResult=httpSessionContextIntegrationFilter
+				/process/resume/usercenter/payment/paypalResult=httpSessionContextIntegrationFilter
+				/registermerchant/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/process/resume/registermerchant/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/register/index.htm=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/index.htm=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/j_security_logout=logoutFilter
+				/j_security_check=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/process/signal/myaccount/ebayaccount/redirectebaylogin=httpSessionContextIntegrationFilter
+				/query/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/process/new/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/process/resume/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/process/signal/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/dataId/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,exceptionTranslationFilter,filterInvocationInterceptor
+				/**=httpSessionContextIntegrationFilter,authenticationProcessingFilter,securityContextHolderAwareRequestFilter,anonymousProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor
+			</value>
+		</property>
+	</bean>
+
+	<bean id="httpSessionContextIntegrationFilter"
+		class="com.ibiz.platform.web.springsecurity.CustomizedHttpSessionContextIntegrationFilter" />
+
+    <bean id="logoutFilter" class="org.springframework.security.ui.logout.LogoutFilter">
+        <constructor-arg value="${passport.baseurl}/logout" />
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.ui.logout.SecurityContextLogoutHandler" />
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl">
+            <value>/j_security_logout</value>
+        </property>
+    </bean>
+
+    <bean id="authenticationProcessingFilter"
+        class="com.ibiz.platform.web.springsecurity.passport.TicketAuthenticationProcessingFilter">
+        <property name="alwaysUseDefaultTargetUrl" value="false"/>
+        <property name="authenticationManager" ref="authenticationManager" />
+        <property name="authenticationFailureUrl" value="${passport.baseurl}/logout" />
+        <property name="defaultTargetUrl" value="/" />
+        <property name="filterProcessesUrl" value="/j_security_check" />
+    </bean>
+
+	<bean id="securityContextHolderAwareRequestFilter"
+		class="org.springframework.security.wrapper.SecurityContextHolderAwareRequestFilter" />
+
+	<bean id="anonymousProcessingFilter"
+		class="org.springframework.security.providers.anonymous.AnonymousProcessingFilter">
+		<property name="key" value="changeThis" />
+		<property name="userAttribute" value="guest,IS_AUTHENTICATED_ANONYMOUSLY" />
+	</bean>
+
+	<bean id="exceptionTranslationFilter" class="org.springframework.security.ui.ExceptionTranslationFilter">
+        <property name="authenticationEntryPoint">
+            <bean
+                class="com.ibiz.platform.web.springsecurity.passport.AuthenticationProcessingFilterEntryPointHttpPatch">
+                <property name="loginFormUrl" value="${passport.baseurl}" />
+            </bean>
+        </property>
+		<property name="accessDeniedHandler">
+			<bean class="com.ibiz.platform.web.springsecurity.DispatchAccessDeniedPageHandler">
+				<property name="urlDeniedPageMapping" >
+						<map>
+								<entry key="/process/**" value="/process/resume/system/access/denied"/>
+								<entry key="/query/**" value="/process/resume/system/access/denied"/>
+								<entry key="/**/**.htm" value="/common/noRight.htm"/>
+						</map>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="filterInvocationInterceptor"
+		class="com.ibiz.platform.web.springsecurity.CustomizedFilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+				PATTERN_TYPE_APACHE_ANT
+				/webmobile/register/**=forbidden
+				/process/resume/webmobile/register/**=forbidden
+				/process/resume/ibizbackground/api/fruugoWebhooks=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/ibizbackground/systemmaintainnotice/**=IS_AUTHENTICATED_FULLY,IBIZ_BACKGROUND
+				/process/resume/ibizbackground/**/**=IBIZ_BACKGROUND
+				/process/new/ibizbackground/**/**=IBIZ_BACKGROUND
+				/process/signal/ibizbackground/**/**=IBIZ_BACKGROUND
+				/ibizbackground/**/**.htm=IBIZ_BACKGROUND
+				/registermerchant/**=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/registermerchant/**=IS_AUTHENTICATED_ANONYMOUSLY
+				/register/index.htm=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/new/common/login=IS_AUTHENTICATED_ANONYMOUSLY
+				/todaylist/**=todaylist_goodsconfirm_view,todaylist_quicklyaffirmlist_view,todaylist_shippedlist_view,todaylist_assignstock_view,todaylist_unsalable_view
+				/query/todaylist/*=todaylist_goodsconfirm_view,todaylist_quicklyaffirmlist_view,todaylist_shippedlist_view,todaylist_assignstock_view,todaylist_unsalable_view
+				/process/new/todaylist/*=todaylist_goodsconfirm_view,todaylist_quicklyaffirmlist_view,todaylist_shippedlist_view,todaylist_assignstock_view,todaylist_unsalable_view
+				/myaccount/exchangerate/index.htm=setting_other_view,setting_other_edit
+				/dashboard/homepage/bottomadv.htm=IS_AUTHENTICATED_ANONYMOUSLY
+				/query/myaccount/exchangerate/*=setting_other_view,setting_other_edit
+				/process/resume/myaccount/exchangerate/*=setting_other_edit
+				/process/new/myaccount/shippingmethod/*=setting_logistics_edit
+				/process/signal/myaccount/shippingmethod/*=setting_logistics_edit
+				/myaccount/importshippingmethod/*=setting_logistics_edit
+				/process/signal/myaccount/shippingmethod/*=setting_logistics_edit
+				/process/resume/myaccount/shippingmethod/显示仓库列表=setting_logistics_view,setting_logistics_edit
+				/process/resume/myaccount/shippingmethod/查询已关联邮寄方式=setting_logistics_view,setting_logistics_edit
+				/process/resume/myaccount/shippingmethod/查看邮寄方式=setting_logistics_view,setting_logistics_edit
+				/process/resume/myaccount/shippingmethod/查询指定条件国家=setting_orderrule_edit
+				/process/resume/myaccount/shippingmethod/*=setting_logistics_edit,IBIZ_BACKGROUND
+				/process/resume/myaccount/importshippingmethod/*=setting_logistics_edit,setting_logistics_view
+				/myaccount/saleaccount/index.htm=setting_Account_view,setting_Account_edit
+				/process/new/myaccount/saleaccount=setting_Account_edit
+				/process/resume/myaccount/saleaccount/账户状态处理=setting_Account_edit
+				/process/resume/myaccount/saleaccount/检查速卖通帐号是否存在=setting_Account_edit
+				/query/myaccount/shippingmethod/*=setting_logistics_view,setting_logistics_edit
+				/query/myaccount/queryshippingmethod/*=setting_logistics_view,setting_logistics_edit
+				/myaccount/carriermanage/*=setting_logistics_edit,setting_logistics_view
+				/query/myaccount/querycarrier/*=setting_logistics_view,setting_logistics_edit
+				/process/resume/myaccount/carriermanage/查看承运人信息界面=setting_logistics_view,setting_logistics_edit
+				/process/new/myaccount/carriermanage/*=setting_logistics_edit
+				/process/signal/myaccount/carriermanage/*=setting_logistics_edit
+				/process/resume/myaccount/carriermanage/*=setting_logistics_edit
+				/myaccount/shippingmethod/*.htm*=setting_logistics_view,setting_logistics_edit
+				/myaccount/warehousesetting/index.htm*=setting_warehouse_view,setting_warehouse_edit
+				/process/new/myaccount/warehousesetting/*=setting_warehouse_edit
+				/process/signal/myaccount/warehousesetting/*=setting_warehouse_edit
+				/process/resume/myaccount/warehousesetting/查询仓库管理员=setting_warehouse_view,setting_warehouse_edit
+				/process/resume/myaccount/warehousesetting/查询仓库列表=setting_warehouse_view,setting_warehouse_edit
+				/process/resume/myaccount/warehousesetting/进入页面前设置=setting_warehouse_view,setting_warehouse_edit
+				/process/resume/myaccount/warehousesetting/查询可选择的用户=setting_warehouse_view,setting_warehouse_edit
+				/process/resume/myaccount/warehousesetting/*=setting_warehouse_edit
+				/process/signal/myaccount/warehousesetting/*=setting_warehouse_edit
+				/myaccount/deliverysetting/index.htm*=setting_deliverysetting_view,setting_deliverysetting_edit
+				/query/myaccount/warehousesetting/*=setting_warehouse_view,setting_warehouse_edit
+				/process/signal/myaccount/deliverysetting/*=setting_deliverysetting_edit
+				/myaccount/storewarning/index.htm*=setting_warehouse_edit,setting_warehouse_view
+				/myaccount/storewarning/index.htm*=setting_warehouse_edit,setting_warehouse_view
+				/query/warehouse/initial*=setting_warehouse_edit,setting_warehouse_view,warehouse_advance,safe_delivery_edit
+				/myaccount/storewarning/indexCatalog.htm*=setting_warehouse_edit,setting_warehouse_view,warehouse_advance
+				/query/warehouse/initialcatalog*=setting_warehouse_edit,setting_warehouse_view,warehouse_advance
+				/myaccount/ebayaccount/index.htm*=setting_Account_view,setting_Account_edit
+				/myaccount/privateAccount/index*=private_account_view
+				/myaccount/privateorderexceltemplate/index*=private_orderTemplate_view
+				/process/new/myaccount/ebayaccount/*=setting_Account_edit
+				/process/signal/myaccount/ebayaccount/*=setting_Account_edit
+				/process/resume/myaccount/ebayaccount/查看某个eBay账号信息*=setting_Account_view,setting_Account_edit
+				/process/resume/myaccount/ebayaccount/*=setting_Account_edit
+				/query/myaccount/ebayaccount*=setting_Account_view,setting_Account_edit,IBIZ_BACKGROUND
+				/myaccount/usermanage/index.htm*=setting_user_view,setting_user_edit
+				/process/signal/customservice/afterservice/*=customerService_refund_edit,customerService_refund_approve,storageM_returnGoods_stockIn
+				/process/new/customservice/afterservice/启动=customerService_refund_edit,customerService_refund_approve,storageM_returnGoods_stockIn
+				/process/new/customservice/afterservice/查看退款退货补发=customerService_refund_edit,customerService_refund_approve,storageM_returnGoods_view,storageM_returnGoods_stockIn
+				/warehouse/defectsdispose/index.htm=storageM_defectsDispose_view,storageM_defectsDispose_edit
+				/process/new/warehouse/defectsdispose/查看故障品出库=storageM_defectsDispose_view,storageM_defectsDispose_edit
+				/process/new/warehouse/defectsdispose/*=storageM_defectsDispose_edit
+				/process/signal/warehouse/defectsdispose/*=storageM_defectsDispose_edit
+				/process/resume/warehouse/defectsdispose/*=storageM_defectsDispose_edit,storageM_defectsDispose_export
+				/query/warehouse/defectsdispose/*=storageM_defectsDispose_view,storageM_defectsDispose_edit
+				/warehouse/defectsreport/index.htm=storageM_defectsReport_view,storageM_defectsReport_edit
+				/process/new/warehouse/defectsreport/查看故障品申报=storageM_defectsReport_view,storageM_defectsReport_edit
+				/process/new/warehouse/defectsreport/*=storageM_defectsReport_edit
+				/query/warehouse/defectsreport/*=storageM_defectsReport_view,storageM_defectsReport_edit
+				/query/warehouse/goodsbalance=storageM_goodsbalance_view,orderManagement_stock
+				/query/warehouse/goodsbalance/*=storageM_goodsbalance_view
+				/warehouse/lossreport/index.htm=storageM_loss_view,add_loss_report
+				/warehouse/goodsbalance/index.htm=storageM_goodsbalance_view
+				/process/new/warehouse/exportexcelhandler=shipping_lk_order,shipping_edit_order,deliOther_exportExc_excel,deliSelf_exportExc_excel,deliSelf_addrPri_again_exportAli,deliSelf_addrPri_hand_exportAli,deliSelf_addrPri_wait_exportAli,deliSelf_addrPri_wait_exportDHL
+				/process/new/warehouse/goodsbalancelist=storageM_goodsbalance_view
+				/process/new/warehouse/lossreport/*=add_loss_report
+				/process/signal/warehouse/lossreport/*=add_loss_report
+				/query/warehouse/overflowReport/*=storageM_overflow_view,add_overflow_report
+				/process/resume/warehouse/lossreport/查看报损单=storageM_loss_view,add_loss_report
+				/process/resume/warehouse/lossreport/ExportLossExcel=lossReport_export
+				/process/resume/warehouse/lossreport/*=add_loss_report
+				/warehouse/overflowReport/index.htm=storageM_overflow_view,add_overflow_report
+				/process/new/warehouse/overflowReport/*=add_overflow_report
+				/process/signal/warehouse/overflowReport/*=add_overflow_report
+				/query/warehouse/overflowReport=storageM_overflow_view,add_overflow_report
+				/process/resume/warehouse/overflowReport/*=storageM_overflow_view,add_overflow_report
+				/warehouse/stocktaking/index.htm=storageM_stocktaking_view,storageM_stocktaking_edit
+				/process/signal/warehouse/stocktaking/*=storageM_stocktaking_edit,storageM_stocktaking_do
+				/process/resume/warehouse/stocktaking/删除盘点单=storageM_stocktaking_delete
+				/process/new/warehouse/stocktaking/查看盘点单=storageM_stocktaking_view,storageM_stocktaking_edit
+				/process/new/warehouse/stocktaking/*=storageM_stocktaking_edit,storageM_stocktaking_do
+				/process/resure/warehouse/stocktaking/*=storageM_stocktaking_edit,storageM_stocktaking_do
+				/warehouse/stocktaking/print.htm=storageM_stocktaking_view,storageM_stocktaking_edit
+				/query/warehouse/stocktaking=storageM_stocktaking_view,storageM_stocktaking_edit
+				/warehouse/appropriations/index.htm=storageM_appropriations_view,storageM_appropriations_edit
+				/process/resume/warehouse/defectsreport/删除故障品申报记录=storageM_defectsReport_edit
+				/process/new/warehouse/appropriations/查看调拨单=storageM_appropriations_view,storageM_appropriations_edit
+				/process/resume/warehouse/appropriations/打印调拨单数据准备*=storageM_appropriations_view,storageM_appropriations_edit
+				/process/resume/warehouse/appropriations/getWarehouseAdmin=storageM_special_view,storageM_special_edit,storageM_special_delete,storageM_appropriations_view,storageM_appropriations_edit,storageM_specialOut_view
+				/process/new/warehouse/appropriations/*=storageM_appropriations_edit,storageM_appropriations,storageM_appropriations_confirm
+				/process/signal/warehouse/appropriations/*=storageM_appropriations_edit,storageM_appropriations_confirm
+				/process/resume/warehouse/appropriations/*=storageM_appropriations_view,storageM_appropriations_edit,storageM_appropriations_confirm,storageM_specialOut_view
+				/query/warehouse/appropriations/*=storageM_appropriations_view,storageM_appropriations_edit,storageM_appropriations_confirm
+				/warehouse/specialStockout/index.htm=storageM_specialOut_view,storageM_specialOut_edit
+				/process/resume/warehouse/specialStockout/查看其他出库=storageM_specialOut_view,storageM_specialOut_edit
+				/process/resume/warehouse/specialStockout/*=storageM_specialOut_edit,storageM_specialOut_view
+				/process/new/warehouse/specialStockout/*=storageM_specialOut_edit,storageM_specialOut_view
+				/process/signal/warehouse/specialStockout/*=storageM_specialOut_edit,storageM_specialOut_view
+				/query/warehouse/specialStockout=storageM_specialOut_view,storageM_specialOut_edit
+				/warehouse/purchaseReturn/index.htm=storageM_purchaseReturn_view,storageM_purchaseReturn_edit
+				/process/resume/warehouse/purchasereturn/查看采购单=storageM_purchaseReturn_view,storageM_purchaseReturn_edit
+				/process/resume/warehouse/purchasereturn/查看采购退货=storageM_purchaseReturn_view
+				/process/resume/warehouse/purchasereturn/*=storageM_purchaseReturn_edit
+				/process/new/warehouse/purchasereturn/*=storageM_purchaseReturn_edit
+				/process/signal/warehouse/purchasereturn/*=storageM_purchaseReturn_edit
+				/query/warehouse/purchasereturn*=storageM_purchaseReturn_view,storageM_purchaseReturn_edit
+				/warehouse/special/index.htm=storageM_special_view,storageM_special_edit
+				/process/new/warehouse/special/*=storageM_special_edit
+				/process/signal/warehouse/special/*=storageM_special_edit
+				/process/resume/warehouse/special/查看其它入库=storageM_special_view,storageM_special_edit
+				/process/resume/warehouse/special/*=storageM_special_edit
+				/query/warehouse/special/*=storageM_special_view,storageM_special_edit
+				/warehouse/warehouseStorage/index.htm=storageM_purchaseStockIn_view,storageM_purchaseStockIn_stockIn
+				/warehouse/returngoods/index.htm=storageM_returnGoods_view,storageM_returnGoods_stockIn
+				/process/signal/warehouse/returngoods/*=storageM_returnGoods_stockIn
+				/process/new/warehouse/returngoods/*=storageM_returnGoods_stockIn
+				/query/warehouse/returngoods=storageM_returnGoods_view,storageM_returnGoods_stockIn
+				/warehouse/goodssetting/initstock.htm=firstshipping_view,storageM_initstock_view
+				/warehouse/goodssetting/initstock-1.htm=firstshipping_view,storageM_initstock_view
+				warehouse/goodssetting/deliverday.htm=firstshipping_view,storageM_initstock_view
+				warehouse/goodssetting/firstshipping.htm=firstshipping_view,storageM_initstock_view
+				warehouse/goodssetting/deliverday-1.htm=firstshipping_view,storageM_initstock_view
+				warehouse/goodssetting/firstshipping-1.htm=firstshipping_view,storageM_initstock_view
+				/process/resume/warehouse/print/标记已发货前数据准备*=deli_global_package_edit
+				/warehouse/rehandle1/index.htm=deli_global_package_view ,deli_global_package_edit
+				/process/new/warehouse/rehandle=deli_global_package_edit
+				/process/new/warehouse/applicationtrackingnumber=deli_global_package_edit
+				/warehouse/applicationtrackingnumber/index.htm=deli_global_package_edit,deli_global_package_view 
+				/query/warehouse/applicationtrackingnumber_account=deli_global_package_edit,deli_global_package_view 
+				/query/warehouse/applicationtrackingnumber_shippingmethod=deli_global_package_edit,deli_global_package_view 
+				/query/warehouse/applicationtrackingnumber=deli_global_package_edit,deli_global_package_view 
+				/query/warehouse/rehandle=deli_global_package_edit,deli_global_package_view 
+				/warehouse/deliver1/index.htm=deliSelf_done_Batch_view
+				/query/warehouse/deliverebaystatusbtn=deli_global_package_view ,deli_global_package_edit,shipping_syncEbayStatus,orderManagement_synestatus_view,orderManagement_synestatus_edit
+				/query/warehouse/deliver*=deli_global_package_view ,deli_global_package_edit
+				/warehouse/deliverhand/index.htm=deli_global_package_view ,deli_global_package_edit
+				/process/resume/warehouse/deliver/*=deli_global_package_edit
+				/process/resume/warehouse/assignStock/配货中标记eBay已发货状态=deli_global_package_edit
+				/process/signal/warehouse/deliver/*=deli_global_package_edit
+				/warehouse/print/selfindex.htm=deli_global_package_view ,deli_global_package_edit
+				/query/warehouse/getNowTimeOrderStatusOfPackage=deli_global_package_edit
+				/query/warehouse/printShippingMethod=deli_global_package_edit,deli_global_package_view 
+				/warehouse/print/againindex.htm=deli_global_package_edit,deli_global_package_view 
+				/query/warehouse/printLog=deli_global_package_view ,deli_global_package_edit
+				/query/warehouse/printByAccount=deli_global_package_view ,deli_global_package_edit
+				/query/warehouse/waitprint=deli_global_package_view ,deli_global_package_edit
+				/dashboard/warehouse/index.htm=storageM_purchaseStockIn_view,storageM_returnGoods_view
+				/warehouse/assignStock/index.htm=deli_global_package_view ,deli_global_package_edit
+				/warehouse/print/waitindex.htm=deli_global_package_view ,deli_global_package_edit
+				/warehouse/pickingorders/print.htm=deli_global_package_view ,deli_global_package_edit
+				/process/new/warehouse/assignStock=deli_global_package_edit
+				/warehouse/deliveryrecord/index.htm=deli_global_package_view ,deli_global_package_edit
+				/query/warehouse/assignStock=deli_global_package_view ,deli_global_package_edit,deliSelf_allocation_view,deliOther_allocation_view
+				/warehouse/deliveryrecord/index.htm=deli_global_package_view ,deli_global_package_edit
+				/process/resume/warehouse/print=deli_global_package_edit
+				/process/resume/warehouse/print/eBay订单状态同步为已发货=deli_global_package_edit
+				/process/resume/warehouse/syncebaydeliver/同步ebay发货状态=shipping_syncEbayStatus,orderManagement_synestatus_view,orderManagement_synestatus_edit
+				/warehouse/syncebaydeliver/index.htm=shipping_syncEbayStatus
+				/process/new/purchase/supplier/*=purchanse_supplier_edit
+				/process/signal/purchase/supplier/*=purchanse_supplier_edit
+				/process/resume/purchase/supplier/查看供应商信息=purchanse_supplier_view,purchanse_supplier_edit
+				/process/resume/purchase/supplier/*=purchanse_supplier_edit,purchanse_supplier_disabled,purchanse_supplier_del,purchanse_supplier_view
+				/purchase/latestQuotation/look.htm=purchanse_quotation_view,purchanse_quotation_edit
+				/query/purchase/suppliercommodityquotation=purchanse_quotation_view,purchanse_quotation_edit
+				/query/purchase/supplier=purchanse_supplier_view,purchanse_supplier_edit
+				/purchase/recordLatestQuotation/record.htm=purchanse_quotation_view,purchanse_quotation_edit
+				/new/purchase/orderManagement/*=purchanse_plan_suggest
+				/query/purchase/price=purchanse_quotation_view,purchanse_quotation_edit,purchanse_supplier_new
+				/purchase/suggestion/*=purchanse_plan_suggest
+				/purchase/suggestion/index.htm=purchanse_plan_suggest
+				/purchase/orderManagement/suggestion/index.htm=purchanse_plan_suggest
+				/query/orderManagement/supplier=purchanse_supplier_view,purchanse_supplier_edit
+				/query/orderManagement/suggestion=purchanse_plan_suggest
+				/purchase/orderManagement/print.htm=purchanse_order_view,purchanse_order_edit,purchanse_plan_suggest
+				/process/signal/purchase/orderManagement/撤销采购单=purchanse_order_edi
+				/process/signal/purchase/orderManagement/部分入库等待剩余=purchanse_order_receiving
+				/process/signal/purchase/orderManagement/部分入库不等待剩余=purchanse_order_receiving
+				/process/signal/purchase/orderManagement/全部入库=purchanse_order_receiving
+				/process/new/purchase/orderManagement/保存最新报价=purchanse_quotation_edit
+				/process/resume/purchase/orderManagement/查看采购单详细信息=purchanse_order_view,purchanse_order_edit,purchanse_order_receiving
+				/process/resume/purchase/orderManagement/打印采购单详细信息=ppurchanse_order_view,purchanse_order_edit,purchanse_order_receiving
+				/purchase/orderManagement/createPurchaseOrder/index.htm=purchanse_order_edit
+				/purchase/orderManagement/queryPurchaseOrder/index.htm=purchanse_order_view,purchanse_order_edit,purchanse_order_receiving
+				/purchase/supplier/index.htm=purchanse_supplier_view,purchanse_supplier_edit
+				/purchase/advancedSetting/safeDelivery.htm=safe_delivery_view,safe_delivery_edit
+				/purchase/purchasePlan/index.htm=purchanse_plan_view,purchanse_plan_edit,purchanse_plan_suggest,purchanse_plan_approve,purchanse_plan_personmodify
+				/process/new/purchase/purchasePlan/创建采购计划=purchanse_plan_edit
+				/process/resume/purchase/purchasePlan/删除采购计划=purchanse_plan_edit
+				/quality/assign/index.htm=quality_testing_view
+				/quality/quanlity/index.htm=quality_quanlity_view
+				/financial/payment/index.htm=finance_payment_view
+				/financial/ebay/fund/index.htm=ebay_fund_view
+				/purchase/enterWarehouse/index.htm=storageM_purchaseStockIn_view,storageM_purchaseStockIn_stockIn
+				/query/orderManagement/queryPurchaseOrder=purchanse_order_view,purchanse_order_edit
+				/process/resume/order/all/lookOrderPackage=orderManagement_edit,orderManagement_view
+				/query/order/paypal=orderManagement_payList
+				/process/resume/order/all/查看订单留言=orderManagement_view,orderManagement_edit
+				/process/resume/order/all/获取订单付款信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/all/获取订单商品信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/all/获取订单地址信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/all/获取订单仓库信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/all/获取订单信息给订单状态栏=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/order/all/checkShppingAddress=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/order/all/*=orderManagement_edit
+				/process/resume/order/allsale/lookOrderPackage=orderManagement_view,orderManagement_edit
+				/process/resume/order/allsale/查看订单留言=orderManagement_view,orderManagement_edit
+				/process/resume/order/allsale/获取订单商品信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/allsale/获取订单付款信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/allsale/获取订单地址信息=orderManagement_view,orderManagement_edit
+				/process/resume/order/allsale/获取订单仓库信息=orderManagement_view,orderManagement_edit
+				/process/signal/order/allsale/lookorder=orderManagement_edit
+				/process/resume/order/all/取拆分单信息=orderManagement_edit
+				/process/resume/order/allsale/*=orderManagement_edit
+				/order/goodsbalance.htm=orderManagement_stock
+				/order/synebaystatus.htm=orderManagement_syncEbayStatus
+				/process/resume/order/saleimport/上传excel数据=orderManagement_edit
+				/order/querydetailserror.htm=om_unknownGoods_view,om_unknownGoods_edit
+				/order/paypal.htm=orderManagement_paypal_view,orderManagement_paypal_edit
+				/query/order/orderhandmake=orderManagement_handmake_view,orderManagement_handmake_edit
+				/order/queryhandmake.htm=orderManagement_handmake_view,orderManagement_handmake_edit
+				/process/new/order/all=orderManagement_edit
+				/process/new/order/saleimport/订单导入=orderManagement_alixpress_import,orderManagement_amazon_import
+				/process/signal/order/all/*=orderManagement_edit
+				/query/order/order=orderManagement_print_view,orderManagement_print_edit,om_waitPrint_view,om_waitPrint_edit,orderManagement_sendStock_view,orderManagement_sendStock_edit,orderManagement_refund_view,orderManagement_refund_edit,orderManagement_waitStock_view,orderManagement_waitStock_edit
+				/order/queryprinted.htm=orderManagement_print_view,orderManagement_print_edit
+				/order/waitprinted.htm=om_waitPrint_view,om_waitPrint_edit
+				/order/querydespatch.htm=orderManagement_sendStock_view,orderManagement_sendStock_edit
+				/order/queryinvalid.htm=orderManagement_cancel_view,orderManagement_cancel_edit
+				/query/order/invalidorder=orderManagement_cancel_view,orderManagement_cancel_edit,orderManagement_splitOrd_view,orderManagement_splitOrd_edit
+				/order/waitassignstock.htm=orderManagement_waitStock_view,orderManagement_waitStock_edit
+				/order/queryisrefunded.htm=orderManagement_edit,orderManagement_view
+				/order/querynotenodo.htm=om_messageWait_view,om_messageWait_edit
+				/order/queryaddresserror.htm=orderManagement_errorAddr_view,orderManagement_errorAddr_edit
+				/order/querywarehouseerror.htm=om_unWarehouse_view,om_unWarehouse_edit
+				/order/queryshippingerror.htm=om_errorEmail_view,om_errorEmail_edit
+				/order/queryoutstock.htm=orderManagement_outOfStock_view,orderManagement_outOfStock_edit
+				/order/queryexpired.htm=orderManagement_expired_view,orderManagement_expired_edit
+				/order/querysuspended.htm=om_personAudit_view,om_personAudit_edit
+				/order/querynopaid.htm=orderManagement_unpayment_view,orderManagement_unpayment_edit
+				/product/product/index.htm=orderManagement_edit,orderManagement_view
+				/order/quicksearchall.htm=orderManagement_edit,orderManagement_view
+				/order/querysalemake.htm=orderManagement_alixpress_view,orderManagement_alixpress_edit
+				/query/order/saleService=om_messageWait_view,om_messageWait_edit,orderManagement_errorAddr_view,orderManagement_errorAddr_edit,om_unknownGoods_view,om_unknownGoods_edit,om_unWarehouse_view,om_unWarehouse_edit,om_errorEmail_view,om_errorEmail_edit,orderManagement_outOfStock_view,orderManagement_outOfStock_edit,orderManagement_expired_view,orderManagement_expired_edit,om_personAudit_view,om_personAudit_edit,orderManagement_unpayment_view,orderManagement_unpayment_edit,om_errorAmount_view,om_errorAmount_edit,customerService_eBayMsg_view,customerService_eBayMsg_edit,IBIZ_BACKGROUND
+				/query/order/log=om_messageWait_view,om_messageWait_edit,orderManagement_errorAddr_view,orderManagement_errorAddr_edit,om_unknownGoods_view,om_unknownGoods_edit,om_unWarehouse_view,om_unWarehouse_edit,om_errorEmail_view,om_errorEmail_edit,orderManagement_outOfStock_view,orderManagement_outOfStock_edit,orderManagement_expired_view,orderManagement_expired_edit,om_personAudit_view,om_personAudit_edit,orderManagement_unpayment_view,orderManagement_unpayment_edit,om_errorAmount_view,om_errorAmount_edit,orderManagement_refund_view,orderManagement_waitStock_view,om_waitPrint_view,orderManagement_print_view,orderManagement_sendStock_view,orderManagement_cancel_view,orderManagement_splitOrd_view,orderManagement_handmake_view,orderManagement_ebay_view,orderManagement_amazon_view,orderManagement_FBA,orderManagement_alixpress_view,orderManagement_smtJH_view,orderManagement_wish_view,orderManagement_lazada_view,orderManagement_jdgj_view,orderManagement_cdiscount_view,orderManagement_newegg_view,orderManagement_pric_view,orderManagement_1688_view,orderManagement_dh_view,orderManagement_shopee_view,orderManagement_shopify_view,orderManagement_mer_view,orderManagement_walmart_view,orderManagement_joom_view,orderManagement_fxxt,orderManagement_mycom_view,om_factorymarket_view,orderManagement_tophatter_view,orderManagement_yandex_view,om_privateSale_view,IBIZ_BACKGROUND
+				/product/product/index.htm=product_manage_view,product_Global_edit
+				/process/new/product/product/*=product_Global_edit
+				/process/signal/product/product/*=product_Global_edit,product_Global_QualityMeasure_edit
+				/process/resume/product/product/得到采购员集合=product_manage_view
+				/process/resume/product/product/取图片信息=product_manage_view,product_Global_edit
+				/process/resume/product/product/得到采购员集合=product_manage_view,product_Global_edit
+				/process/resume/product/product/取变参数据=product_Global_edit,productDev_approve
+				/process/resume/product/product/判断是否重新生成货品列表=product_Global_edit,productDev_approve
+				/process/resume/product/product/取商品变参规格=product_Global_edit,productDev_approve
+				/process/resume/product/product/getAllUsedLabelHandler=product_manage_view
+				/process/resume/product/product/准备非多货位打印数据=product_manage_view,product_Global_edit
+				/process/resume/product/product/准备非多货位打印预览数据=product_manage_view,product_Global_edit
+				/process/resume/product/product/转换条码=product_manage_view,product_Global_edit
+				/process/resume/product/product/打印标签获取货位=product_manage_view,product_Global_edit
+				/process/resume/product/product/进入打印非多货位货品标签详细列表=product_manage_view,product_Global_edit
+				/process/resume/product/product/进入打印货品标签详细列表=product_manage_view,product_Global_edit
+                /process/resume/product/product/选择导出格式=product_manage_export
+                /process/resume/product/product/获取listing图片=product_manage_view
+				/process/resume/product/product/*=product_Global_edit,purchase_order_label_print=product_Global_edit
+				/product/category/index.htm=product_category_view
+				/process/new/product/category/*=product_category_view
+				/process/resume/product/category/商品分类信息查看=product_category_view
+				/query/product/packagematerial=product_manage_view,product_Global_edit
+				/product/packagematerial/index.htm=product_manage_view,product_Global_edit
+				/process/resume/product/packagematerial/查看包装材料信息=product_manage_view,product_Global_edit
+				/process/new/product/packagematerial/新增包装材料=product_packagematerial_edit
+				/process/signal/product/packagematerial/包装材料录入界面=product_packagematerial_edit
+				/process/resume/product/packagematerial/获取使用此包装材料个数=product_packagematerial_edit
+				/process/resume/product/packagematerial/删除包装材料信息=product_packagematerial_edit
+				/process/signal/product/category/*=product_category_view
+				/process/resume/product/category/*=product_category_view
+				/query/product/product=product_manage_view,product_Global_edit
+				/product/brand/index.htm=product_manage_view,product_Global_edit
+				/process/new/product/brand/*=product_Global_edit
+				/process/signal/product/brand/*=product_Global_edit
+				/process/resume/product/brand/商品品牌信息查看=product_manage_view,product_Global_edit
+				/process/resume/product/brand/*=product_Global_edit
+				/query/product/product=product_manage_view,product_Global_edit
+				/process/new/product/brandimport/*=product_Global_edit
+				/process/resume/product/brandimport/*=product_Global_edit
+				/myaccount/rolemanage/index.htm=setting_permission_view,setting_permission_edit
+				/process/resume/myaccount/rolemanage/获取所有角色信息=setting_permission_view,setting_permission_edit
+				/process/resume/myaccount/rolemanage/录入角色信息界面=setting_permission_edit
+				/process/resume/myaccount/rolemanage/判断商户用户数限额=setting_permission_view,setting_permission_edit
+				/process/resume/myaccount/rolemanage/添加角色信息=setting_permission_edit
+				/process/resume/myaccount/rolemanage/删除角色信息=setting_permission_edit
+				/process/resume/myaccount/rolemanage/编辑角色信息界面=setting_permission_view,setting_permission_edit
+				/process/signal/myaccount/usermanage/修改用户密码界面=setting_user_edit
+				/process/resume/myaccount/usermanage/修改用户界面=setting_user_edit
+				/process/resume/myaccount/usermanage/失效或还原用户=setting_user_edit
+				/query/myaccount/usermanage=setting_user_view,setting_user_edit,IBIZ_BACKGROUND
+				/myaccount/paypalaccount/index.htm=paypal_manager_view,paypal_manager_edit
+				/process/new/myaccount/paypalaccount=paypal_manager_edit
+				/process/resume/myaccount/paypalaccount/开启paypal数据抓取=paypal_manager_edit
+				/process/resume/myaccount/paypalaccount/关闭paypal数据抓取=paypal_manager_edit
+				/process/resume/myaccount/paypalaccount/验证授权=setting_Account_view,paypal_manager_edit
+				/process/resume/myaccount/paypalaccount/删除账户信息=paypal_manager_edit
+				/process/new/myaccount/usermanage=setting_user_edit
+				/listingmanage/activelisting/index.htm=product_manage_view,product_Global_edit
+				/listingmanage/activelisting/sold.htm=product_manage_view,product_Global_edit
+				/listingmanage/activelisting/unsold.htm=product_manage_view,product_Global_edit
+				/process/resume/listingmanage/activelisting/查找所有未关联的刊登=product_Global_edit
+				/process/resume/listingmanage/activelisting/修改刊登SKU=product_Global_edit
+				/process/resume/listingmanage/activelisting/批量获取页面的刊登ID=product_Global_edit
+				/process/resume/listingmanage/activelisting/手动取消关联=product_Global_edit
+				/query/listingmanage/listing=product_manage_view,product_Global_edit
+				/dashboard/warehouse/index.htm=storageM_purchaseStockIn_view,storageM_returnGoods_view
+				/process/new/product/productimport/商品导入=product_Global_edit
+				/index.htm=IS_AUTHENTICATED_ANONYMOUSLY
+				/myaccount/orderrule/index.htm=setting_orderrule_view,setting_orderrule_edit
+				/process/resume/myaccount/orderrule/从PKG中取订单自动规则=setting_orderrule_edit
+				/process/resume/myaccount/orderrule/取订单自动规则参数值=setting_orderrule_view,setting_orderrule_edit
+				/process/resume/myaccount/orderrule/订单自动规优先集修改(下调)=setting_orderrule_edit
+				/process/resume/myaccount/orderrule/订单自动规优先集修改(上调)=setting_orderrule_edit
+				/process/resume/myaccount/orderrule/订单自动规优先级修改(至顶)=setting_orderrule_edit
+				/process/resume/myaccount/orderrule/订单自动规优先级修改(至底)=setting_orderrule_edit
+				/process/resume/myaccount/orderrule/订单自动规则匹配启用状态修改=setting_orderrule_edit,logisticsTrackingAutoRole_edit
+				/process/resume/myaccount/goodssetting/新增SKU生成方式=setting_goodssetting_edit
+				/process/resume/myaccount/goodssetting/查询商户设置信息=setting_goodssetting_view,setting_goodssetting_edit
+				/process/resume/myaccount/orderrule/删除订单自动规则匹配=setting_orderrule_edit,logisticsTrackingAutoRole_delete
+				/myaccount/orderrule/selectordersource.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selectwarehouse.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selectshipping.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/query/orderrule/optionalshipping=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selectzoneorcountry.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selecttotalprice.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selectshippingFeeIncome.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selectprofitamount.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/myaccount/orderrule/selectgoodsweight.htm=setting_orderrule_edit,setting_packagerule_edit,setting_invoicerule_edit
+				/process/signal/myaccount/orderrule/订单自动规则匹配页面=setting_orderrule_edit
+				/process/resume/myaccount/ebaymessagerule/从PKG中取客服自动规则=setting_msgrule_edit
+				/process/resume/myaccount/ebaymessagerule/客服自动规优先级修改(下调)=setting_customerservice_edit
+				/process/resume/myaccount/ebaymessagerule/客服自动规优先级修改(上调)=setting_customerservice_edit
+				/process/resume/myaccount/ebaymessagerule/客服自动规优先级修改(至底)=setting_customerservice_edit
+				/process/resume/myaccount/ebaymessagerule/客服自动规优先级修改(至顶)=setting_customerservice_edit
+				/process/resume/myaccount/ebaymessagerule/客服自动规则匹配启用状态修改=setting_customerservice_edit
+				/process/resume/myaccount/ebaymessagerule/删除客服自动规则匹配=setting_msgrule_del
+				/myaccount/customservice/ebaymessagerule/selectaccount.htm=setting_customerservice_edit
+				/myaccount/customservice/ebaymessagerule/selectbuyer.htm=setting_customerservice_edit
+				/myaccount/customservice/ebaymessagerule/selectmessageContexts.htm=setting_customerservice_edit
+				/process/signal/myaccount/ebaymessagerule/客服自动规则匹配页面=setting_customerservice_edit
+				/process/resume/myaccount/customservice/保存eBay消息文件夹=setting_customerservice_edit
+				/process/resume/myaccount/customservice/删除eBay消息文件夹=setting_customerservice_edit
+				/process/resume/myaccount/customservice/保存eBay消息优先级=setting_customerservice_edit
+				/process/resume/customservice/messageTemplate/删除多条消息模板=setting_customerservice_edit
+				/customservice/messageTemplate/index.htm=setting_msgTemplate_view,setting_msgTemplate_edit
+				/process/resume/customservice/autoservicedefine/查询站内信详细信息=setting_customerservice_view,setting_customerservice_edit
+				/process/resume/customservice/autoservicedefine/**=setting_customerservice_edit
+				/process/new/customservice/autoservicedefine/启动=setting_customerservice_edit
+				/process/resume/customservice/autofeedbackdefine/取商家配置信息=setting_customerservice_edit
+				/process/resume/customservice/feedback/差评信息导出=customerService_eBay_feedBack_vi,customerService_eBay_feedBack_ed
+				/process/resume/customservice/feedback/查看评价=customerService_eBay_feedBack_vi,customerService_eBay_feedBack_ed
+				/process/resume/customservice/feedback/**=customerService_eBay_feedBack_ed
+				/process/resume/customservice/ebaycase/查看EBP纠纷=customerService_eBayDisp_view,customerService_eBayDisp_edit
+				/process/resume/customservice/ebaycase/查看普通纠纷=customerService_eBayDisp_view,customerService_eBayDisp_edit
+				/process/resume/customservice/ebaycase/**=customerService_eBayDisp_edit
+				/customservice/request/cancel/index.htm=customerService_eBayDisp_view,customerService_eBayDisp_edit
+				/customservice/request/return/index.htm=customerService_eBayDisp_view,customerService_eBayDisp_edit
+				/customservice/afterservice/index.htm=customerService_refund_edit,customerService_refund_approve
+				/customservice/buyerMessage/index.htm=customerService_eBayMsg_view,customerService_eBayMsg_edit
+				/process/resume/customservice/customers/导出用户数据=customerServiceInfo_edit
+				/process/signal/customservice/customers/展示页面=customerServiceInfo_edit
+				/process/resume/customservice/customers/批量逻辑删除用户信息=customerServiceInfo_edit
+				/process/resume/customservice/customers/批量还原用户信息=customerServiceInfo_edit
+				/process/resume/customservice/customers/批量彻底删除用户信息=customerServiceInfo_edit
+				/process/signal/customservice/feedbacktemplate/新增评价模板=feedback_template_view,feedback_template_edit
+				/process/resume/customservice/feedbacktemplate/删除多条评价模板=feedback_template_view,feedback_template_edit
+				/process/new/customservice/feedbacktemplate/启动=feedback_template_view,feedback_template_edit
+				/customservice/feedbacktemplate/index.htm=feedback_template_view,feedback_template_edit
+				/process/resume/customservice/customers/**=customerServiceInfo_view,customerServiceInfo_edit
+				/customservice/allcustomers/index.htm=customerServiceInfo_view,customerServiceInfo_edit
+				/customservice/repeatcustomers/index.htm=customerServiceInfo_view,customerServiceInfo_edit
+				/customservice/recyclingcustomers/index.htm=customerServiceInfo_view,customerServiceInfo_edit
+				/registermerchant/openregister/index.htm=forbidden
+				/registermerchant/index.htm=forbidden
+				/register/index.htm=forbidden
+				/product/develop/index.htm=productDev_create,productDev_approve,productDev_assignTo,productDev_inquiry,productDev_QC,productDev_photo,productDev_draw,productDev_description
+				/process/new/product/develop/新建产品开发记录=productDev_create
+				/process/resume/product/develop/产品信息=productDev_create,productDev_approve,productDev_assignTo,productDev_inquiry,productDev_QC,productDev_photo,productDev_draw,productDev_description
+				/process/resume/product/develop/拍照描述录入页面=productDev_QC,productDev_photo
+				/process/resume/product/develop/录入质检信息=productDev_QC
+				/process/resume/product/develop/得到采购员集合=productDev_assignTo
+				/process/resume/product/develop/确认分派=productDev_assignTo
+				/process/resume/product/develop/经理审批=productDev_approve
+				/process/resume/product/develop/创建人审批=productDev_create
+				/process/resume/product/develop/确认取样=productDev_inquiry
+				/process/resume/product/develop/生成商品取产品信息=productDev_create
+				/statisticsreport/ebayachievement/index.htm=statisticsreport_saleAccount
+				/process/resume/statisticsreport/ebayachievement/获取eBay业绩统计=statisticsreport_saleAccount
+				/warehouse/rehandle/index.htm=deli_global_package_view ,deli_global_package_edit
+				/process/new/morecargospace/rehandle=deli_global_package_edit
+				/warehouse/packageCheck/index.htm=deli_global_package_edit
+				/appropriations/morecargospace/index.htm=storageM_appropriations_view,storageM_appropriations_edit
+				/process/new/appropriations/morecargospace/新增调拨单=storageM_appropriations_edit
+				/process/resume/appropriations/morecargospace/执行调拨发货=storageM_appropriations_edit
+				/process/signal/appropriations/morecargospace/to调拨装箱=storageM_appropriations_edit
+				/appropriations/morecargospace/box/index.htm=storageM_appropriations_view,storageM_appropriations_edit
+				/appropriations/morecargospace/box/form/batch.htm=storageM_appropriations_edit
+				/appropriations/morecargospace/boxin/index.htm=storageM_appropriations_view,storageM_appropriations_edit
+				/appropriations/morecargospace/boxin/form/receiv.htm=storageM_appropriations_edit
+				/process/resume/morecargospace/boxin/调入收货=storageM_appropriations_edit
+				/process/resume/morecargospace/boxin/调拨入库=storageM_appropriations_edit
+				/process/new/warehouse/specialmorecargo/启动=storageM_special_edit
+				/process/resume/warehouse/specialmorecargo/修改供其它入库=storageM_special_edit
+				/process/resume/purchase/enterMorecargo/入库操作=storageM_purchaseStockIn_stockIn
+				/process/new/specialStockout/morecargospace/启动=storageM_specialOut_edit
+				/process/signal/specialStockout/morecargospace/编辑其他出库=storageM_specialOut_edit
+				/warehouse/assembleProcess/index.htm=storageM_assemble_view,storageM_assemble_edit
+				/process/new/warehouse/assembleProcess/产生加工作业单业务编号=storageM_assemble_edit
+				/process/resume/warehouse/assembleProcess/作废加工作业单=storageM_assemble_edit
+				/process/resume/warehouse/assembleProcess/成品入库=storageM_assemble_edit
+				/process/signal/warehouse/assembleProcess/加工作业单录入页面=storageM_assemble_edit
+				/process/new/morecargospace/purchaseReturn/新增采购退货界面=storageM_purchaseReturn_edit
+				/process/resume/warehouse/purchasereturn/删去采购退货=storageM_purchaseReturn_edit
+				/process/signal/morecargospace/stocktaking/完成盘点=storageM_stocktaking_do
+				/warehouse/cargospacemove/index.htm=storageM_goodsbalance_view
+				/process/new/warehouse/cargospacemove/新增货位迁移=storageM_goodsbalance_view
+				/process/resume/morecargospace/defectsreport/编辑故障品申报页面=storageM_defectsReport_edit
+				/process/resume/morecargospace/defectsdispose/编辑故障品出库页面=storageM_defectsDispose_edit
+				/customservice/bestoffer/index.htm=customerBestOffer_view,customerBestOffer_edit
+				/process/resume/customservice/bestoffer/处理bestOffer=customerBestOffer_edit
+				/customservice/automaticservice/index.htm=customerAutoMessage_view,customerAutoMessage_edit
+				/process/resume/customservice/automaticservice/发送客服消息=customerAutoMessage_edit
+				/process/resume/customservice/automaticservice/取消客服消息=customerAutoMessage_edit
+				/process/resume/usercenter/modifypwd/**=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/usercenter/userinfo/**=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/usercenter/rechargerecord/**=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/usercenter/payment/在线充值**=IS_AUTHENTICATED_ANONYMOUSLY
+				/process/resume/usercenter/bill/**=IS_AUTHENTICATED_ANONYMOUSLY
+				/myaccount/emailrule/index.htm=setting_emailrule_view
+				/myaccount/mailoutbox/index.htm=setting_mailoutbox_view
+				/myaccount/invoicetemplate/index.htm=setting_invoicetemplate_view
+				/myaccount/invoicerule/index.htm=setting_invoicerule_view
+				/invoice/createRecord/index.htm=setting_invoicerecord_view
+				/warehouse/createPicking/index.htm=deli_global_package_edit
+				/warehouse/printPicking/index.htm=deli_global_package_edit
+				/warehouse/packaging/index.htm=deli_global_package_edit
+				/warehouse/multispeciesPackaging/index.htm=deli_global_package_edit
+				/customservice/aliexpressMessage/index.htm=customerService_smtMsg_view,customerService_smtMsg_edit
+				/myaccount/purchasesuggestion/index.htm=setting_highclass_edit,setting_highclass_view
+				/process/resume/myaccount/purchasesuggestion/编辑采购建议=setting_highclass_edit,setting_highclass_view
+				/process/new/myaccount/purchasesuggestion=setting_highclass_edit
+				/process/resume/myaccount/purchasesuggestion/删除采购建议模板=setting_highclass_edit
+				/statisticsreport/performance/index.htm=statisticsreport_saleAccount
+    			/statisticsreport/salesandinventory/index.htm=statisticsreport_salesInventory
+		        /statisticsreport/salerefund/index.htm=statisticsreport_salerefund
+				/statisticsreport/phaseprofit/index.htm=statisticsreport_stageProfit
+    			/statisticsreport/productprofit/index.htm=statisticsreport_commodityPro
+    			/statisticsreport/orderprofit/index.htm=statisticsreport_orderPro
+    			/statisticsreport/orderdetail/index.htm=statisticsreport_orderDetail
+				/process/resume/myaccount/emailsetting/查看绑定邮箱列表=setting_Account_edit
+				/process/resume/myaccount/packagerule/保存默认规则=setting_packagerule_edit
+				/process/resume/myaccount/packagerule/从PKG中取包裹规则=setting_packagerule_edit
+				/warehouse/transitplan/order/index.htm=transit_order_view,transit_order_edit
+				/process/resume/warehouse/transitplan/执行中转=transit_order_excute
+				/process/signal/warehouse/transitplan/新建中转单=transit_order_edit
+				/process/signal/purchase/proposalsetting/提交保存采购自动规则表单=setting_highclass_add
+				/purchase/order/purchaseOrder/index.htm=purchanse_order_view,purchanse_order_edit,purchanse_order_receiving
+				/process/resume/purchase/order/查看采购单详细信息=purchanse_order_view,purchanse_order_edit,purchanse_order_receiving,warehouse_view,warehouse_edit
+				/process/resume/purchase/orderManagement/打印采购单详细信息=purchanse_order_view,purchanse_order_edit,purchanse_order_receiving
+                /process/resume/common/ping/**=IS_AUTHENTICATED_ANONYMOUSLY
+                <!-- 新增订单管理模块菜单权限控制 start 2018-6-14 -->
+                /query/order/quickSearch=om_messageWait_view,om_messageWait_edit,orderManagement_errorAddr_view,orderManagement_errorAddr_edit,om_unknownGoods_view,om_unknownGoods_edit,om_unWarehouse_view,om_unWarehouse_edit,om_errorEmail_view,om_errorEmail_edit,orderManagement_outOfStock_view,orderManagement_outOfStock_edit,orderManagement_expired_view,orderManagement_expired_edit,om_personAudit_view,om_personAudit_edit,orderManagement_unpayment_view,orderManagement_unpayment_edit,om_errorAmount_view,om_errorAmount_edit
+                /query/order/multiOrder=orderManagement_moreOrders_view,orderManagement_moreOrders_edit
+                /order/refundedorder.htm=orderManagement_refund_view,orderManagement_refund_edit
+                /order/querysplitinvalid.htm=orderManagement_splitOrd_view,orderManagement_splitOrd_edit
+                /order/querymultiorder.htm=orderManagement_moreOrders_view,orderManagement_moreOrders_edit
+                /order/queryaccounterror.htm=om_errorAmount_view,om_errorAmount_edit
+                /query/order/accounterror=om_errorAmount_view,om_errorAmount_edit
+                /query/order/ebaymake=orderManagement_ebay_view,orderManagement_ebay_edit
+                /order/queryamazonmake.htm=orderManagement_amazon_view,orderManagement_amazon_edit
+                /query/order/amazonorder=orderManagement_amazon_view,orderManagement_amazon_edit
+                /order/amazonfba/index.htm=orderManagement_FBA_view,orderManagement_FBA_edit
+                /query/order/amazonfbaorder=orderManagement_FBA_view,orderManagement_FBA_edit
+                /query/order/saleorder=orderManagement_alixpress_view,orderManagement_alixpress_edit
+                /order/smtJHorder/index.htm=orderManagement_smtJH_view,orderManagement_smtJH_edit
+                /query/order/smtJHorder=orderManagement_smtJH_view,orderManagement_smtJH_edit
+                /order/querywishmake.htm=orderManagement_wish_view,orderManagement_wish_edit
+                /query/order/wishorder=orderManagement_wish_view,orderManagement_wish_edit
+                /order/querylazadamake.htm=orderManagement_lazada_view,orderManagement_lazada_edit
+                /query/order/lazadaorder=orderManagement_lazada_view,orderManagement_lazada_edit
+                /order/queryjdmake.htm=orderManagement_jdgj_view,orderManagement_jdgj_edit
+                /query/order/jdorder=orderManagement_jdgj_view,orderManagement_jdgj_edit
+                /order/querycdiscountmake.htm=orderManagement_cdiscount_view,orderManagement_cdiscount_edit
+                /query/order/cdiscountorder=orderManagement_cdiscount_view,orderManagement_cdiscount_edit
+                /order/queryneweggmake.htm=orderManagement_newegg_view,orderManagement_newegg_edit
+                /query/order/neweggorder=orderManagement_newegg_view,orderManagement_newegg_edit
+                /order/querypriceministermake.htm=orderManagement_pric_view,orderManagement_pric_edit
+                /query/order/priceministerorder=orderManagement_pric_view,orderManagement_pric_edit
+                /order/queryalibabamake.htm=orderManagement_1688_view,orderManagement_1688_edit
+                /query/order/alibabaorder=orderManagement_1688_view,orderManagement_1688_edit
+                /order/querydhgatemake.htm=orderManagement_dh_view,orderManagement_dh_edit
+                /query/order/dhgateorder=orderManagement_dh_view,orderManagement_dh_edit
+                /order/queryshopeemake.htm=orderManagement_shopee_view,orderManagement_shopee_edit
+                /query/order/shopeeorder=orderManagement_shopee_view,orderManagement_shopee_edit
+                /order/queryshopifymake.htm=orderManagement_shopify_view,orderManagement_shopify_edit
+                /query/order/shopifyorder=orderManagement_shopify_view,orderManagement_shopify_edit
+                /order/querymercadolibremake.htm=orderManagement_mer_view,orderManagement_mer_edit
+                /query/order/mercadolibreorder=orderManagement_mer_view,orderManagement_mer_edit
+                /order/querywalmartmake.htm=orderManagement_walmart_view,orderManagement_walmart_edit
+                /query/order/walmartorder=orderManagement_walmart_view,orderManagement_walmart_edit
+                /order/queryjoommake.htm=orderManagement_joom_view,orderManagement_joom_edit
+                /query/order/joomorder=orderManagement_joom_view,orderManagement_joom_edit
+                /order/queryfxxtmake.htm=orderManagement_fxxt_view,orderManagement_fxxt_edit
+                /query/order/fxxtorder=orderManagement_fxxt_view,orderManagement_fxxt_edit
+                /order/querymycommake.htm=orderManagement_mycom_view,orderManagement_mycom_edit
+                /query/order/mycomorder=orderManagement_mycom_view,orderManagement_mycom_edit
+                /order/queryfactorymarketmake.htm=om_factorymarket_view,om_factorymarket_edit
+                /query/order/factorymarketorder=om_factorymarket_view,om_factorymarket_edit
+                /order/querytophattermake.htm=orderManagement_tophatter_view,orderManagement_tophatter_edit
+                /query/order/tophatterorder=orderManagement_tophatter_view,orderManagement_tophatter_edit
+                /order/queryyandexmake.htm=orderManagement_yandex_view,orderManagement_yandex_edit
+                /query/order/yandexorder=orderManagement_yandex_view,orderManagement_yandex_edit
+                /order/privatequerysalemake.htm=om_privateSale_view,om_privateSale_edit
+                /query/order/privatesaleorder=om_privateSale_view,om_privateSale_edit
+                /order/paypal.htm=orderManagement_paypal_view,orderManagement_paypal_edit
+                /query/order/paypal=orderManagement_paypal_view,orderManagement_paypal_edit
+                /order/synebaystatus.htm=orderManagement_synestatus_view,orderManagement_synestatus_edit
+                /query/warehouse/syncebaydeliver=orderManagement_synestatus_view,orderManagement_synestatus_edit
+                /order/invoiceCreate/index.htm=invoice_generated_view
+                /query/order/invoice=invoice_generated_view
+                /order/invoiceDownload/index.htm=invoice_download_view
+                /query/invoice/downLoad=invoice_download_view
+                <!-- 新增订单管理模块菜单权限控制 end 2018-6-14 -->
+                <!-- 新增采购管理模块菜单权限控制 start 2018-06-14 -->
+                /purchase/proposal/index.htm=purchanse_plan_suggest_view,purchanse_plan_suggest_edit
+                /query/proposal/nopurchase=purchanse_plan_suggest_view,purchanse_plan_suggest_edit
+                /query/purchase/proposal=purchanse_plan_suggest_view,purchanse_plan_suggest_edit
+                /purchase/plan/index.htm=purchanse_plan_view,purchanse_plan_edit
+                /query/purchasePlan/queryplan=purchanse_plan_view,purchanse_plan_edit
+                /purchase/order/purchaseOrder/index.htm=purchanse_order_view,purchanse_order_edit
+                /query/purchaseOrder/queryPurchaseOrder=purchanse_order_view,purchanse_order_edit
+                /purchase/supplier/index.htm=purchanse_supplier_view,purchanse_supplier_edit
+                /query/purchase/supplier=purchanse_supplier_view,purchanse_supplier_edit
+                /purchase/recordLatestQuotation/record.htm=purchanse_quotation_view,purchanse_quotation_edit,purchanse_supplier_view,purchanse_supplier_edit
+                <!-- 20180622 添加维护供应商权限 -->
+                /purchase/advancedSetting/safeDelivery.htm=safe_delivery_view,safe_delivery_edit
+                <!-- 新增采购管理模块菜单权限控制 end 2018-06-14 -->
+                <!-- 商品管理 权限2018 09 13start --> 
+                /product/product/index.htm=product_manage_view 
+                /product/category/index.htm=product_category_view 
+                /product/brand/index.htm=product_brand_view 
+                /product/label/index.htm=product_label_view 
+                /product/packagematerial/index.htm=product_packagematerial_view 
+                <!-- 商品管理 权限2018 09 13end --> 
+                
+                <!-- 发货管理 权限2018 09 13start--> 
+                /query/warehouse/deliver*=deliSelf_package_check_view,deliSelf_done_Single_view,deliSelf_done_Batch_view,deliSelf_record_view 
+                /warehouse/assignStockSelfMaintenance/index.htm=deliSelf_allocation_view 
+                /query/warehouse/assignStockShippingMethod=deli_global_package_view,deli_global_package_edit,deliSelf_allocation_view,deliOther_allocation_view
+                
+                /warehouse/trackingnumberSelfMaintenance/index.htm=deliSelf_callLogi_api_view 
+                /warehouse/trackingnumberSelfMaintenance/excelindex.htm=deliSelf_callLogi_Exc_view 
+                /warehouse/trackingnumberSelfMaintenance/numberindex.htm=deliSelf_callLogi_Num_view 
+                
+                
+                /query/warehouse/applicationtrackingnumber_shippingmethod=deliSelf_callLogi_api_view,deliSelf_callLogi_Exc_view,deliSelf_callLogi_Num_view,deliOther_callLogi_api_view,deliOther_callLogi_Exc_view,deliOther_shippedStatus_api,deliOther_callLogi_api_view
+                /query/warehouse/applicationtrackingnumber=deliSelf_callLogi_api_view,deliSelf_callLogi_Exc_view,deliOther_shippedStatus_api,deliOther_callLogi_api_view
+                
+                /warehouse/print/waitindex.htm=deliSelf_addrPri_wait_view 
+                /warehouse/print/againindex.htm=deliSelf_addrPri_again_view 
+                /warehouse/print/selfindex.htm=deliSelf_addrPri_hand_view 
+                /query/warehouse/printByAccount=deliSelf_addrPri_wait_view,deliSelf_addrPri_again_view,deliSelf_addrPri_hand_view 
+                /query/warehouse/printShippingMethod=deliSelf_addrPri_wait_view,deliSelf_addrPri_again_view,deliSelf_addrPri_hand_view 
+                /query/warehouse/waitprint=deliSelf_addrPri_wait_view,deliSelf_addrPri_again_view,deliSelf_addrPri_hand_view 
+                /query/warehouse/printLog=deliSelf_addrPri_again_view 
+                
+                /warehouse/packageCheck/index.htm=deliSelf_package_check_view 
+                /query/warehouse/deliverByAccount=deliSelf_package_check_view,deliSelf_done_Single_view,deliSelf_done_Batch_view 
+                /query/warehouse/deliverShippingMethod=deliSelf_package_check_view,deliSelf_done_Single_view,deliSelf_done_Batch_view 
+                
+                /warehouse/deliverhandcargospace/index.htm=deliSelf_done_Single_view 
+                /warehouse/deliver1/index.htm=deliSelf_done_Batch_view 
+                /query/warehouse/deliverPackageChecked=deliSelf_done_Single_view,deliSelf_done_Batch_view 
+                
+                /warehouse/rehandle/index.htm=deliSelf_package_recycle_view 
+                /query/warehouse/rehandle=deliSelf_package_recycle_view 
+                
+                /warehouse/deliveryrecord/index.htm=deliSelf_record_view 
+                /query/warehouse/deliveryrecord=deliSelf_record_view 
+                /query/warehouse/deliveryrecord_shippingmethod=deliSelf_record_view 
+                
+                /warehouse/createPicking/index.htm=packing_create_view 
+                /warehouse/printPicking/index.htm=packing_print_view 
+                /warehouse/multispeciesPackaging/index.htm=packing_multis_view 
+                /warehouse/packaging/index.htm=packing_done_view 
+                /warehouse/pickingException/index.htm=packing_exception_view 
+                /warehouse/assignStockThirdParty/index.htm=deliOther_allocation_view 
+                
+                /warehouse/trackingnumberThirdParty/index.htm=deliOther_callLogi_api_view 
+                /warehouse/trackingnumberThirdParty/excelindex.htm=deliOther_callLogi_Exc_view 
+                
+                /new/addtracking/index.htm=supTrack_api_view,supTrack_excel_view,supTrack_package_view,supTrack_batch_view,supTrack_overview_view
+                <!-- 发货管理 权限2018 09 13end -->				
+				/**=IS_AUTHENTICATED_FULLY
+			</value>
+		</property>
+	</bean>
+
+	<bean id="authenticationManager" class="org.springframework.security.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref bean="ticketAuthenticationProvider" />
+			</list>
+		</property>
+	</bean>
+
+    <bean id="ticketAuthenticationProvider" class="com.ibiz.platform.web.springsecurity.passport.TicketAuthenticationProvider" init-method="initialize">
+    	<property name="userDetailsService" ref="userDetailsService"/>
+        <property name="passportUrl" value="${passport.appurl}"/>
+        <property name="appid" value="${passport.appid}"/>
+        <property name="appsecret" value="${passport.appsecret}"/>
+		<property name="node" value="${system.url}"/>
+        <property name="validateUrl" value="/validate2"/>
+    </bean>
+
+	<bean id="accessDecisionManager" class="org.springframework.security.vote.AffirmativeBased">
+		<property name="allowIfAllAbstainDecisions" value="false" />
+		<property name="decisionVoters">
+			<list>
+				<bean class="org.springframework.security.vote.RoleVoter">
+					<property name="rolePrefix" value=""/>
+				</bean>
+				<bean class="org.springframework.security.vote.AuthenticatedVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userDetailsService" class="com.ibiz.platform.web.user.IBizUserDetailsService">
+		<property name="extraCall" value="true"/>
+		<property name="systemId" value="${database.meta.databaseType}"/>
+		<property name="proxy">
+			<ref bean="memberCallProxy"/>
+		</property>
+		<property name="proxyEx">
+			<ref bean="tbFrameACProxy"/>
+		</property>
+		<property name="realmId">
+			<value>${UAM.realmId}</value>
+		</property>
+		<property name="userProvider">
+			<ref bean="uamUserProvider"/>
+		</property>
+		<property name="messageSource">
+			<ref bean="messageSource"/>
+		</property>
+	</bean>
+
+	<bean id="memberCallProxy" class="cn.com.tobosoft.framework.hessian.remote.impl.HessianCallProxy">
+		<property name="contextKey" value="$TEMPLATE$" />
+		<property name="serverUrl" value="${memberProxy.url}"/>
+		<property name="username" value="${memberac.username}"/>
+		<property name="password" value="${memberac.password}"/>
+	</bean>
+
+	<bean id="uamUserProvider" class="cn.com.tobosoft.uam.core.impl.provider.RemoteUserProvider">
+		<property name="proxy">
+			<ref bean="uamACProxy"/>
+		</property>
+	</bean>
+	<bean id="uamACProxy" class="cn.com.tobosoft.framework.hessian.remote.impl.HessianCallProxy">
+		<property name="contextKey" value="UAM" />
+		<property name="serverUrl" value="${ac.hessian.url}" />
+		<property name="username" value="${ac.username}"/>
+		<property name="password" value="${ac.password}"/>
+	</bean>
+
+	<!--
+	<bean id="detectSessionInvalidFilter" class="com.ibiz.platform.web.springsecurity.DetectSessionInvalidFilter">
+		<property name="exIncludeUrl">
+				<list>
+						<value>/registermerchant/validuser.htm</value>
+						<value>/registermerchant/openregister/index.htm</value>
+						<value>/register/index.htm</value>
+						<value>/registermerchant/openregister/return.htm</value>
+						<value>/process/resume/registermerchant/all/校验邮箱是否存在</value>
+						<value>/process/resume/registermerchant/all/校验验证码是否正确</value>
+						<value>/process/resume/registermerchant/all/商户注册</value>
+						<value>/process/resume/registermerchant/all/激活用户</value>
+						<value>/process/new/common/login</value>
+				</list>
+		</property>
+	</bean>
+
+	<bean name="customerTargetUrlResolver" class="com.ibiz.platform.web.springsecurity.CustomerTargetUrlResolverImpl">
+			<property name="ibizbackgroundUrls">
+					<list>
+							<value>/process/resume/ibizbackground/**/**</value>
+							<value>/process/new/ibizbackground/**/**</value>
+							<value>/process/signal/ibizbackground/**/**</value>
+							<value>/ibizbackground/**/**.htm</value>
+					</list>
+			</property>
+	</bean>
+	-->
+	<!-- This bean is optional; it isn't used by any other bean as it only listens
+		and logs -->
+	<bean id="loggerListener" class="org.springframework.security.event.authentication.LoggerListener" />
+</beans>
+

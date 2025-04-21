@@ -10,9 +10,16 @@ import (
 	"hkbackupCluster/pkg/pack"
 	"hkbackupCluster/pkg/sshclient"
 	"hkbackupCluster/service"
+	"io"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/pkg/sftp"
+
+	"golang.org/x/crypto/ssh"
 
 	"go.uber.org/zap"
 
@@ -221,6 +228,7 @@ func RunPackageTask() (err error) {
 	//2、将packaging_time status 改成-1
 	var status int8 = -1
 	for _, record := range records {
+		logger.SugarLog.Infof("change the status of the record:%#v to -1", record)
 		err = mysql.UpdatePackStatus(record.TaskID, status, nil)
 		if err != nil {
 			logger.SugarLog.Errorf("mysql.UpdatePackStatus failed,err:%v", err)
@@ -343,28 +351,67 @@ func RunPackageTask() (err error) {
 	//4、循环遍历开始调用jenkins打包工程
 
 	for _, record := range records {
-		//有包有配置
+		//需要打包 并且 有配置文件
 		if record.IsPackage && (record.UpdateJbossConf || record.UpdateSdkConf) {
 			if configUpdateSuccess, ok := configurationUpdateResults[record.TaskID]; !ok || !configUpdateSuccess {
 				zap.L().Error("Configuration update failed", zap.String("taskID", record.TaskID))
 				continue //无需再执行后续打包
 			}
+			//如果存在security文件
+			if record.UpdateSecurity {
+				if err := RsyncSecurityToAnsible(ansibleHost, record); err != nil {
+					logger.SugarLog.Errorf("RsyncSecurityToAnsible commonID:%s failed,taskID:%s", *record.Common, record.TaskID)
+					updateStatusOnRsyncSecurityFailure(record)
+					continue
+				}
+			}
 			if err := handlerPackage(record); err != nil {
 				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
 				continue
 			}
-		} else if record.IsPackage { //只需要打包
+			//只需要打包
+		} else if record.IsPackage {
+			//如果存在security文件
+			if record.UpdateSecurity {
+				if err := RsyncSecurityToAnsible(ansibleHost, record); err != nil {
+					logger.SugarLog.Errorf("RsyncSecurityToAnsible commonID:%s failed,taskID:%s", *record.Common, record.TaskID)
+					updateStatusOnRsyncSecurityFailure(record)
+					continue
+				}
+			}
 			if err := handlerPackage(record); err != nil {
 				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
 				continue
 			}
-			//无包有配置
-		} else if !record.IsPackage && (record.UpdateJbossConf || record.UpdateSdkConf) { //无包只有配置文件
+			//无包只有配置文件
+		} else if !record.IsPackage && (record.UpdateJbossConf || record.UpdateSdkConf) {
 			if configUpdateSuccess, ok := configurationUpdateResults[record.TaskID]; !ok || !configUpdateSuccess {
 				logger.SugarLog.Errorf("Configuration update failed,taskID:%s,err:%v", record.TaskID, err)
 				continue
 			}
 
+			//如果存在security文件
+			if record.UpdateSecurity {
+				if err := RsyncSecurityToAnsible(ansibleHost, record); err != nil {
+					logger.SugarLog.Errorf("RsyncSecurityToAnsible commonID:%s failed,taskID:%s", *record.Common, record.TaskID)
+					updateStatusOnRsyncSecurityFailure(record)
+					continue
+				}
+			}
+
+			record.Common = nil //将bug号改成空
+			if err := handlerPackage(record); err != nil {
+				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
+				continue
+			}
+
+			//无包只有security配置文件
+		} else if !record.IsPackage && record.UpdateSecurity {
+			if err := RsyncSecurityToAnsible(ansibleHost, record); err != nil {
+				logger.SugarLog.Errorf("RsyncSecurityToAnsible commonID:%s failed,taskID:%s", *record.Common, record.TaskID)
+				updateStatusOnRsyncSecurityFailure(record)
+				continue
+			}
 			record.Common = nil //将bug号改成空
 			if err := handlerPackage(record); err != nil {
 				logger.SugarLog.Errorf("Failed to package for taskID:%s,err:%v", record.TaskID, err)
@@ -385,6 +432,85 @@ func RunPackageTask() (err error) {
 
 }
 
+func updateStatusOnRsyncSecurityFailure(record model.RespPackageData) {
+	var status int8 = 2
+	updateErr := mysql.UpdatePackStatus(record.TaskID, status, nil)
+	if updateErr != nil {
+		zap.L().Error("mysql.UpdatePackStatus failed", zap.String("taskID", record.TaskID), zap.String("common", *record.Common))
+	}
+	buildStatus := "0" //给第三方接口返回 退回
+	jenkinsAction := "同步security文件失败"
+	callErr := callThirdPartyAPI.JenkinsBuildResultRsync(record.TaskID, buildStatus, nil, &jenkinsAction)
+	if callErr != nil {
+		zap.L().Error("JenkinsBuildResultRsync failed",
+			zap.String("taskID", record.TaskID),
+			zap.String("buildStatus", buildStatus),
+			zap.String("jenkinsAction", jenkinsAction))
+	}
+
+}
+
+func RsyncSecurityToAnsible(host string, record model.RespPackageData) (err error) {
+	key, err := os.ReadFile("./conf/tomcat_bastion3")
+
+	signer, err := ssh.ParsePrivateKey(key)
+	if err != nil {
+		return
+	}
+	config := &ssh.ClientConfig{
+		User: "tomcat",
+		Auth: []ssh.AuthMethod{
+			ssh.PublicKeys(signer),
+		},
+		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+	}
+
+	client, err := ssh.Dial("tcp", fmt.Sprintf("%s:22", host), config)
+	if err != nil {
+		return
+	}
+	defer client.Close()
+
+	sftpClient, err := sftp.NewClient(client)
+	if err != nil {
+		return
+	}
+	defer sftpClient.Close()
+
+	srcPath := record.SrcPath
+	currentDay := time.Now().Format("01.02")
+	fullOrIncrement := "full"
+	if record.JobName == "demo-pipeline-输入bug号自动打包" {
+		fullOrIncrement = "increment"
+	}
+
+	localFilePath := fmt.Sprintf("/opt/erp2_deploy/ERP_Release/%s/%s/%s/%s/security/security.xml", srcPath, fullOrIncrement, currentDay, *record.Common)
+	logger.SugarLog.Infof("localFilePath:%s", localFilePath)
+	localFile, err := os.Open(localFilePath)
+	if err != nil {
+		return
+	}
+	defer localFile.Close()
+
+	fileName := filepath.Base(localFilePath)
+	remoteDir := "/home/tomcat/ansible/configfiles/security"
+	remoteFilePath := filepath.Join(remoteDir, fileName)
+	remoteFilePath = filepath.ToSlash(remoteFilePath)
+
+	remoteFile, err := sftpClient.Create(remoteFilePath)
+	if err != nil {
+		return
+	}
+	defer remoteFile.Close()
+
+	if _, err := io.Copy(remoteFile, localFile); err != nil {
+		return err
+	}
+	logger.SugarLog.Infof("copy taskID:%s file:%s successfully", record.TaskID, remoteFilePath)
+	return
+
+}
+
 func handlerPackage(record model.RespPackageData) error {
 
 	paramMap, err := pack.StructToMap(&record)
@@ -392,6 +518,7 @@ func handlerPackage(record model.RespPackageData) error {
 		logger.SugarLog.Errorf("pack.StructToMap failed,err:%v", err)
 		return err
 	}
+	logger.SugarLog.Infof("jenkins package jobName:%s,param:%#v", record.JobName, paramMap)
 	resp, buildErr := pack.JenkinsBuild(record.JobName, paramMap)
 
 	var buildStatus string

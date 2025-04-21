@@ -11,10 +11,10 @@ import (
 )
 
 type RespData struct {
-	Code    int      `json:"code"`
-	Message string   `json:"message"`
-	Success bool     `json:"success"`
-	Datas   []string `json:"datas"`
+	Code    int    `json:"code"`
+	Message string `json:"message"`
+	Success bool   `json:"success"`
+	Datas   int    `json:"datas"`
 }
 
 type param struct {
@@ -22,7 +22,7 @@ type param struct {
 }
 
 func TriggerSQLExecution(taskID string) (err error) {
-	apiUrl := "https://automated.pvt.tongtool.com/tool-service/releaseTask/api/noticeExecuteSql"
+	apiUrl := "http://10.0.0.180:8138/releaseTask/api/noticeExecuteSql"
 	data := param{ReleaseTaskID: taskID}
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -55,7 +55,7 @@ func TriggerSQLExecution(taskID string) (err error) {
 	}
 	if respData.Code != 0 {
 		logger.SugarLog.Errorf("call callThirdPartyAPI failed,err:%v", respData.Message)
-		return fmt.Errorf("TriggerSQLExecution failed,taskID:%s", taskID)
+		return fmt.Errorf("TriggerSQLExecution failed,taskID:%s,err:%v", taskID, respData.Message)
 	}
 	logger.SugarLog.Infof("TriggerSQLExecution taskID:%s success.", taskID)
 	return nil

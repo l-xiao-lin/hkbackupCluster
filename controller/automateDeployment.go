@@ -24,7 +24,7 @@ func AutomateDeploymentHandler(c *gin.Context) {
 		return
 	}
 
-	fmt.Printf("params: %+v\n", *p)
+	logger.SugarLog.Infof("AutomateDeploymentHandler params:%+v", *p)
 
 	//2、业务处理 ,
 	insertID, err := service.AutomateDeployment(p)

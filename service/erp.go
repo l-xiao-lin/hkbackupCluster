@@ -13,7 +13,7 @@ import (
 
 var (
 	tokenMutex          sync.Mutex
-	tokenExpiryDuration = 20 * time.Minute
+	tokenExpiryDuration = 30 * time.Minute
 	TokenMap            = make(map[string]bool)
 )
 
@@ -130,5 +130,4 @@ func ErpErrorCount(content, host string) (err error) {
 
 	//发送微信
 	return SendWeChatAlert(p.Message, p.CorpID, p.Secret, p.ToParty, p.AgentID)
-
 }

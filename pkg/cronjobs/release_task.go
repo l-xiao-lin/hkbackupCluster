@@ -11,6 +11,7 @@ import (
 	"hkbackupCluster/pkg/callThirdPartyAPI"
 	"hkbackupCluster/pkg/pack"
 	"hkbackupCluster/pkg/sendEmail"
+	"hkbackupCluster/service"
 	"net/http"
 	"regexp"
 	"strings"
@@ -114,7 +115,10 @@ func RunReleaseTask() (err error) {
 	//2、检测是否需要停服执行sql
 	var shouldReturn bool
 	var notifiedDBColleague bool
+	var triggerSQLSuccess bool
+	triggerMaxRetries := 3
 	for _, record := range records {
+		triggerSQLSuccess = false
 		//停服处理
 		switch record.Status {
 		case 0:
@@ -122,7 +126,7 @@ func RunReleaseTask() (err error) {
 				shouldReturn = true
 				var host string
 				if standalonePattern.MatchString(record.Host) {
-					host = record.Host + "!108ZhiYuan:!56MengNuo"
+					host = record.Host + ":!108ZhiYuan:!56MengNuo"
 				} else {
 					host = record.Host
 				}
@@ -193,10 +197,32 @@ func RunReleaseTask() (err error) {
 				}
 
 				//五、调用第三方接口触发执行SQL语句
-				if err := callThirdPartyAPI.TriggerSQLExecution(record.TaskID); err != nil {
-					logger.SugarLog.Errorf("TriggerSQLExecution failed,taskID:%s,err:%v", record.TaskID, err)
+
+				for attempt := 1; attempt < triggerMaxRetries; attempt++ {
+					err := callThirdPartyAPI.TriggerSQLExecution(record.TaskID)
+					if err == nil {
+						triggerSQLSuccess = true
+						break
+					}
+					logger.SugarLog.Errorf("Attempt %d failed: TriggerSQLExecution failed,taskID:%s,err:%v", attempt, record.TaskID, err)
+
+					time.Sleep(time.Second * 30)
+				}
+
+				if !triggerSQLSuccess {
+					//微信通知有脚本执行失败
+					param := service.WeChatMessageErp{
+						Message: fmt.Sprintf("TriggerSQLExecution failed,taskID:%s,err:%v", record.TaskID, err),
+						CorpID:  "wxe7c550bbbe301cd3",
+						Secret:  "UrUJW6Fmgdbg3vFVmssOZ6UhIThmetQeqhfmTjMVSGs",
+						ToParty: "8",
+						AgentID: 1000005,
+					}
+					service.SendWeChatAlert(param.Message, param.CorpID, param.Secret, param.ToParty, param.AgentID)
+
 					continue
 				}
+
 				logger.SugarLog.Infof("TriggerSQLExecution success.")
 
 			}
@@ -239,18 +265,7 @@ func RunReleaseTask() (err error) {
 		}
 	}
 
-	if len(hostForRulePackage0) > 0 {
-		hostStringForRulePackage0 := deDuplicateHosts(hostForRulePackage0)
-		paramForRulePackage0 := mysql.ReleaseOperation{
-			Host:          hostStringForRulePackage0,
-			RmRulePackage: false,
-			PkgName:       nil,
-		}
-		if err = releaseUpdateAndNotify(&paramForRulePackage0, taskIdsForRulePackage0); err != nil {
-			return err
-		}
-	}
-
+	//有规则包的先处理
 	if len(hostForRulePackage1) > 0 {
 		hostStringForRulePackage1 := deDuplicateHosts(hostForRulePackage1)
 		paramForRulePackage1 := mysql.ReleaseOperation{
@@ -259,6 +274,19 @@ func RunReleaseTask() (err error) {
 			PkgName:       &pkgNameForRulePackage1,
 		}
 		if err = releaseUpdateAndNotify(&paramForRulePackage1, taskIdsForRulePackage1); err != nil {
+			return err
+		}
+	}
+
+	//再处理没有规则包
+	if len(hostForRulePackage0) > 0 {
+		hostStringForRulePackage0 := deDuplicateHosts(hostForRulePackage0)
+		paramForRulePackage0 := mysql.ReleaseOperation{
+			Host:          hostStringForRulePackage0,
+			RmRulePackage: false,
+			PkgName:       nil,
+		}
+		if err = releaseUpdateAndNotify(&paramForRulePackage0, taskIdsForRulePackage0); err != nil {
 			return err
 		}
 	}

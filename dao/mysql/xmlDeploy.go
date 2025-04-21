@@ -1,6 +1,7 @@
 package mysql
 
 import (
+	"fmt"
 	"hkbackupCluster/logger"
 	"hkbackupCluster/model"
 	"time"
@@ -13,7 +14,18 @@ func InsertXml(p *model.ParamReleaseXML) (err error) {
 		scheduledTime, _ := time.Parse(timeLayout, p.ScheduledTime)
 		utcScheduledTime = scheduledTime.UTC()
 	}
-	sqlStr := "insert into release_xml (task_id,job_name,src_path,host,common,scheduled_time) values (?,?,?,?,?,?)"
+	sqlStr := "insert into release_xml (task_id,job_name,src_path,host,common,scheduled_time) values (?,?,?,?,?,?)" +
+		"ON DUPLICATE KEY UPDATE " +
+		"update_time=now()" +
+		",status=values(status)"
+
+	if p.Common != nil {
+		sqlStr = fmt.Sprintf(sqlStr + ",common=values(common)")
+	}
+
+	if p.Host != "" {
+		sqlStr = fmt.Sprintf(sqlStr + ",host=values(host)")
+	}
 
 	ret, err := db.Exec(sqlStr, p.TaskID, p.JobName, p.SrcPath, p.Host, p.Common, utcScheduledTime)
 	if err != nil {

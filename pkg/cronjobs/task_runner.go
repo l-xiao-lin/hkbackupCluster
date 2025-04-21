@@ -34,10 +34,22 @@ func (tr *TaskRunner) Start() {
 	})
 
 	tr.cron.AddFunc("*/5 * * * * ", func() {
-		if err := notifyMerchant(); err != nil {
-			logger.SugarLog.Errorf("notifyMerchant failed at %s,err;%v", time.Now().Format("2006-01-02 15:04:05"), err)
+		if err := RunCommonPackageTask(); err != nil {
+			logger.SugarLog.Errorf("RunCommonPackageTask failed at %s,err;%v", time.Now().Format("2006-01-02 15:04:05"), err)
 		}
 	})
+
+	tr.cron.AddFunc("*/5 * * * * ", func() {
+		if err := RunCommonReleaseTask(); err != nil {
+			logger.SugarLog.Errorf("RunCommonReleaseTask failed at %s,err;%v", time.Now().Format("2006-01-02 15:04:05"), err)
+		}
+	})
+
+	//tr.cron.AddFunc("*/5 * * * * ", func() {
+	//	if err := notifyMerchant(); err != nil {
+	//		logger.SugarLog.Errorf("notifyMerchant failed at %s,err;%v", time.Now().Format("2006-01-02 15:04:05"), err)
+	//	}
+	//})
 
 	tr.cron.Start()
 }

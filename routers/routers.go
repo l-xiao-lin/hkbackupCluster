@@ -92,5 +92,13 @@ func SetupRouter() *gin.Engine {
 
 	v1.POST("/sendReport", controller.SendReportHandler)
 
+	v1.POST("/sendRobotAlarm", controller.SendRobotAlarmHandler)
+
+	v1.POST("/commonDeploy", controller.CommonDeploymentHandler)
+
+	v1.POST("/demoPackageCommon", cronjobs.DemoCommonPackageHandler)
+
+	v1.POST("/demoReleaseCommon", cronjobs.DemoCommonReleaseHandler)
+
 	return r
 }

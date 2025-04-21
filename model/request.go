@@ -7,3 +7,10 @@ type ParamSSHConfig struct {
 	KeyPath string `json:"keyPath"`
 	Command string `json:"command"`
 }
+
+type ParamWeChatBot struct {
+	Key                 string   `json:"Key"`
+	MsgType             string   `json:"msgtype"`
+	Content             string   `json:"content"`
+	MentionedMobileList []string `json:"mentioned_mobile_list"`
+}

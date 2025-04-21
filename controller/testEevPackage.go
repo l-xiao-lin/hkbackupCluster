@@ -20,7 +20,6 @@ func TestEnvPackageHandler(c *gin.Context) {
 
 	go func(param *model.ParamTestPack) {
 		service.TestEnvPackage(param)
-
 	}(p)
 
 	c.JSON(http.StatusOK, gin.H{

@@ -10,6 +10,13 @@ import (
 	"time"
 )
 
+type RespMerchantData struct {
+	Code    int      `json:"code"`
+	Message string   `json:"message"`
+	Success bool     `json:"success"`
+	Datas   []string `json:"datas"`
+}
+
 type EnvHosts struct {
 	EnvironmentCodeList []string `json:"environmentCodeList"`
 }
@@ -40,7 +47,7 @@ func GetMerchantsByEnvHost(envHosts []string) (merchants []string, err error) {
 	if err != nil {
 		return
 	}
-	var respData RespData
+	var respData RespMerchantData
 	if err := json.Unmarshal(body, &respData); err != nil {
 		return nil, err
 	}

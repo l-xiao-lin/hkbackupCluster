@@ -96,6 +96,7 @@ func InsertPackage(tx *sql.Tx, p *model.ParamsIncrementalPack) (insertID int64, 
 	is_sql_exec := 0
 	if p.IsSqlExec {
 		is_sql_exec = 1
+		sqlStr = fmt.Sprintf(sqlStr + ",is_sql_exec=values(is_sql_exec)")
 	}
 	rm_rulepackage := 0
 	if p.RmRulepackage {
@@ -147,7 +148,7 @@ func InsertPackage(tx *sql.Tx, p *model.ParamsIncrementalPack) (insertID int64, 
 		sqlStr = fmt.Sprintf(sqlStr + ",should_send=values(should_send)")
 	}
 
-	fmt.Printf("sqlStr:%s\n", sqlStr)
+	logger.SugarLog.Infof("sqlStr:%s", sqlStr)
 	ret, err := tx.Exec(sqlStr, p.TaskID, p.JobName, p.Host, status, p.SrcPath, p.Common, p.Diff, rm_rulepackage, p.PkgName, update_jbossconf, update_sdkconf, update_security, utcPackageTime, utcScheduledTime, is_sql_exec, is_package, p.CanaryStatus, should_send)
 	if err != nil {
 		logger.SugarLog.Errorf("insert failed,err:%v", err)
@@ -255,24 +256,37 @@ func HandleSuccessPackTransaction(Id string, status int8, buildNumber *int64, p 
 		return errors.New("exec sqlStr1 failed ")
 	}
 
+	sqlStr2 := "insert into release_operations(task_id,host,rm_rulepackage,pkg_name,scheduled_time,is_sql_exec,canary_status,should_send) values (?,?,?,?,?,?,?,?) " +
+		"on DUPLICATE key update update_time=now()"
+
 	rm_rulePackage := 0
 	if p.RmRulepackage {
 		rm_rulePackage = 1
+		sqlStr2 = fmt.Sprintf(sqlStr2 + ",rm_rulePackage=values(rm_rulePackage)")
 	}
 
 	is_sql_exec := 0
 	if p.IsSqlExec {
 		is_sql_exec = 1
+		sqlStr2 = fmt.Sprintf(sqlStr2 + ",is_sql_exec=values(is_sql_exec)")
+
+	}
+
+	if p.PkgName != nil {
+		sqlStr2 = fmt.Sprintf(sqlStr2 + ",pkg_name=values(pkg_name)")
 	}
 
 	should_send := 0
 	if p.ShouldSend {
 		should_send = 1
+		sqlStr2 = fmt.Sprintf(sqlStr2 + ",should_send=values(should_send)")
 	}
 
 	scheduledTime, _ := time.Parse(time.RFC3339, p.ScheduledTime)
 	utcScheduledTime := scheduledTime.UTC()
-	sqlStr2 := "insert into release_operations(task_id,host,rm_rulepackage,pkg_name,scheduled_time,is_sql_exec,canary_status,should_send) values (?,?,?,?,?,?,?,?)"
+
+	logger.SugarLog.Infof("sqlStr2:%s", sqlStr2)
+
 	ret2, err := tx.Exec(sqlStr2, p.TaskID, p.Host, rm_rulePackage, p.PkgName, utcScheduledTime, is_sql_exec, p.CanaryStatus, should_send)
 	if err != nil {
 		return
