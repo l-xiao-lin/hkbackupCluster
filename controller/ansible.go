@@ -16,7 +16,7 @@ func GetEnvNameHandler(c *gin.Context) {
 
 	cmd := fmt.Sprintf("ansible -i $Z_asbList_erp2 %s --list| grep -v hosts", host)
 
-	data, err := service.GetEnvName(cmd)
+	data, err := service.GetEnvName(cmd, host)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"msg":  err.Error(),

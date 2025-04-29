@@ -17,7 +17,7 @@ var (
 	}
 )
 
-func GetEnvName(cmd string) (RespData []string, err error) {
+func GetEnvName(cmd, host string) (RespData []string, err error) {
 
 	client, err := sshclient.SshConnect(ansibleHost)
 	if err != nil {
@@ -41,8 +41,10 @@ func GetEnvName(cmd string) (RespData []string, err error) {
 		RespData = append(RespData, strings.TrimSpace(line))
 
 	}
-	RespData = append(RespData, ansibleGroup...)
-
+	if host == "standalone:guanwang:guanwang-i2:sdk" {
+		RespData = append(RespData, ansibleGroup...)
+		return RespData, nil
+	}
 	return RespData, nil
 }
 

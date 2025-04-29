@@ -98,6 +98,14 @@ func insertRecord(tx *sql.Tx, p *model.ParamCommonDeploy) (err error) {
 }
 
 func insertCommonConfigurations(tx *sql.Tx, p *model.ParamCommonDeploy) (err error) {
+
+	//在插入数据前，删除taskID对应的配置文件，以防止重复的配置
+	sqlStr1 := "delete from common_package_configurations where task_id=?"
+	_, err = tx.Exec(sqlStr1, p.TaskID)
+	if err != nil {
+		return err
+	}
+
 	sqlStr := "insert into common_package_configurations(task_id,service_name,config_action,config_content)" +
 		"values(?,?,?,?)"
 

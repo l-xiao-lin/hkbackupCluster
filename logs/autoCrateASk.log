@@ -823,3 +823,143 @@
 {"level":"INFO","time":"2025-04-21T15:46:26.833+0800","caller":"mysql/commonDeployment.go:218","msg":"insert into common_release_operations row success,id:10"}
 {"level":"INFO","time":"2025-04-21T15:46:26.838+0800","caller":"mysql/commonDeployment.go:176","msg":"commit"}
 {"level":"INFO","time":"2025-04-21T15:46:27.044+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:84","msg":"Successfully synced result for TaskID 1052635196538749044"}
+{"level":"INFO","time":"2025-04-21T17:09:05.120+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-21T17:09:32.645+0800","caller":"zap/zap.go:117","msg":"/api/v1/getEnvName","status":200,"method":"GET","path":"/api/v1/getEnvName","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.862329,"time":"2025-04-21T09:09:32Z"}
+{"level":"INFO","time":"2025-04-21T17:09:56.610+0800","caller":"zap/zap.go:117","msg":"/api/v1/getEnvName","status":200,"method":"GET","path":"/api/v1/getEnvName","query":"host=monday","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":0.8974574,"time":"2025-04-21T09:09:56Z"}
+{"level":"INFO","time":"2025-04-21T17:10:00.007+0800","caller":"cronjobs/common_release_task.go:92","msg":"begin RunCommonReleaseTask func at 2025-04-21 17:10:00"}
+{"level":"INFO","time":"2025-04-21T17:10:00.008+0800","caller":"cronjobs/releaseXml.go:84","msg":"begin RunReleaReleaseXmlHandlerseTask func at 2025-04-21 17:10:00"}
+{"level":"INFO","time":"2025-04-21T17:10:00.009+0800","caller":"cronjobs/common_package_task.go:53","msg":"Begin RunCommonPackageTask ","time":"2025-04-21 17:10:00"}
+{"level":"INFO","time":"2025-04-21T17:10:00.010+0800","caller":"cronjobs/packaging_task.go:218","msg":"Begin RunPackageTask ","time":"2025-04-21 17:10:00"}
+{"level":"INFO","time":"2025-04-21T17:10:00.011+0800","caller":"cronjobs/release_task.go:105","msg":"begin RunReleaseTask func at 2025-04-21 17:10:00"}
+{"level":"INFO","time":"2025-04-21T17:10:00.011+0800","caller":"mysql/release.go:22","msg":"nowUTC:2025-04-21 09:10:00.0110579 +0000 UTC"}
+{"level":"INFO","time":"2025-04-21T17:10:00.021+0800","caller":"cronjobs/common_release_task.go:98","msg":"RunCommonReleaseTask no release records"}
+{"level":"INFO","time":"2025-04-21T17:10:00.035+0800","caller":"cronjobs/releaseXml.go:92","msg":"ReleaseXmlHandler query now records"}
+{"level":"INFO","time":"2025-04-21T17:10:00.039+0800","caller":"cronjobs/packaging_task.go:224","msg":"no release records"}
+{"level":"INFO","time":"2025-04-21T17:10:00.041+0800","caller":"cronjobs/release_task.go:111","msg":"no release records"}
+{"level":"INFO","time":"2025-04-21T17:10:00.046+0800","caller":"cronjobs/common_package_task.go:59","msg":"RunCommonPackageTask no release records"}
+{"level":"INFO","time":"2025-04-21T17:10:18.702+0800","caller":"zap/zap.go:117","msg":"/api/v1/getEnvName","status":200,"method":"GET","path":"/api/v1/getEnvName","query":"host=logismg","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":6.2647541,"time":"2025-04-21T09:10:18Z"}
+{"level":"INFO","time":"2025-04-22T10:58:30.009+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T10:59:06.407+0800","caller":"cronjobs/common_release_task.go:92","msg":"begin RunCommonReleaseTask func at 2025-04-22 10:59:06"}
+{"level":"ERROR","time":"2025-04-22T11:00:24.410+0800","caller":"cronjobs/common_release_task.go:123","msg":"unknow  serviceParamsMap service name:openapi"}
+{"level":"INFO","time":"2025-04-22T11:10:36.679+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:11:23.357+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:12:20.488+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:12:58.132+0800","caller":"cronjobs/common_release_task.go:92","msg":"begin RunCommonReleaseTask func at 2025-04-22 11:12:58"}
+{"level":"INFO","time":"2025-04-22T11:13:51.545+0800","caller":"pack/jenkinsBuild.go:49","msg":" Jenkins project Openapi版本发布 build number 405 with result:SUCCESS\n"}
+{"level":"ERROR","time":"2025-04-22T11:14:37.827+0800","caller":"callThirdPartyAPI/jenkinsBuildResultRsync.go:80","msg":"call callThirdPartyAPI failed,err:当前任务状态不是待发版，请检查"}
+{"level":"ERROR","time":"2025-04-22T11:14:38.844+0800","caller":"cronjobs/common_release_task.go:157","msg":"callThirdPartyAPI.JenkinsBuildResultRsync failed,taskID:1052635196538749044 err:call callThirdPartyAPI failed"}
+{"level":"INFO","time":"2025-04-22T11:14:42.334+0800","caller":"zap/zap.go:117","msg":"/api/v1/demoReleaseCommon","status":200,"method":"POST","path":"/api/v1/demoReleaseCommon","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":105.7866486,"time":"2025-04-22T03:14:42Z"}
+{"level":"INFO","time":"2025-04-22T11:23:51.850+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:25:23.584+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:25:27.486+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:25:33.715+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:25:33.718+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:26:18.874+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:26:21.604+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":54.1186273,"time":"2025-04-22T03:26:21Z"}
+{"level":"INFO","time":"2025-04-22T11:30:48.919+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:31:31.758+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:32:14.513+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:32:16.917+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:32:50.092+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:32:51.618+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":79.861864,"time":"2025-04-22T03:32:51Z"}
+{"level":"INFO","time":"2025-04-22T11:37:52.601+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:37:55.688+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:37:55.690+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:37:56.097+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:38:19.976+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":27.3752607,"time":"2025-04-22T03:38:19Z"}
+{"level":"INFO","time":"2025-04-22T11:38:23.279+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:38:24.706+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:38:24.708+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:38:24.723+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:38:24.724+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":1.4450491,"time":"2025-04-22T03:38:24Z"}
+{"level":"INFO","time":"2025-04-22T11:39:02.617+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:39:07.649+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:39:09.847+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:39:09.850+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:39:14.451+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:39:14.451+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":6.8031533,"time":"2025-04-22T03:39:14Z"}
+{"level":"INFO","time":"2025-04-22T11:39:40.582+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:40:02.857+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T11:40:06.140+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:40:08.333+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:40:08.335+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:40:09.358+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:40:10.489+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":4.3506934,"time":"2025-04-22T03:40:10Z"}
+{"level":"INFO","time":"2025-04-22T11:40:23.046+0800","caller":"controller/commonDeployment.go:22","msg":"CommonDeploymentHandler param:{TaskID:10001 ServiceName:member HasConfiguration:true Status:0 OpenSchema:false CommonConfigs:[{Action:add Content:demoUsername001=cisco46589}] PackageTime:2025-04-22T10:00:00+08:00 ScheduledTime:2025-04-22T10:00:00+08:00}"}
+{"level":"INFO","time":"2025-04-22T11:40:25.150+0800","caller":"mysql/commonDeployment.go:84","msg":"sqlstr: insert into common_package_operations(task_id,service_name,has_configuration,status,package_time,scheduled_time,open_schema)values(?,?,?,?,?,?,?)ON DUPLICATE KEY UPDATE update_time=now(),status=values(status),has_configuration=values(has_configuration),package_time=values(package_time),service_name=values(service_name),scheduled_time=values(scheduled_time)"}
+{"level":"INFO","time":"2025-04-22T11:40:25.152+0800","caller":"mysql/commonDeployment.go:95","msg":"insert success,insertID: 19"}
+{"level":"INFO","time":"2025-04-22T11:40:25.160+0800","caller":"mysql/commonDeployment.go:28","msg":"InsertCommon commit"}
+{"level":"INFO","time":"2025-04-22T11:40:25.160+0800","caller":"zap/zap.go:117","msg":"/api/v1/commonDeploy","status":200,"method":"POST","path":"/api/v1/commonDeploy","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime-ApipostRuntime/1.1.0","latency":2.115602,"time":"2025-04-22T03:40:25Z"}
+{"level":"INFO","time":"2025-04-22T14:39:41.691+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T14:46:34.518+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T14:47:11.426+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T14:48:23.289+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-22T14:48:43.902+0800","caller":"service/workflow.go:23","msg":"ASK集群初始化中..."}
+{"level":"INFO","time":"2025-04-22T14:48:47.372+0800","caller":"service/workflow.go:28","msg":"clusterID:cf15ec08ad6634b26bfe9552f588923f2\n"}
+{"level":"INFO","time":"2025-04-22T14:48:47.752+0800","caller":"service/workflow.go:29","msg":"taskID:T-68073bc24a73050106001139\n"}
+{"level":"INFO","time":"2025-04-22T14:49:08.545+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第1次"}
+{"level":"INFO","time":"2025-04-22T14:49:28.815+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第2次"}
+{"level":"INFO","time":"2025-04-22T14:49:49.010+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第3次"}
+{"level":"INFO","time":"2025-04-22T14:50:09.110+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第4次"}
+{"level":"INFO","time":"2025-04-22T14:50:29.303+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第5次"}
+{"level":"INFO","time":"2025-04-22T14:50:49.416+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第6次"}
+{"level":"INFO","time":"2025-04-22T14:51:09.553+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第7次"}
+{"level":"INFO","time":"2025-04-22T14:51:29.756+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第8次"}
+{"level":"INFO","time":"2025-04-22T14:51:49.955+0800","caller":"service/getTaskStatus.go:16","msg":"检测状态第9次"}
+{"level":"INFO","time":"2025-04-22T14:56:32.597+0800","caller":"service/workflow.go:39","msg":"集群初始化完成"}
+{"level":"INFO","time":"2025-04-22T14:56:34.472+0800","caller":"service/workflow.go:47","msg":"获取kubeConfig文件完成"}
+{"level":"ERROR","time":"2025-04-22T14:56:55.854+0800","caller":"service/ingressSlb.go:33","msg":"get service failed,err:Get \"https://47.83.248.248:6443/api/v1/namespaces/kube-system/services/nginx-ingress-lb\": dial tcp 47.83.248.248:6443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."}
+{"level":"INFO","time":"2025-04-29T11:01:19.025+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:01:19.054+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:01:20.072+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18713"}
+{"level":"ERROR","time":"2025-04-29T11:01:20.378+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:01:20.378+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18713","attempt":1,"error":"build number not available  yet"}
+{"level":"ERROR","time":"2025-04-29T11:01:20.558+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:01:20.558+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18713","attempt":2,"error":"build number not available  yet"}
+{"level":"ERROR","time":"2025-04-29T11:01:20.746+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:01:20.746+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18713","attempt":3,"error":"build number not available  yet"}
+{"level":"ERROR","time":"2025-04-29T11:01:21.031+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:01:21.031+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18713","attempt":4,"error":"build number not available  yet"}
+{"level":"ERROR","time":"2025-04-29T11:01:21.225+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:01:21.225+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18713","attempt":5,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:05:34.804+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:05:46.256+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:06:13.678+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18716"}
+{"level":"INFO","time":"2025-04-29T11:17:28.515+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:18:09.923+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:18:16.094+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18719"}
+{"level":"INFO","time":"2025-04-29T11:19:13.956+0800","caller":"pack/newJenkinsBuild.go:214","msg":"Jenkins build successful.","jobName":"demo","buildNumber":50,"buildResult":"SUCCESS"}
+{"level":"INFO","time":"2025-04-29T11:20:07.733+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:20:07.781+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:20:07.858+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18720"}
+{"level":"ERROR","time":"2025-04-29T11:20:07.916+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:20:07.916+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18720","attempt":1,"error":"build number not available  yet"}
+{"level":"ERROR","time":"2025-04-29T11:20:12.941+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:20:12.941+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18720","attempt":2,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:20:17.979+0800","caller":"pack/newJenkinsBuild.go:214","msg":"Jenkins build successful.","jobName":"demo","param":{"deploy_pods":["listing-common","listingsdk","listing-m"]},"buildNumber":51,"buildResult":"SUCCESS"}
+{"level":"INFO","time":"2025-04-29T11:22:08.957+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:22:08.982+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:22:09.002+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18723"}
+{"level":"ERROR","time":"2025-04-29T11:22:09.025+0800","caller":"pack/newJenkinsBuild.go:109","msg":"get build number failed"}
+{"level":"WARN","time":"2025-04-29T11:22:09.025+0800","caller":"pack/newJenkinsBuild.go:175","msg":"Failed to retries build number from queue,retrying...","queueID":"18723","attempt":1,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:22:29.047+0800","caller":"pack/newJenkinsBuild.go:214","msg":"Jenkins build successful.","jobName":"demo","param":{"deploy_pods":["listing-common","listingsdk","listing-m"]},"buildNumber":52,"buildResult":"SUCCESS"}
+{"level":"INFO","time":"2025-04-29T11:24:31.351+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:24:31.366+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:24:31.395+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18724"}
+{"level":"WARN","time":"2025-04-29T11:24:31.402+0800","caller":"pack/newJenkinsBuild.go:174","msg":"Failed to retries build number from queue,retrying...","queueID":"18724","attempt":1,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:24:31.506+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:25:11.008+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:25:13.783+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:25:13.800+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:25:13.818+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18725"}
+{"level":"WARN","time":"2025-04-29T11:25:13.837+0800","caller":"pack/newJenkinsBuild.go:174","msg":"Failed to retries build number from queue,retrying...","queueID":"18725","attempt":1,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:25:32.458+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:25:32.473+0800","caller":"pack/newJenkinsBuild.go:35","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:25:32.503+0800","caller":"pack/newJenkinsBuild.go:67","msg":"Successfully triggered Jenkins build","queueID":"18726"}
+{"level":"WARN","time":"2025-04-29T11:25:32.564+0800","caller":"pack/newJenkinsBuild.go:174","msg":"Failed to retries build number from queue,retrying...","queueID":"18726","attempt":1,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:25:52.606+0800","caller":"pack/newJenkinsBuild.go:213","msg":"Jenkins build successful.","jobName":"demo","param":{"deploy_pods":["listing-common","listingsdk","listing-m"]},"buildNumber":55,"buildResult":"SUCCESS"}
+{"level":"INFO","time":"2025-04-29T11:28:23.789+0800","caller":"logger/logger.go:39","msg":"zap.L().info logger success"}
+{"level":"INFO","time":"2025-04-29T11:28:23.817+0800","caller":"pack/newJenkinsBuild.go:47","msg":"Trigger Jenkins build with params","jenkinsURL":"http://jenkins.tongtool.com","jobName":"demo","formData":"deploy_pods=listing-common&deploy_pods=listingsdk&deploy_pods=listing-m"}
+{"level":"INFO","time":"2025-04-29T11:28:23.838+0800","caller":"pack/newJenkinsBuild.go:79","msg":"Successfully triggered Jenkins build","queueID":"18727"}
+{"level":"WARN","time":"2025-04-29T11:28:23.861+0800","caller":"pack/newJenkinsBuild.go:186","msg":"Failed to retries build number from queue,retrying...","queueID":"18727","attempt":1,"error":"build number not available  yet"}
+{"level":"INFO","time":"2025-04-29T11:28:43.882+0800","caller":"pack/newJenkinsBuild.go:225","msg":"Jenkins build successful.","jobName":"demo","param":{"deploy_pods":["listing-common","listingsdk","listing-m"]},"buildNumber":56,"buildResult":"SUCCESS"}

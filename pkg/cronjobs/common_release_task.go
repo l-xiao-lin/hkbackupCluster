@@ -55,7 +55,7 @@ var serviceParamsMap = map[string]paraCommon{
 		UploadConfig: false,
 		OpenSchema:   false,
 	},
-	"Openapi": {
+	"openapi": {
 		Host:         "openapi-3:openapi-2:openapi-1",
 		SourcePath:   "/home/tomcat/ansible/src/Common/openapi",
 		BackupCode:   true,
